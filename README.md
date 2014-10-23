@@ -11,5 +11,5 @@ Nilo Redini ([@badnack](https://github.com/badnack/))
 ![badnack photo](https://avatars0.githubusercontent.com/u/1037156?v=2&s=140)
 
 Julie Rekdal ([@julierwr] (https://github.com/julierwr/))
-![julierwr photo] (https://avatars0.githubusercontent.com/u/6633826?v=2&s=400)
+![julierwr photo](https://avatars0.githubusercontent.com/u/6633826?v=2&s=140)
 
