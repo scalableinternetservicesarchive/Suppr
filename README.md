@@ -1,10 +1,7 @@
 README
 ==
 
-# LabApp Demo is a project that demonstrates some rails concepts that may be
-useful for all CS290 students in their projects. This project will be built-up
-throughout the quarter to provide more examples for the various CS290 projects.
-
+# Suppr: [Add description here]
 
 [PivotalTracker](https://www.pivotaltracker.com/s/projects/1193866)
 
@@ -15,3 +12,4 @@ Nilo Redini ([@badnack](https://github.com/badnack/))
 
 Julie Rekdal ([@julierwr] (https://github.com/julierwr/))
 ![julierwr photo] (https://avatars0.githubusercontent.com/u/6633826?v=2&s=400)
+
