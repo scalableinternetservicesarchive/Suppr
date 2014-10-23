@@ -16,5 +16,5 @@ Julie Rekdal ([@julierwr] (https://github.com/julierwr/))
 Henriette Kopstad ([@henrievk](https://github.com/henrievk/))
 ![henrievk photo](https://avatars2.githubusercontent.com/u/3776667?v=2&s=140)
 
-Greg Parsons ([@surfingreg] (https://github.com/surfingreg/))
-![surfingreg photo](https://avatars0.githubusercontent.com/u/4780760?v=2&s=140)
+Greg Parsons ([@gregparsons] (https://github.com/surfingreg/))
+![gregparsons photo](https://avatars0.githubusercontent.com/u/4780760?v=2&s=140)
