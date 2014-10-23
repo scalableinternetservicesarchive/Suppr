@@ -13,3 +13,5 @@ Nilo Redini ([@badnack](https://github.com/badnack/))
 Julie Rekdal ([@julierwr] (https://github.com/julierwr/))
 ![julierwr photo] (https://avatars0.githubusercontent.com/u/6633826?v=2&s=400)
 
+Greg Parsons ([@surfingreg] (https://github.com/surfingreg/))
+![surfingreg photo](https://avatars0.githubusercontent.com/u/4780760?v=2&s=140)
