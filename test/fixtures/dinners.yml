@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2014-10-24 12:38:16
+  location: MyString
+  title: MyString
+  description: MyString
+  category: MyString
+  price: 1.5
+  seats_available: 1
+  stamp: 2014-10-24 12:38:16
+
+two:
+  date: 2014-10-24 12:38:16
+  location: MyString
+  title: MyString
+  description: MyString
+  category: MyString
+  price: 1.5
+  seats_available: 1
+  stamp: 2014-10-24 12:38:16
