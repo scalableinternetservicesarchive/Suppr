@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Photo</th>
       <th>Date</th>
       <th>Location</th>
       <th>Title</th>
@@ -18,6 +19,7 @@
   <tbody>
     <% @dinners.each do |dinner| %>
       <tr>
+        <td><%= dinner.photo %></td>
         <td><%= dinner.date %></td>
         <td><%= dinner.location %></td>
         <td><%= dinner.title %></td>
