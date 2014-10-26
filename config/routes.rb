@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'event/list' 
+  get 'event/detail'
+
   get 'home/welcome'
-
   get 'home/login'
-
   get 'home/about'
-
   get 'home/contact'
+
+  #get 'event#list', as: 'event'
 
   resources :dinners
 
@@ -16,7 +18,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   #root 'welcome#index'
   #root 'home'
-  root 'home#welcome'
+  #root 'home#welcome'
+  root 'event#list'
 
 
   # Example of regular route:
