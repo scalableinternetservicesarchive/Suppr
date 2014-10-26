@@ -19,7 +19,9 @@
   <tbody>
     <% @dinners.each do |dinner| %>
       <tr>
-        <td><%= dinner.photo %></td>
+        <td>
+            <%= image_tag(dinner.photo, class: 'list_image') %> 
+        </td>
         <td><%= dinner.date %></td>
         <td><%= dinner.location %></td>
         <td><%= dinner.title %></td>
