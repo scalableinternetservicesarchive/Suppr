@@ -29,11 +29,12 @@
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description, rows: 10 %>
-  </div>
+    <%= f.text_area :description, rows: 10 %> 
+ </div>
   <div class="field">
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.select :category, Dinner::CATEGORIES,
+        prompt: 'Select a category' %>
   </div>
   <div class="field">
     <%= f.label :price %><br>
