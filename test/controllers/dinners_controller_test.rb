@@ -3,6 +3,7 @@ require 'test_helper'
 class DinnersControllerTest < ActionController::TestCase
   setup do
     @dinner = dinners(:one)
+    @dinner.date = 10.days.from_now
   end
 
   test "should get index" do

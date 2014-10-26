@@ -5,7 +5,7 @@ class Dinner < ActiveRecord::Base
 
 	def not_past_date
 		if self.date.past?
-			errors.add( :date, 'Dinner can not be hosted in the past')
+			errors.add(:date, 'Dinner can not be hosted in the past')
 		end
 	end
 end
