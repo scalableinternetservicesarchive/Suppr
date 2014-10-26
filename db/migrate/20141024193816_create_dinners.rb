@@ -4,9 +4,9 @@ class CreateDinners < ActiveRecord::Migration
       t.timestamp :date
       t.string :location
       t.string :title
-      t.string :description
+      t.string   :description
       t.string :category
-      t.float :price
+      t.float  :price
       t.integer :seats_available
       t.timestamp :stamp
 
