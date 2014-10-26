@@ -7,22 +7,22 @@
 
 <p>
   <strong>Location:</strong>
-  <%= @dinner.location %>
+  <%= sanitize @dinner.location %>
 </p>
 
 <p>
   <strong>Title:</strong>
-  <%= @dinner.title %>
+  <%= sanitize @dinner.title %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @dinner.description %>
+  <%= sanitize @dinner.description %>
 </p>
 
 <p>
   <strong>Category:</strong>
-  <%= @dinner.category %>
+  <%= sanitize @dinner.category %>
 </p>
 
 <p>
