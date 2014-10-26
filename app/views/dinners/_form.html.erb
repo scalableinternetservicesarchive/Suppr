@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_area :description, rows: 10 %>
   </div>
   <div class="field">
     <%= f.label :category %><br>
@@ -42,10 +42,6 @@
   <div class="field">
     <%= f.label :seats_available %><br>
     <%= f.number_field :seats_available %>
-  </div>
-  <div class="field">
-    <%= f.label :stamp %><br>
-    <%= f.datetime_select :stamp %>
   </div>
   <div class="actions">
     <%= f.submit %>
