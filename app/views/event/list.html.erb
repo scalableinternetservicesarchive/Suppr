@@ -1,0 +1,27 @@
+<% if notice %>
+<p id="notice"><%= notice %></p> 
+<% end %>
+
+
+<h1>Upcoming Dinners</h1>
+
+
+<% @dinners.each do |dinner| %>
+  <tr>
+    <td>
+        <%= image_tag(dinner.photo, class: 'list_image') %> 
+    </td>
+    <td><%= dinner.date %></td>
+    <td><%= dinner.location %></td>
+    <td><%= dinner.title %></td>
+    <td><%= dinner.description %></td>
+    <td><%= dinner.category %></td>
+    <td><%= dinner.price %></td>
+    <td><%= dinner.seats_available %></td>
+    <td><%= dinner.stamp %></td>
+    <td><a href='/event/detail'>Show</a></td>
+  </tr>
+<% end %>
+
+
+
