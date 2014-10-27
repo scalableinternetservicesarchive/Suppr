@@ -1,20 +1,30 @@
 <p id="notice"><%= notice %></p>
 
+<style>
+    div {
+      width:400px;
+      height:400px;
+    }
+    div img {
+      height:100%;
+    }
+</style>
+
+
+<div>
+  <%= image_tag(@dinner.photo, class: 'list_image') %> 
+</div>
+<p>
+  <h1><%= sanitize @dinner.title %></h1>
+</p>
 <p>
   <strong>Date:</strong>
   <%= @dinner.date %>
 </p>
-
 <p>
   <strong>Location:</strong>
   <%= sanitize @dinner.location %>
 </p>
-
-<p>
-  <strong>Title:</strong>
-  <%= sanitize @dinner.title %>
-</p>
-
 <p>
   <strong>Description:</strong>
   <%= sanitize @dinner.description %>

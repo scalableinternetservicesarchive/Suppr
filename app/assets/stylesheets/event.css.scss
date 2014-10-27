@@ -1,3 +1,83 @@
 // Place all the styles related to the event controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.event
+{
+	
+	//background-color: gray;
+
+	//A single dinner row
+	.list_row
+	{
+
+		background-color: #FFFFCC;	//http://www.w3schools.com/cssref/css_colors.asp
+		height:120px;
+		margin:10px;
+
+		
+		//Dinner Image
+		.div_image 
+		{
+			float: left;
+			height: 120px;
+			width: 120px;
+			background-color: gray;
+
+			img 
+			{
+
+				//height:100%;
+				width: 100%;	//100% of the div
+				overflow:hidden;
+			}
+		}
+
+		//Dinner Text
+		.list_text
+		{
+			background-color:orange;
+			//float:left;
+			height:100%;
+			padding-left:100px;
+		}
+
+
+
+		//More Info button
+		.div_button_info
+		{
+			float:right;
+			height:100%;
+			background-color:#FFCC66;
+			text-align:right;
+			a{
+				text-decoration:none;
+			}
+		}
+
+
+		//RSVP button
+		#div_button_rsvp
+		{
+			float:right;
+			background-color:#00CC66;
+			width:100px;
+			height:100%;
+			text-align:center;
+			font:white;
+
+		}
+
+		//Cause a link to fill the entire div it's contained in
+		a.fill-div {
+		    display: block;
+		    height: 100%;
+		    width: 100%;
+		    text-decoration: none;
+		    color:white;
+		}
+
+	}
+}
