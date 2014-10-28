@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   get 'event/list' 
   get 'event/detail'
 
+
+  get 'event/:id' => 'event#show'
+
+
   get 'home/welcome'
   get 'home/login'
   get 'home/about'

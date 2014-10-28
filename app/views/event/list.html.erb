@@ -1,9 +1,12 @@
+
+<!-- Event/list.html -->
+
 <% if notice %>
 <p id="notice"><%= notice %></p> 
 <% end %>
 
 
-<h1>Upcoming Dinners</h1>
+<h1>Upcoming Events</h1>
 
 
 <% @dinners.each do |dinner| %>
@@ -12,19 +15,20 @@
 
         <td>
             <div id="div_button_rsvp">
-                <a href='/event/detail' class='fill-div'>RSVP</a>
+                <a href='/event/<%= dinner.id %>' class='fill-div'>RSVP</a>
             </div>
         </td>
         <td>
             <div class="div_button_info">
-                <a href='/event/detail' class='fill-div'>More Info</a>
+                <a href='event/<%= dinner.id %>' class='fill-div'>Details</a>
+            <!-- <a href='/event/detail' class='fill-div'></a> -->
             </div>
         </td>
         <td>
             <div class="div_image">
                 <!-- image_tag(dinner.photo, class: 'list_image') %>  -->
 
-                <a href="/event/detail">
+                <a href="/event/<%= dinner.id %>">
                     <div class="div_image">
                             <%= image_tag(dinner.photo, class: 'list_image') %> 
                     </div>

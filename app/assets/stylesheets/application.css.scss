@@ -14,11 +14,42 @@
  *= require_self
  */
 
- #site_name{
-	 font-family: "Brush Script MT", cursive;
-	 font-size:1200%;
-	 text-align:center;
+//Login Link
+#div_login{
+	float:right;
+}
+
+#div_footer
+{
+	text-align:center;
+}
+
+a{
+	text-decoration:none;
+}
 
 
+//Header
+#site_name
+{
 
- }
+	display:inline-block;
+	vertical-align:middle;
+	background-image: url('http://www.niceplacesonearth.com/wp-content/uploads/2014/07/mega-bounty-shot.jpg');
+	
+	background-size:100%;
+
+	width:100%;
+	height:300px;	
+	background-color:green;
+
+	font-family: "Brush Script MT", cursive;
+	font-size:700%;
+	text-align:center;
+
+	//make sure the title doesn't flicker when you hover over the link
+	a:hover{
+		color:black;
+		background-color:white;
+	}
+}
