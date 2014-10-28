@@ -4,4 +4,42 @@
 
 .home{
 	background-color:white; //just for test
+
+
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	
+	p{
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+
+	}
+
+
+
+
+	//More Info button
+	.div_button
+	{
+		width:140px;
+		float:right;
+		height:80px;
+		background-color:#FFCC66;
+		text-align:center;
+
+		//Cause a link to fill the entire div it's contained in
+		a{
+			padding-top:30px;
+
+
+			font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+			font-size:250%;
+
+		    display: block;
+		    //height: 100%;
+		    //width: 100%;
+		    text-decoration: none;
+		    //color:white;
+
+		    //vertical-align:middle;
+		}
+	}
 }
