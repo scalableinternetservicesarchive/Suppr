@@ -1,43 +1,45 @@
 <h1>Listing dinners</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Photo</th>
-      <th>Date</th>
-      <th>Location</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Price</th>
-      <th>Seats available</th>
-      <th>Stamp</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @dinners.each do |dinner| %>
-      <tr>
-        <td>
-            <%= image_tag(dinner.photo, class: 'list_image') %> 
-        </td>
-        <td><%= dinner.date %></td>
-        <td><%= dinner.location %></td>
-        <td><%= dinner.title %></td>
-        <td><%= dinner.description %></td>
-        <td><%= dinner.category %></td>
-        <td><%= dinner.price %></td>
-        <td><%= dinner.seats_available %></td>
-        <td><%= dinner.stamp %></td>
-        <td><%= link_to 'Show', dinner %></td>
-        <td><%= link_to 'Edit', edit_dinner_path(dinner) %></td>
-        <td><%= link_to 'Destroy', dinner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
 
 <%= link_to 'New Dinner', new_dinner_path %>
+
+
+
+<% @dinners.each do |dinner| %>
+<div class="list_row">
+    <tr>
+        <td>
+            <div id="div_button_rsvp">
+                <%= link_to 'Show', dinner %><br>
+                <%= link_to 'Edit', edit_dinner_path(dinner) %><br>
+                <%= link_to 'Destroy', dinner, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+            </div>
+        </td>
+        <td>
+            <div class="div_image">
+                <!-- image_tag(dinner.photo, class: 'list_image') %>  -->
+
+                <a href="/">
+                    <div class="div_image">
+                            <%= image_tag(dinner.photo, class: 'list_image') %> 
+                    </div>
+                </a>
+            </div>
+        </td>
+            <div class="list_text">
+                <td><%= dinner.date %></td>
+                <td><%= dinner.location %></td>
+                <td><%= dinner.title %></td>
+                <td><%= dinner.description %></td>
+                <td><%= dinner.category %></td>
+                <td><%= dinner.price %></td>
+                <td><%= dinner.seats_available %></td>
+                <td><%= dinner.stamp %></td>
+
+            </div>
+    </tr>
+    <br>
+</div>
+<% end %>

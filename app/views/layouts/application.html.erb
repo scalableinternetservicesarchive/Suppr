@@ -2,21 +2,37 @@
 <html>
 <head>
   <title>Suppr</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class='<%= controller.controller_name %>'>
 
-<a href='/'>Home</a>
-<a href='/event/list'>Upcoming Dinners (users)</a>
 
-<a href='/dinners'>Dinners (admin)</a>
-<a href='/home/contact'>Contact</a>
-<a href='/home/about'>About</a>
-<a href='/home/login'>Login</a>
 
+	<!-- Login Link -->
+	<div id="div_login"><a href='/home/login'>Login</a></div>
+	<!--
+	<div class="background-image">
+
+	</div>
+	-->
+
+	<div id='site_name' >
+		<a href="/">
+			<h1 >Suppr</h1>
+		</a>
+	</div>
+	
+	<a href='/event/list'>Upcoming Events</a>
+	<a href='/dinners'>[Admin]</a>
+	<br>
 <%= yield %>
+
+<div id="div_footer">
+	<a href='/home/about'>About Suppr</a><br>
+	<a href='/home/contact'>Contact Us</a>
+</div>
 
 </body>
 </html>

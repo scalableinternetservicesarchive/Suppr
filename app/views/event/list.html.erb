@@ -1,26 +1,50 @@
+
+<!-- Event/list.html -->
+
 <% if notice %>
 <p id="notice"><%= notice %></p> 
 <% end %>
 
-
-<h1>Upcoming Dinners</h1>
-
-
 <% @dinners.each do |dinner| %>
-  <tr>
-    <td>
-        <%= image_tag(dinner.photo, class: 'list_image') %> 
-    </td>
-    <td><%= dinner.date %></td>
-    <td><%= dinner.location %></td>
-    <td><%= dinner.title %></td>
-    <td><%= dinner.description %></td>
-    <td><%= dinner.category %></td>
-    <td><%= dinner.price %></td>
-    <td><%= dinner.seats_available %></td>
-    <td><%= dinner.stamp %></td>
-    <td><a href='/event/detail'>Show</a></td>
-  </tr>
+<div class="list_row">
+    <tr>
+
+        <td>
+            <div id="div_button_rsvp">
+                <a href='/event/<%= dinner.id %>' class='fill-div'>RSVP</a>
+            </div>
+        </td>
+        <td>
+            <div class="div_button_info">
+                <a href='event/<%= dinner.id %>' class='fill-div'>Details</a>
+            <!-- <a href='/event/detail' class='fill-div'></a> -->
+            </div>
+        </td>
+        <td>
+            <div class="div_image">
+                <!-- image_tag(dinner.photo, class: 'list_image') %>  -->
+
+                <a href="/event/<%= dinner.id %>">
+                    <div class="div_image">
+                            <%= image_tag(dinner.photo, class: 'list_image') %> 
+                    </div>
+                </a>
+            </div>
+        </td>
+            <div class="list_text">
+                <td><%= dinner.date %></td>
+                <td><%= dinner.location %></td>
+                <td><%= dinner.title %></td>
+                <td><%= dinner.description %></td>
+                <td><%= dinner.category %></td>
+                <td><%= dinner.price %></td>
+                <td><%= dinner.seats_available %></td>
+                <td><%= dinner.stamp %></td>
+
+            </div>
+    </tr>
+    <br>
+</div>
 <% end %>
 
 

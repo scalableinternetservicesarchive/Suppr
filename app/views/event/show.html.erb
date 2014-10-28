@@ -1,13 +1,11 @@
 
-<!-- Dinner/Show.html -->
+<!--  Event/Show.html -->
 
 <p id="notice"><%= notice %></p>
 
 <div>
   <%= image_tag(@dinner.photo, class: "image_full") %> 
 </div>
-
-
 <p>
   <h1><%= sanitize @dinner.title %></h1>
 </p>
@@ -44,5 +42,3 @@
   <%= @dinner.stamp %>
 </p>
 
-<%= link_to 'Edit', edit_dinner_path(@dinner) %> |
-<%= link_to 'Back', dinners_path %>
