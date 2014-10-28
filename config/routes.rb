@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   #root 'welcome#index'
   #root 'home'
   #root 'home#welcome'
-  root 'event#list'
+  root 'home#welcome'
 
 
   # Example of regular route:
