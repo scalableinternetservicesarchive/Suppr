@@ -11,7 +11,9 @@
 
 
 	<!-- Login Link -->
-	<div id="div_login"><a href='/home/login'>Login</a></div>
+	<div id="div_login">
+    <%= link_to 'Login', home_login_path %>
+  </div>
 	<!--
 	<div class="background-image">
 
@@ -19,13 +21,10 @@
 	-->
 
 	<div id='site_name' >
-		<a href="/">
-			<h1 >Suppr</h1>
-		</a>
+    <%= link_to '<h1>Suppr</h1>'.html_safe, dinner_index_path %>
 	</div>
 	
-	<a href='/event/list'>Upcoming Events</a>
-	<a href='/dinners'>[Admin]</a>
+	<a href='/dinners'>Upcoming Events</a>
 	<br>
 <%= yield %>
 

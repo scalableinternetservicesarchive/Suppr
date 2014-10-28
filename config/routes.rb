@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'event/list' 
-  get 'event/detail'
+  # get 'event/list' 
+  # get 'event/detail'
 
 
-  get 'event/:id' => 'event#show'
+  # get 'event/:id' => 'event#show'
 
 
   get 'home/welcome'
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   #get 'event#list', as: 'event'
 
   resources :dinners
+  get 'dinners' => 'dinners#index', :as => :dinner_index
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   #root 'welcome#index'
   #root 'home'
   #root 'home#welcome'
-  root 'event#list'
+  root 'dinners#index'
 
 
   # Example of regular route:

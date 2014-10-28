@@ -3,8 +3,7 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<%= link_to 'New Dinner', new_dinner_path %>
-
+<%= link_to 'Host a Suppr', new_dinner_path %>
 
 
 <% @dinners.each do |dinner| %>
@@ -12,16 +11,20 @@
     <tr>
         <td>
             <div id="div_button_rsvp">
-                <%= link_to 'Show', dinner %><br>
-                <%= link_to 'Edit', edit_dinner_path(dinner) %><br>
-                <%= link_to 'Destroy', dinner, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+                <a href='/dinners/<%= dinner.id %>' class='fill-div'>RSVP</a>
             </div>
         </td>
+        <td>
+            <div class="div_button_info">
+                <a href='dinners/<%= dinner.id %>' class='fill-div'>Details</a>
+            </div>
+        </td>
+
         <td>
             <div class="div_image">
                 <!-- image_tag(dinner.photo, class: 'list_image') %>  -->
 
-                <a href="/">
+                <a href="/dinners/<%= dinner.id %>">
                     <div class="div_image">
                             <%= image_tag(dinner.photo, class: 'list_image') %> 
                     </div>
