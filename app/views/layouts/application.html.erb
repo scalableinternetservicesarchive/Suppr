@@ -7,11 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body class='<%= controller.controller_name %>'>
-
+  
 
 
 	<!-- Login Link -->
-	<div id="div_login">	<%= link_to 'Log In', dinners_path %></div> 
+	<div id="div_login">
+    <%= link_to 'Login', home_login_path %>
+  </div>
 	
 
 	<!-- Don't need a big blue button here for now
@@ -29,20 +31,16 @@
 	-->
 
 	<div id='site_name' >
-		<a href="/">
-			<h1 >Suppr</h1>
-		</a>
+    <%= link_to '<h1>Suppr</h1>'.html_safe, dinners_path %>
 	</div>
-	
-	<a href='/event/list'>Upcoming Events</a>
-	<a href='/dinners'>[Admin]</a>
+	<%= link_to 'Upcoming Supprs', {:controller => "dinners", :action => "index"} %>
 	<br>
-<%= yield %>
+  <%= yield %>
 
-<div id="div_footer">
-	<a href='/home/about'>About Suppr</a><br>
-	<a href='/home/contact'>Contact Us</a>
-</div>
+  <div id="div_footer">
+	  <%= link_to 'About Suppr', {:controller => "home", :action => "about"} %>
+	  <%= link_to 'Contact us', {:controller => "home", :action => "contact"} %>
+  </div>
 
 </body>
 </html>

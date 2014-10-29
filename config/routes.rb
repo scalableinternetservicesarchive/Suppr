@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'event/list' 
-  get 'event/detail'
+  # get 'event/list' 
+  # get 'event/detail'
 
 
-  get 'event/:id' => 'event#show'
+  # get 'event/:id' => 'event#show'
 
 
   get 'home/welcome'
@@ -23,8 +23,9 @@ Rails.application.routes.draw do
   #root 'welcome#index'
   #root 'home'
   #root 'home#welcome'
-  root 'home#welcome'
 
+  root 'home#welcome'
+  get 'dinners/join/:id' => 'dinners#join', as: :join_dinner_path
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

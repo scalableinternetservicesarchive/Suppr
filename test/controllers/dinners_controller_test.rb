@@ -3,6 +3,7 @@ require 'test_helper'
 class DinnersControllerTest < ActionController::TestCase
   setup do
     @dinner = dinners(:one)
+    @dinner.date = 10.days.from_now
   end
 
   test "should get index" do
@@ -18,9 +19,8 @@ class DinnersControllerTest < ActionController::TestCase
 
   test "should create dinner" do
     assert_difference('Dinner.count') do
-      post :create, dinner: { category: @dinner.category, date: @dinner.date, description: @dinner.description, location: @dinner.location, price: @dinner.price, seats_available: @dinner.seats_available, stamp: @dinner.stamp, title: @dinner.title }
+      post :create, dinner: { category: @dinner.category, date: @dinner.date, description: @dinner.description, location: @dinner.location, price: @dinner.price, seats: @dinner.seats, seats_available: @dinner.seats_available, stamp: @dinner.stamp, title: @dinner.title }
     end
-
     assert_redirected_to dinner_path(assigns(:dinner))
   end
 
@@ -45,5 +45,11 @@ class DinnersControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to dinners_path
+  end
+
+  #FIXME: finish test
+  test "should not join if not available" do
+    get :join, id: @dinner
+
   end
 end
