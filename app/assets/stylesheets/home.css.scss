@@ -3,5 +3,97 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .home{
-	background-color:gray; //just for test
+	background-color:white; //just for test
+
+
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	
+	p{
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+
+	}
+
+/*
+
+
+	//More Info button
+	.div_button
+	{
+		width:140px;
+		float:right;
+		height:80px;
+		background-color:#FFCC66;
+		text-align:center;
+
+		//Cause a link to fill the entire div it's contained in
+		a{
+			padding-top:30px;
+
+
+			font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+			font-size:250%;
+
+		    display: block;
+		    //height: 100%;
+		    //width: 100%;
+		    text-decoration: none;
+		    //color:white;
+
+		    //vertical-align:middle;
+		}
+	}
+	*/
+
+
+	.myButton {
+
+		float:right;
+
+		-moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+		-webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+		box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+		background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5));
+		background:-moz-linear-gradient(top, #79bbff 5%, #378de5 100%);
+		background:-webkit-linear-gradient(top, #79bbff 5%, #378de5 100%);
+		background:-o-linear-gradient(top, #79bbff 5%, #378de5 100%);
+		background:-ms-linear-gradient(top, #79bbff 5%, #378de5 100%);
+		background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5',GradientType=0);
+		background-color:#79bbff;
+		-moz-border-radius:6px;
+		-webkit-border-radius:6px;
+		border-radius:6px;
+		border:1px solid #84bbf3;
+		display:inline-block;
+		cursor:pointer;
+		color:#ffffff;
+		font-family:arial;
+		font-size:15px;
+		font-weight:bold;
+		padding:6px 24px;
+		text-decoration:none;
+		text-shadow:0px 1px 0px #528ecc;
+	}
+	.myButton:hover {
+		background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff));
+		background:-moz-linear-gradient(top, #378de5 5%, #79bbff 100%);
+		background:-webkit-linear-gradient(top, #378de5 5%, #79bbff 100%);
+		background:-o-linear-gradient(top, #378de5 5%, #79bbff 100%);
+		background:-ms-linear-gradient(top, #378de5 5%, #79bbff 100%);
+		background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff',GradientType=0);
+		background-color:#378de5;
+	}
+	.myButton:active {
+		position:relative;
+		top:1px;
+	}
+
+
+
+
+
+
+
+
 }

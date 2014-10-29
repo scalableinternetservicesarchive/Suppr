@@ -8,6 +8,7 @@ one:
   category: MyString
   price: 1.5
   seats: 1
+  seats_available: 1
   stamp: 2014-10-24 12:38:16
 
 two:
@@ -18,4 +19,5 @@ two:
   category: MyString
   price: 1.5
   seats: 1
+  seats_available: 1
   stamp: 2014-10-24 12:38:16

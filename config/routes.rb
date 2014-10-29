@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   #root 'welcome#index'
   #root 'home'
   #root 'home#welcome'
-  root 'dinners#index'
+
+  root 'home#welcome'
   get 'dinners/join/:id' => 'dinners#join', as: :join_dinner_path
 
   # Example of regular route:
