@@ -46,4 +46,10 @@ class DinnersControllerTest < ActionController::TestCase
 
     assert_redirected_to dinners_path
   end
+
+  #FIXME: finish test
+  test "should not join if not available" do
+    get :join, id: @dinner
+
+  end
 end

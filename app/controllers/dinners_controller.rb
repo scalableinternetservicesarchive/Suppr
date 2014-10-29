@@ -1,5 +1,6 @@
 class DinnersController < ApplicationController
   before_action :set_dinner, only: [:show, :edit, :update, :destroy, :join]
+  rescue_from ActiveRecord::RecordNotFound, with: :join
 
   # GET /dinners
   # GET /dinners.json
@@ -69,21 +70,23 @@ class DinnersController < ApplicationController
         @dinner.seats_available -= 1
         if @dinner.save
           format.js
-          format.html { redirect_to dinners_url, notice: 'Successfully joined to a Suppr.' }
+          format.html { redirect_to :back, notice: 'Successfully joined to a Suppr.' }
           format.json { render :show, status: :ok, location: dinners_url }
         else
           @dinner.errors.add(:join, "Error, in elaborating your request")
           format.js
-          format.html { render dinners_url }
+          format.html { redirect_to :back }
           format.json { render json: @dinner.errors, status: :unprocessable_entity }
         end
       else
         @dinner.errors.add(:join, "No seats available for this Suppr")
         format.js
-        format.html { render dinners_url }
-        # FIXME: change :unprocessable_entity: it does not make any sense here
+        format.html { redirect_to :back, notice:  'No seats available for this suppr'}
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
       end
+    end
+    if @dinner.errors.has_key?(:join)
+      @dinner.errors.delete(:join)
     end
   end
 
