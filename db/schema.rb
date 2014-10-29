@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028213413) do
+ActiveRecord::Schema.define(version: 20141029215232) do
 
   create_table "dinners", force: true do |t|
     t.datetime "date"
@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(version: 20141028213413) do
     t.string   "title"
     t.text     "description",     limit: 255
     t.string   "category"
-    t.float    "price"
-    t.integer  "seats_available"
+    t.float    "price",                       default: 0.0
+    t.integer  "seats_available",             default: 0
     t.datetime "stamp"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo"
-    t.integer  "seats"
+    t.integer  "seats",                       default: 0
   end
 
 end
