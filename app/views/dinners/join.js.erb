@@ -1,0 +1,5 @@
+<% if @dinner.errors.has_key?(:join) %>
+   alert('<%= @dinner.errors[:join][0] %>');
+<% else %>
+   alert("Suppr joined! Seats available: <%= @dinner.seats_available %>");
+<% end %>

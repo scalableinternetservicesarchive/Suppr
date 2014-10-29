@@ -11,7 +11,7 @@
   <tr>
     <td>
       <div id="div_button_rsvp">
-        <%= link_to 'Join', {:id => dinner.id, :controller => "dinners", :action => "join"}, :class => "fill-div" %>
+        <%= link_to 'Join', {:id => dinner.id, :controller => "dinners", :action => "join"}, :class => "fill-div", :remote => true %>
       </div>
     </td>
     <td>

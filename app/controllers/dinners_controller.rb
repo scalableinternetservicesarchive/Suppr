@@ -63,11 +63,28 @@ class DinnersController < ApplicationController
   end
 
   def join
-    #To implement
-    if @dinner.seats_available > 0
-      @dinner.seats_available -= 1
+    #FIXME: using atomicity here.
+    respond_to do |format|
+      if @dinner.seats_available > 0
+        @dinner.seats_available -= 1
+        if @dinner.save
+          format.js
+          format.html { redirect_to dinners_url, notice: 'Successfully joined to a Suppr.' }
+          format.json { render :show, status: :ok, location: dinners_url }
+        else
+          @dinner.errors.add(:join, "Error, in elaborating your request")
+          format.js
+          format.html { render dinners_url }
+          format.json { render json: @dinner.errors, status: :unprocessable_entity }
+        end
+      else
+        @dinner.errors.add(:join, "No seats available for this Suppr")
+        format.js
+        format.html { render dinners_url }
+        # FIXME: change :unprocessable_entity: it does not make any sense here
+        format.json { render json: @dinner.errors, status: :unprocessable_entity }
+      end
     end
-    # FIXME: CREATE A POPP HERE
   end
 
   private
