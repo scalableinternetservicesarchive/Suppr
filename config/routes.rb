@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   #get 'event#list', as: 'event'
 
   resources :dinners
-  get 'dinners' => 'dinners#index', :as => :dinner_index
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -25,7 +24,7 @@ Rails.application.routes.draw do
   #root 'home'
   #root 'home#welcome'
   root 'dinners#index'
-
+  get 'dinners/join/:id' => 'dinners#join', as: :join_dinner_path
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

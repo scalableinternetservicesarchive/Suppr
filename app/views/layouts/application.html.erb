@@ -7,31 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body class='<%= controller.controller_name %>'>
-
+  
 
 
 	<!-- Login Link -->
 	<div id="div_login">
     <%= link_to 'Login', home_login_path %>
   </div>
-	<!--
-	<div class="background-image">
-
-	</div>
-	-->
 
 	<div id='site_name' >
-    <%= link_to '<h1>Suppr</h1>'.html_safe, dinner_index_path %>
+    <%= link_to '<h1>Suppr</h1>'.html_safe, dinners_path %>
 	</div>
-	
-	<a href='/dinners'>Upcoming Events</a>
+	<%= link_to 'Upcoming Supprs', {:controller => "dinners", :action => "index"} %>
 	<br>
-<%= yield %>
+  <%= yield %>
 
-<div id="div_footer">
-	<a href='/home/about'>About Suppr</a><br>
-	<a href='/home/contact'>Contact Us</a>
-</div>
+  <div id="div_footer">
+	  <%= link_to 'About Suppr', {:controller => "home", :action => "about"} %>
+	  <%= link_to 'Contact us', {:controller => "home", :action => "contact"} %>
+  </div>
 
 </body>
 </html>

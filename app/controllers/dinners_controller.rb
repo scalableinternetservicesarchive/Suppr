@@ -1,5 +1,5 @@
 class DinnersController < ApplicationController
-  before_action :set_dinner, only: [:show, :edit, :update, :destroy]
+  before_action :set_dinner, only: [:show, :edit, :update, :destroy, :join]
 
   # GET /dinners
   # GET /dinners.json
@@ -25,7 +25,7 @@ class DinnersController < ApplicationController
   # POST /dinners.json
   def create
     @dinner = Dinner.new(dinner_params)
-
+    @dinner.seats_available = @dinner.seats
     respond_to do |format|
       if @dinner.save
         #format.html { redirect_to @dinner, notice: 'Dinner was successfully created.' }
@@ -42,6 +42,7 @@ class DinnersController < ApplicationController
   # PATCH/PUT /dinners/1.json
   def update
     respond_to do |format|
+      # FIXME: check seats and seats_available
       if @dinner.update(dinner_params)
         #format.html { redirect_to @dinner, notice: 'Dinner was successfully updated.' }
         format.html { redirect_to dinners_url, notice: 'Dinner was successfully updated.' }
@@ -63,6 +64,14 @@ class DinnersController < ApplicationController
     end
   end
 
+  def join
+    #To implement
+    if @dinner.seats_available > 0
+      @dinner.seats_available -= 1
+    end
+    # FIXME: CREATE A POPP HERE
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dinner
@@ -71,6 +80,6 @@ class DinnersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dinner_params
-      params.require(:dinner).permit(:photo, :date, :location, :title, :description, :category, :price, :seats_available, :stamp)
+      params.require(:dinner).permit(:photo, :date, :location, :title, :description, :category, :price, :seats, :stamp)
     end
 end

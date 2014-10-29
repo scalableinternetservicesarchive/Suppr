@@ -7,7 +7,7 @@ one:
   description: MyString
   category: MyString
   price: 1.5
-  seats_available: 1
+  seats: 1
   stamp: 2014-10-24 12:38:16
 
 two:
@@ -17,5 +17,5 @@ two:
   description: MyString
   category: MyString
   price: 1.5
-  seats_available: 1
+  seats: 1
   stamp: 2014-10-24 12:38:16
