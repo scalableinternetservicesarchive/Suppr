@@ -28,6 +28,7 @@ class DinnersController < ApplicationController
   def create
     @dinner = Dinner.new(dinner_params)
     @dinner.seats_available = @dinner.seats
+    @dinner.user = current_user
     respond_to do |format|
       if @dinner.save
         format.html { redirect_to @dinner, notice: 'Dinner was successfully created.' }
