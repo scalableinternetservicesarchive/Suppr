@@ -6,13 +6,13 @@ class DinnerTest < ActiveSupport::TestCase
     # dinner = Dinner.new
     # assert dinner.invalid?
 
-    dinner = dinners(:one)
+    dinner = dinners(:suppr_one)
     dinner.date = 10.days.from_now
     assert dinner.valid?
   end
 
   test 'dinner has to take place in the future' do
-    dinner = dinners(:one)
+    dinner = dinners(:suppr_one)
     dinner.date = -1.days.from_now
     assert dinner.invalid?
 

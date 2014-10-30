@@ -7,12 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body class='<%= controller.controller_name %>'>
-  
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
 
 	<!-- Login Link -->
 	<div id="div_login">
-    <%= link_to 'Login', home_login_path %>
+    <% if user_signed_in? %>
+    <%= link_to 'Log Out', destroy_user_session_path,
+        method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% else %>
+    <%= link_to 'Log In', new_user_session_path %> |
+    <%= link_to 'Sign Up', new_user_registration_path %>
+    <% end %>
   </div>
 	
 
@@ -33,7 +40,7 @@
 	<div id='site_name' >
     <%= link_to 'Suppr'.html_safe, dinners_path %>
 	</div>
-	<%= link_to 'Upcoming Supprs', {:controller => "dinners", :action => "index"} %>
+	<%= link_to 'Upcoming Supprs', dinners_path %>
   <div class="host_suppr">
     <%= link_to '<button type="button" class="btn btn-primary btn-lg">Host a Suppr</button>'.html_safe, new_dinner_path %>
   </div>
@@ -41,9 +48,8 @@
   <%= yield %>
 
   <div id="div_footer">
-	  <%= link_to 'About Suppr', {:controller => "home", :action => "about"} %>
-	  <%= link_to 'Contact us', {:controller => "home", :action => "contact"} %>
+	  <%= link_to 'About Suppr', home_about_path %>
+	  <%= link_to 'Contact us', home_contact_path %>
   </div>
-
 </body>
 </html>

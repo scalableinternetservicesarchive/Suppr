@@ -3,8 +3,9 @@ require 'test_helper'
 class DinnersControllerTest < ActionController::TestCase
   setup do
     @request.env['HTTP_REFERER'] = 'http://test.com/'
-    @dinner = dinners(:one)
+    @dinner = dinners(:suppr_one)
     @dinner.date = 10.days.from_now
+    sign_in users(:one)
   end
 
   test "should get index" do
