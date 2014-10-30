@@ -1,5 +1,6 @@
 class DinnersController < ApplicationController
   before_action :set_dinner, only: [:show, :edit, :update, :destroy, :join]
+  before_action :authenticate_user!, only: [:create, :edit, :new, :update, :join]
   rescue_from ActiveRecord::RecordNotFound, with: :join
 
   # GET /dinners
@@ -27,6 +28,7 @@ class DinnersController < ApplicationController
   def create
     @dinner = Dinner.new(dinner_params)
     @dinner.seats_available = @dinner.seats
+    @dinner.user = current_user
     respond_to do |format|
       if @dinner.save
         format.html { redirect_to @dinner, notice: 'Dinner was successfully created.' }
@@ -94,6 +96,7 @@ class DinnersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_dinner
       @dinner = Dinner.find(params[:id])
+      @dinner.user = current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

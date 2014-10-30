@@ -2,4 +2,5 @@
    alert('<%= @dinner.errors[:join][0] %>');
 <% else %>
    alert("Suppr joined! Seats available: <%= @dinner.seats_available %>");
+   $("div_button_rsvp").replaceWith("ciao")
 <% end %>

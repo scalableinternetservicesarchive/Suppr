@@ -2,8 +2,10 @@ require 'test_helper'
 
 class DinnersControllerTest < ActionController::TestCase
   setup do
-    @dinner = dinners(:one)
+    @request.env['HTTP_REFERER'] = 'http://test.com/'
+    @dinner = dinners(:suppr_one)
     @dinner.date = 10.days.from_now
+    sign_in users(:one)
   end
 
   test "should get index" do
@@ -49,7 +51,9 @@ class DinnersControllerTest < ActionController::TestCase
 
   #FIXME: finish test
   test "should not join if not available" do
-    get :join, id: @dinner
-
+    for i in 1..@dinner.seats + 2
+      get :join, id: @dinner.id      
+    end
+    # assert @dinner.seats_available == 0
   end
 end

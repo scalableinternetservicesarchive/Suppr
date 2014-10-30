@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+suppr_one:
   date: 2014-10-24 12:38:16
   location: MyString
   title: MyString
@@ -11,7 +11,7 @@ one:
   seats_available: 1
   stamp: 2014-10-24 12:38:16
 
-two:
+suppr_two:
   date: 2014-10-24 12:38:16
   location: MyString
   title: MyString
