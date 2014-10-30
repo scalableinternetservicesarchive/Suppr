@@ -43,14 +43,16 @@ class DinnersController < ApplicationController
   # PATCH/PUT /dinners/1
   # PATCH/PUT /dinners/1.json
   def update
-    respond_to do |format|
+    if @dinner.user == current_user
+      respond_to do |format|
       # FIXME: check seats and seats_available
-      if @dinner.update(dinner_params)
-        format.html { redirect_to @dinner, notice: 'Dinner was successfully updated.' }
-        format.json { render :show, status: :ok, location: @dinner }
-      else
-        format.html { render :edit }
-        format.json { render json: @dinner.errors, status: :unprocessable_entity }
+        if @dinner.update(dinner_params)
+          format.html { redirect_to @dinner, notice: 'Dinner was successfully updated.' }
+          format.json { render :show, status: :ok, location: @dinner }
+        else
+          format.html { render :edit }
+          format.json { render json: @dinner.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -58,10 +60,12 @@ class DinnersController < ApplicationController
   # DELETE /dinners/1
   # DELETE /dinners/1.json
   def destroy
-    @dinner.destroy
-    respond_to do |format|
-      format.html { redirect_to dinners_url, notice: 'Dinner was successfully destroyed.' }
-      format.json { head :no_content }
+    if @dinner.user == current_user
+      @dinner.destroy
+      respond_to do |format|
+        format.html { redirect_to dinners_url, notice: 'Dinner was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
