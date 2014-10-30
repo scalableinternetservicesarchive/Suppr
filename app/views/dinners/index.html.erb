@@ -24,16 +24,14 @@
       </div>
     </td>
     <div class="list_text">
-      <td><%= dinner.date %></td>
-      <td><%= dinner.location %></td>
-      <td><%= dinner.title %></td>
-      <td><%= dinner.description %></td>
-      <td><%= dinner.category %></td>
-      <td><%= dinner.price %></td>
-      <td><%= dinner.seats %></td>
-      <td><%= dinner.seats_available %></td>
-      <td><%= dinner.stamp %></td>
-      <td><%= dinner.user.email %></td>
+      <h2><td><%= dinner.title %></td></h2>
+      <p><td><%= dinner.user.email %></td></p>
+      <p><td><%= dinner.description %></td></p>
+      <p>Date: <td><%= dinner.date %></td></p>
+      <!-- <p>Location: <td><%= dinner.location %></td></p> -->
+      <!-- <td><%= dinner.price %></td> -->
+      <!-- <td><%= dinner.seats %></td> -->
+      <p>Seats Available: <td><%= dinner.seats_available %></td></p>
     </div>
   </tr>
   <br>
