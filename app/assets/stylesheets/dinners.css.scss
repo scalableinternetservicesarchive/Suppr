@@ -41,7 +41,7 @@
 		//Dinner Text
 		.list_text
 		{
-			background-color:orange;
+			background-color: #e8e8e8;
 			//float:left;
 			height:100%;
 			padding-left:100px;
@@ -54,7 +54,6 @@
 		{
 			float:right;
 			height:100%;
-			background-color:#FFCC66;
 			text-align:right;
 			a{
 				text-decoration:none;
@@ -66,12 +65,17 @@
 		#div_button_rsvp
 		{
 			float:right;
-			background-color:#00CC66;
 			width:100px;
 			height:100%;
 			text-align:center;
-			font:white;
+		}
 
+		//RSVP button
+		#host_suppr
+		{
+    	float:right;
+     	padding-right: 20px;
+			text-align:center;
 		}
 
 		//Cause a link to fill the entire div it's contained in

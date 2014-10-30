@@ -3,21 +3,19 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<%= link_to 'Host a Suppr', new_dinner_path %>
-
 
 <% @dinners.each do |dinner| %>
 <div class="list_row">
   <tr>
     <td>
       <div id="div_button_rsvp">
-        <%= link_to 'Join', {:id => dinner.id, :controller => "dinners", :action => "join"}, :class => "fill-div", :remote => true %>
+        <%= link_to '<button type="button" class="btn btn-primary btn-lg">Join</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "join"}, :class => "fill-div", :remote => true %>
+      </div>
+      <div class="div_button_info">
+        <%= link_to '<button type="button" class="btn btn-primary btn-lg">More</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "show"}, :class => "fill-div" %>
       </div>
     </td>
     <td>
-      <div class="div_button_info">
-        <%= link_to 'Details', {:id => dinner.id, :controller => "dinners", :action => "show"}, :class => "fill-div" %>
-      </div>
     </td>
 
     <td>
@@ -34,7 +32,7 @@
       <td><%= dinner.price %></td>
       <td><%= dinner.seats %></td>
       <td><%= dinner.seats_available %></td>
-      <td><%= dinner.stamp %></td>          
+      <td><%= dinner.stamp %></td>
     </div>
   </tr>
   <br>
