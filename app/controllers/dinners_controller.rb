@@ -74,7 +74,7 @@ class DinnersController < ApplicationController
     respond_to do |format|
       if @dinner.seats_available > 0
         @dinner.seats_available -= 1
-        # @dinner.user.reservation.date = Time.now
+        @dinner.reservations.create!({:dinner => @dinner, :user => current_user, :date => Time.now})        
         if @dinner.save
           format.js
           format.html { redirect_to :back, notice: 'Successfully joined to a Suppr.' }

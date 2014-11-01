@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  dinner_id: 
+  date: 2014-10-31 17:29:55
+
+two:
+  user_id: 
+  dinner_id: 
+  date: 2014-10-31 17:29:55

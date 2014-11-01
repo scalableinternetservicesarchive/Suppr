@@ -1,4 +1,6 @@
 class Dinner < ActiveRecord::Base
+  has_many :reservations
+  has_many :users, :through => :reservations
   belongs_to :host, :class_name => "User"
 
   CATEGORIES = ["American", "Chinese", "Italian", "Japanese", "Indian"]
