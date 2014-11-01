@@ -1,7 +1,8 @@
 class Dinner < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :host, :class_name => "User"
+
   CATEGORIES = ["American", "Chinese", "Italian", "Japanese", "Indian"]
-	validates :location, :description, :title, :category, :price, :seats, :user, presence: true
+	validates :location, :description, :title, :category, :price, :seats, :host, presence: true
 	validates_numericality_of :seats, :price, :greater_than_or_equal_to =>0
 	validate :not_past_date
   validates :seats, numericality: { :greater_than_or_equal_to => :seats_available}

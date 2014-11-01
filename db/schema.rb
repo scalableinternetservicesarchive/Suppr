@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030055225) do
+ActiveRecord::Schema.define(version: 20141101002657) do
 
   create_table "dinners", force: true do |t|
     t.datetime "date"
@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(version: 20141030055225) do
     t.datetime "updated_at"
     t.string   "photo"
     t.integer  "seats",                       default: 0
-    t.integer  "user_id"
+    t.integer  "host_id"
   end
 
-  add_index "dinners", ["user_id"], name: "index_dinners_on_user_id"
+  add_index "dinners", ["host_id"], name: "index_dinners_on_host_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
