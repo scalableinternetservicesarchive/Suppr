@@ -43,14 +43,14 @@ class DinnersController < ApplicationController
   # PATCH/PUT /dinners/1
   # PATCH/PUT /dinners/1.json
   def update
-    success = false
+    @last_outcome = false
     if @dinner.host == current_user
-      success = true
+      @last_outcome = true
     end
     respond_to do |format|
       # FIXME: check seats and seats_available
       if @dinner.update(dinner_params)
-        format.html { redirect_to @dinner, notice: success ? 'Suppr has been successfully updated.' : 'You can not modify this Suppr' }
+        format.html { redirect_to @dinner, notice: @last_outcome ? 'Suppr has been successfully updated.' : 'You can not modify this Suppr' }
         format.json { render :show, status: :ok, location: @dinner }
       else
         format.html { render :edit }
@@ -62,13 +62,13 @@ class DinnersController < ApplicationController
   # DELETE /dinners/1
   # DELETE /dinners/1.json
   def destroy
-    success = false
+    @last_outcome = false
     if @dinner.host == current_user
       @dinner.destroy
-      success = true
+      @last_outcome = true
     end
     respond_to do |format|
-      format.html { redirect_to dinners_url, notice: success ? 'Suppr has been successfully destroyed.' : 'You can not delete this Suppr' }
+      format.html { redirect_to dinners_url, notice: @last_outcome ? 'Suppr has been successfully destroyed.' : 'You can not delete this Suppr' }
       format.json { head :no_content }
     end
   end

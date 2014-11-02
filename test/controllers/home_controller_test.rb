@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class HomeControllerTest < ActionController::TestCase
+  include Devise::TestHelpers  
+  include Warden::Test::Helpers
+  Warden.test_mode!
+
   test "should get welcome" do
     get :welcome
     assert_response :success
