@@ -45,6 +45,17 @@
 </p>
 
 <p>
+  <strong>Participants:</strong>
+  <% if @dinner.reservations.length != 0 %>
+     <% @dinner.reservations.each do |r| %>
+         <%= r.user.email %>
+     <% end %>
+  <% else %>
+     No one already joined this Suppr, be the first!
+  <% end %>
+</p>
+
+<p>
   <strong>Stamp:</strong>
   <%= @dinner.stamp %>
 </p>

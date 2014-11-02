@@ -9,6 +9,7 @@ suppr_one:
   price: 1.5
   seats: 1
   seats_available: 1
+  host: one
   stamp: 2014-10-24 12:38:16
 
 suppr_two:
@@ -20,4 +21,5 @@ suppr_two:
   price: 1.5
   seats: 1
   seats_available: 1
+  host: one
   stamp: 2014-10-24 12:38:16
