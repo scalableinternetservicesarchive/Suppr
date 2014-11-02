@@ -12,6 +12,8 @@ two: {}
 
 one:
   email: one@test.com
+  encrypted_password: asdasdasd
 
 two:
   email: two@test.com
+  encrypted_password: asdasdasd

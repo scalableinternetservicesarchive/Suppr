@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class DinnersControllerTest < ActionController::TestCase
+  include Devise::TestHelpers  
   setup do
     @request.env['HTTP_REFERER'] = 'http://test.com/'
     @dinner = dinners(:suppr_one)

@@ -31,7 +31,7 @@ class DinnersController < ApplicationController
     @dinner.host = current_user
     respond_to do |format|
       if @dinner.save
-        format.html { redirect_to @dinner, notice: 'Dinner was successfully created.' }
+        format.html { redirect_to @dinner, notice: 'Supper successfully created.' }
         format.json { render :show, status: :created, location: @dinner }
       else
         format.html { render :new }
@@ -43,16 +43,18 @@ class DinnersController < ApplicationController
   # PATCH/PUT /dinners/1
   # PATCH/PUT /dinners/1.json
   def update
+    success = false
     if @dinner.host == current_user
-      respond_to do |format|
+      success = true
+    end
+    respond_to do |format|
       # FIXME: check seats and seats_available
-        if @dinner.update(dinner_params)
-          format.html { redirect_to @dinner, notice: 'Dinner was successfully updated.' }
-          format.json { render :show, status: :ok, location: @dinner }
-        else
-          format.html { render :edit }
-          format.json { render json: @dinner.errors, status: :unprocessable_entity }
-        end
+      if @dinner.update(dinner_params)
+        format.html { redirect_to @dinner, notice: success ? 'Suppr has been successfully updated.' : 'You can not modify this Suppr' }
+        format.json { render :show, status: :ok, location: @dinner }
+      else
+        format.html { render :edit }
+        format.json { render json: @dinner.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,12 +62,14 @@ class DinnersController < ApplicationController
   # DELETE /dinners/1
   # DELETE /dinners/1.json
   def destroy
+    success = false
     if @dinner.host == current_user
       @dinner.destroy
-      respond_to do |format|
-        format.html { redirect_to dinners_url, notice: 'Dinner was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+      success = true
+    end
+    respond_to do |format|
+      format.html { redirect_to dinners_url, notice: success ? 'Suppr has been successfully destroyed.' : 'You can not delete this Suppr' }
+      format.json { head :no_content }
     end
   end
 
@@ -74,7 +78,8 @@ class DinnersController < ApplicationController
     respond_to do |format|
       if @dinner.seats_available > 0
         @dinner.seats_available -= 1
-        @dinner.reservations.create!({:dinner => @dinner, :user => current_user, :date => Time.now})        
+        @dinner.reservations.create!({:dinner => @dinner, :user => current_user, :date => Time.now})
+
         if @dinner.save
           format.js
           format.html { redirect_to :back, notice: 'Successfully joined to a Suppr.' }
