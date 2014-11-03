@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   #root 'home#welcome'
 
   root 'home#welcome'
-  get 'dinners/join/:id' => 'dinners#join', as: :join_dinner_path
+  get 'dinners/join/:id' => 'dinners#join', as: :join_dinner
+  get 'dinners/leave/:id' => 'dinners#leave', as: :leave_dinner
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

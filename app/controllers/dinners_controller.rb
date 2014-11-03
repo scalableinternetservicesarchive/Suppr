@@ -1,6 +1,6 @@
 class DinnersController < ApplicationController
-  before_action :set_dinner, only: [:show, :edit, :update, :destroy, :join]
-  before_action :authenticate_user!, only: [:create, :edit, :new, :update, :join]
+  before_action :set_dinner, only: [:show, :edit, :update, :destroy, :join, :leave]
+  before_action :authenticate_user!, only: [:create, :edit, :new, :update, :join, :leave]
   rescue_from ActiveRecord::RecordNotFound, with: :join
 
   # GET /dinners
@@ -43,43 +43,68 @@ class DinnersController < ApplicationController
   # PATCH/PUT /dinners/1
   # PATCH/PUT /dinners/1.json
   def update
-    @last_outcome = false
+    success = false
     if @dinner.host == current_user
-      @last_outcome = true
+      success = true
     end
     respond_to do |format|
       # FIXME: check seats and seats_available
       if @dinner.update(dinner_params)
-        format.html { redirect_to @dinner, notice: @last_outcome ? 'Suppr has been successfully updated.' : 'You can not modify this Suppr' }
+        format.html { redirect_to @dinner, notice: success ? 'Suppr has been successfully updated.' : 'You can not modify this Suppr' }
         format.json { render :show, status: :ok, location: @dinner }
       else
         format.html { render :edit }
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
       end
     end
+    # For testing purpose
+    @last_outcome = success
   end
 
   # DELETE /dinners/1
   # DELETE /dinners/1.json
   def destroy
-    @last_outcome = false
+    success = false
     if @dinner.host == current_user
       @dinner.destroy
-      @last_outcome = true
+      success = true
     end
     respond_to do |format|
-      format.html { redirect_to dinners_url, notice: @last_outcome ? 'Suppr has been successfully destroyed.' : 'You can not delete this Suppr' }
+      format.html { redirect_to dinners_url, notice: success ? 'Suppr has been successfully destroyed.' : 'You can not delete this Suppr' }
       format.json { head :no_content }
     end
   end
 
-  def join
-    #FIXME: using atomicity here.
-    respond_to do |format|
-      if @dinner.seats_available > 0
-        @dinner.seats_available -= 1
-        @dinner.reservations.create!({:dinner => @dinner, :user => current_user, :date => Time.now})
+  def leave
+    if @dinner.seats_available < @dinner.seats
+      @dinner.seats_available += 1
+      @dinner.reservations.find_by(user: current_user, dinner: @dinner).destroy
+      respond_to do |format|
+        if @dinner.save
+          format.js
+          format.html { redirect_to :back, notice: 'Successfully left a Suppr.' }
+          format.json { render :show, status: :ok, location: dinners_url }
+        else
+          @dinner.errors.add(:join, "Error, in elaborating your request")
+          format.js
+          format.html { redirect_to :back }
+          format.json { render json: @dinner.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
 
+  def join
+    success = false
+    #FIXME: using atomicity and improve DB use.
+    if @dinner.seats_available > 0
+      @dinner.seats_available -= 1
+      @dinner.reservations.create!({:dinner => @dinner, :user => current_user, :date => Time.now})
+      success = true
+    end
+
+    respond_to do |format|
+      if success
         if @dinner.save
           format.js
           format.html { redirect_to :back, notice: 'Successfully joined to a Suppr.' }
@@ -97,6 +122,7 @@ class DinnersController < ApplicationController
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
       end
     end
+
     if @dinner.errors.has_key?(:join)
       @dinner.errors.delete(:join)
     end
