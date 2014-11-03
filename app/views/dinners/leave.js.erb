@@ -1,0 +1,2 @@
+$('a[href$="leave/<%= @dinner.id %>"').html('<button type=\"button\" class=\"btn btn-primary btn-lg\">Join</button>');
+$('a[href$="leave/<%= @dinner.id %>"').attr('href', '/dinners/join/<%= @dinner.id %>');

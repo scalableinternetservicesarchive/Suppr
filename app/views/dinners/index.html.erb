@@ -9,7 +9,11 @@
   <tr>
     <td>
       <div id="div_button_rsvp">
+        <% if dinner.reservations.find_by user: current_user, dinner: dinner %>
+        <%= link_to '<button type="button" class="btn btn-primary btn-lg">Leave</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "leave"}, :class => "fill-div", :remote => true %>
+        <% else %>
         <%= link_to '<button type="button" class="btn btn-primary btn-lg">Join</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "join"}, :class => "fill-div", :remote => true %>
+        <% end %>
       </div>
       <div class="div_button_info">
         <%= link_to '<button type="button" class="btn btn-primary btn-lg">More</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "show"}, :class => "fill-div" %>
