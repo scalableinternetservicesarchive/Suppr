@@ -68,6 +68,12 @@ class DinnersControllerTest < ActionController::TestCase
   end
 
   test "should not modify if not his" do
+    @dinner = dinners(:suppr_one)
+    @dinner.date = 10.days.from_now
+    assert_difference('Dinner.count') do
+      post :create, dinner: { category: @dinner.category, date: @dinner.date, description: @dinner.description, location: @dinner.location, price: @dinner.price, seats: @dinner.seats, seats_available: @dinner.seats_available, stamp: @dinner.stamp, title: @dinner.title }
+    end
+    sign_out users(:one)
     sign_in users(:two)
     patch :update, id: @dinner, dinner: { category: @dinner.category, date: @dinner.date, description: @dinner.description, location: @dinner.location, price: @dinner.price, seats_available: @dinner.seats_available, stamp: @dinner.stamp, title: @dinner.title }
     assert assigns(:last_outcome), false
