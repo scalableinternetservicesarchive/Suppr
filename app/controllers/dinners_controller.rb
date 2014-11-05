@@ -1,7 +1,6 @@
 class DinnersController < ApplicationController
   before_action :set_dinner, only: [:show, :edit, :update, :destroy, :join, :leave]
   before_action :authenticate_user!, only: [:create, :edit, :new, :update, :join, :leave]
-  rescue_from ActiveRecord::RecordNotFound, with: :join
 
   # GET /dinners
   # GET /dinners.json
@@ -76,28 +75,41 @@ class DinnersController < ApplicationController
   end
 
   def leave
-    if @dinner.seats_available < @dinner.seats
+    success = false
+    if @dinner.reservations.exists?(user_id: current_user.id, dinner_id: @dinner.id) and @dinner.seats_available < @dinner.seats
       @dinner.seats_available += 1
       @dinner.reservations.find_by(user: current_user, dinner: @dinner).destroy
-      respond_to do |format|
+      success = true
+    end
+
+    respond_to do |format|
+      if success
         if @dinner.save
           format.js
-          format.html { redirect_to :back, notice: 'Successfully left a Suppr.' }
+          format.html { redirect_to dinners_url, notice: 'Successfully left a Suppr.' }
           format.json { render :show, status: :ok, location: dinners_url }
         else
-          @dinner.errors.add(:join, "Error, in elaborating your request")
+          @dinner.errors.add(:leave, "Error, in elaborating your request")
           format.js
-          format.html { redirect_to :back }
+          format.html { redirect_to dinners_url }
           format.json { render json: @dinner.errors, status: :unprocessable_entity }
         end
+      else
+        @dinner.errors.add(:leave, "Cannot elaborate your request")
+        format.js
+        format.html { redirect_to dinners_url, notice: "Cannot elaborate your request"}
+        format.json { render json: @dinner.errors, status: :unprocessable_entity }
       end
+    end
+
+    if @dinner.errors.has_key?(:leave)
+      @dinner.errors.delete(:leave)
     end
   end
 
   def join
     success = false
-    #FIXME: using atomicity and improve DB use.
-    if @dinner.seats_available > 0
+    if not @dinner.reservations.exists?(user_id: current_user.id, dinner_id: @dinner.id) and @dinner.seats_available > 0
       @dinner.seats_available -= 1
       @dinner.reservations.create!({:dinner => @dinner, :user => current_user, :date => Time.now})
       success = true
@@ -107,18 +119,18 @@ class DinnersController < ApplicationController
       if success
         if @dinner.save
           format.js
-          format.html { redirect_to :back, notice: 'Successfully joined to a Suppr.' }
+          format.html { redirect_to @dinner, notice: 'Successfully joined to a Suppr.' }
           format.json { render :show, status: :ok, location: dinners_url }
         else
           @dinner.errors.add(:join, "Error, in elaborating your request")
           format.js
-          format.html { redirect_to :back }
+          format.html { redirect_to dinners_url }
           format.json { render json: @dinner.errors, status: :unprocessable_entity }
         end
       else
-        @dinner.errors.add(:join, "No seats available for this Suppr")
+        @dinner.errors.add(:join, "Cannot join this Suppr")
         format.js
-        format.html { redirect_to :back, notice:  'No seats available for this suppr'}
+        format.html { redirect_to dinners_url, notice: "Cannot join this Suppr"}
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
       end
     end

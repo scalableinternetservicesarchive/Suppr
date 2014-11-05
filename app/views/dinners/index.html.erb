@@ -16,11 +16,17 @@
   <tr>
     <td>
       <div id="div_button_rsvp">
-        <% if dinner.reservations.find_by user: current_user, dinner: dinner %>
-        <%= link_to '<button type="button" class="btn btn-primary btn-lg">Leave</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "leave"}, :class => "fill-div", :remote => true %>
+        <% if user_signed_in? %>
+            <% if dinner.reservations.exists? user_id: current_user.id, dinner_id: dinner.id %>
+               <%= link_to '<button type="button" class="btn btn-primary btn-lg">Leave</button>'.html_safe, leave_dinner_path(dinner), :class => "fill-div", :remote => true %>
+            <% else %>
+               <%= link_to '<button type="button" class="btn btn-primary btn-lg">Join</button>'.html_safe, join_dinner_path(dinner), :class => "fill-div", :remote => true %>
+            <% end %>
         <% else %>
-        <%= link_to '<button type="button" class="btn btn-primary btn-lg">Join</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "join"}, :class => "fill-div", :remote => true %>
+               <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Join</button>'.html_safe, join_dinner_path(dinner), :class => "fill-div", :remote => true %>
         <% end %>
+        
+
       </div>
       <div class="div_button_info">
         <%= link_to '<button type="button" class="btn btn-primary btn-lg">More</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "show"}, :class => "fill-div" %>
