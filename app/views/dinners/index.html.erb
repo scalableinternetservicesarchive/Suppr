@@ -1,8 +1,15 @@
-<h1>Listing dinners</h1>
+<div class="host_suppr">
+    <%= link_to '<button type="button" class="btn btn-primary btn-lg">Host a Suppr</button>'.html_safe, new_dinner_path %>
+  </div>
+<form>
+  <input type="text" placeholder="Search for Suppr.." required>
+  <input type="button" value="Search">
+</form>
+
+<h1>Listing Supprs</h1>
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
-
 
 <% @dinners.each do |dinner| %>
 <div class="list_row">
