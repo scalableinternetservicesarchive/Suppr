@@ -11,12 +11,11 @@ its participants in dinner parties where the host arranges and approves guests f
 [PivotalTracker](https://www.pivotaltracker.com/s/projects/1193866)
 
 ## Suppr TEAM
+Nilo Redini ([@badnack](https://github.com/badnack/))           |Julie Rekdal ([@julierwr](https://github.com/julierwr/))                     |Henriette Kopstad ([@henrievk](https://github.com/henrievk/))                     |Greg Parsons ([@gregparsons](https://github.com/gregparsons/))
+:--------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------:|:------:
+![](https://avatars0.githubusercontent.com/u/1037156?v=2&s=140) |  ![julierwr photo](https://avatars0.githubusercontent.com/u/6633826?v=2&s=140) | ![](https://avatars2.githubusercontent.com/u/3776667?v=2&s=140) | ![](https://avatars0.githubusercontent.com/u/4780760?v=2&s=140)
 
-Nilo Redini ([@badnack](https://github.com/badnack/))  
-![badnack photo](https://avatars0.githubusercontent.com/u/1037156?v=2&s=140)
-Julie Rekdal ([@julierwr](https://github.com/julierwr/))
-![julierwr photo](https://avatars0.githubusercontent.com/u/6633826?v=2&s=140)
-Henriette Kopstad ([@henrievk](https://github.com/henrievk/))
-![henrievk photo](https://avatars2.githubusercontent.com/u/3776667?v=2&s=140)
-Greg Parsons ([@gregparsons] (https://github.com/gregparsons/))
-![gregparsons photo](https://avatars0.githubusercontent.com/u/4780760?v=2&s=140)
+
+
+
+
