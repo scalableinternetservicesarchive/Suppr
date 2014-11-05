@@ -74,7 +74,7 @@ class DinnersControllerTest < ActionController::TestCase
   test "should not modify if not his" do
     assert_difference('Dinner.count') do
       post :create, dinner: { category: @dinner.category, date: @dinner.date, description: @dinner.description, location: @dinner.location, price: @dinner.price, seats: @dinner.seats, stamp: @dinner.stamp, title: @dinner.title }
-    end    
+    end
     sign_out users(:one)
     sign_in users(:two)
     @dinner.price -= 1.0
@@ -82,20 +82,9 @@ class DinnersControllerTest < ActionController::TestCase
     assert_equal 'You can not modify this Suppr', flash[:notice]
   end
 
-
-  #FIXME: finish test
-  test "should not join if not available" do
-    for i in 1..@dinner.seats + 2
-      get :join, id: @dinner.id
-    end
-    # assert @dinner.seats_available == 0
-  end
-
   test "should not join if not logged in" do
-    for i in 1..@dinner.seats + 2
-      get :join, id: @dinner.id
-    end
-    # assert @dinner.seats_available == 0
+    sign_out users(:one)
+    get :join, id: @dinner.id
+    assert_redirected_to new_user_session_path
   end
-
 end

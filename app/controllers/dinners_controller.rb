@@ -76,7 +76,7 @@ class DinnersController < ApplicationController
 
   def leave
     success = false
-    if @dinner.reservations.find_by(user: current_user, dinner: @dinner) and @dinner.seats_available < @dinner.seats
+    if @dinner.reservations.exists?(user_id: current_user.id, dinner_id: @dinner.id) and @dinner.seats_available < @dinner.seats
       @dinner.seats_available += 1
       @dinner.reservations.find_by(user: current_user, dinner: @dinner).destroy
       success = true
@@ -101,7 +101,7 @@ class DinnersController < ApplicationController
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
       end
     end
-     
+
     if @dinner.errors.has_key?(:leave)
       @dinner.errors.delete(:leave)
     end
@@ -109,7 +109,7 @@ class DinnersController < ApplicationController
 
   def join
     success = false
-    if not @dinner.reservations.find_by(user: current_user, dinner: @dinner) and @dinner.seats_available > 0
+    if not @dinner.reservations.exists?(user_id: current_user.id, dinner_id: @dinner.id) and @dinner.seats_available > 0
       @dinner.seats_available -= 1
       @dinner.reservations.create!({:dinner => @dinner, :user => current_user, :date => Time.now})
       success = true
@@ -119,7 +119,7 @@ class DinnersController < ApplicationController
       if success
         if @dinner.save
           format.js
-          format.html { redirect_to dinners_url, notice: 'Successfully joined to a Suppr.' }
+          format.html { redirect_to @dinner, notice: 'Successfully joined to a Suppr.' }
           format.json { render :show, status: :ok, location: dinners_url }
         else
           @dinner.errors.add(:join, "Error, in elaborating your request")

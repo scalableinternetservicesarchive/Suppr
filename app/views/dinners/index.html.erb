@@ -9,7 +9,7 @@
   <tr>
     <td>
       <div id="div_button_rsvp">
-        <% if dinner.reservations.find_by user: current_user, dinner: dinner %>
+        <% if dinner.reservations.exists? user_id: current_user.id, dinner_id: dinner.id %>
         <%= link_to '<button type="button" class="btn btn-primary btn-lg">Leave</button>'.html_safe, leave_dinner_path(dinner), :class => "fill-div", :remote => true %>
         <% else %>
         <%= link_to '<button type="button" class="btn btn-primary btn-lg">Join</button>'.html_safe, join_dinner_path(dinner), :class => "fill-div", :remote => true %>
