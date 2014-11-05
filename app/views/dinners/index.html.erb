@@ -1,43 +1,48 @@
 <h1>Listing dinners</h1>
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Photo</th>
-      <th>Date</th>
-      <th>Location</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Price</th>
-      <th>Seats available</th>
-      <th>Stamp</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @dinners.each do |dinner| %>
-      <tr>
-        <td>
-            <%= image_tag(dinner.photo, class: 'list_image') %> 
-        </td>
-        <td><%= dinner.date %></td>
-        <td><%= dinner.location %></td>
-        <td><%= dinner.title %></td>
-        <td><%= dinner.description %></td>
-        <td><%= dinner.category %></td>
-        <td><%= dinner.price %></td>
-        <td><%= dinner.seats_available %></td>
-        <td><%= dinner.stamp %></td>
-        <td><%= link_to 'Show', dinner %></td>
-        <td><%= link_to 'Edit', edit_dinner_path(dinner) %></td>
-        <td><%= link_to 'Destroy', dinner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @dinners.each do |dinner| %>
+<div class="list_row">
+  <tr>
+    <td>
+      <div id="div_button_rsvp">
+        <% if user_signed_in? %>
+            <% if dinner.reservations.exists? user_id: current_user.id, dinner_id: dinner.id %>
+               <%= link_to '<button type="button" class="btn btn-primary btn-lg">Leave</button>'.html_safe, leave_dinner_path(dinner), :class => "fill-div", :remote => true %>
+            <% else %>
+               <%= link_to '<button type="button" class="btn btn-primary btn-lg">Join</button>'.html_safe, join_dinner_path(dinner), :class => "fill-div", :remote => true %>
+            <% end %>
+        <% else %>
+               <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Join</button>'.html_safe, join_dinner_path(dinner), :class => "fill-div", :remote => true %>
+        <% end %>
+        
 
-<br>
+      </div>
+      <div class="div_button_info">
+        <%= link_to '<button type="button" class="btn btn-primary btn-lg">More</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "show"}, :class => "fill-div" %>
+      </div>
+    </td>
+    <td>
+    </td>
 
-<%= link_to 'New Dinner', new_dinner_path %>
+    <td>
+      <div class="div_image">
+        <%= link_to image_tag(dinner.photo, class: 'list_image'), {:id => dinner.id, :controller => "dinners", :action => "show"} %>
+      </div>
+    </td>
+    <div class="list_text">
+      <h2><td><%= dinner.title %></td></h2>
+      <p><td><%= dinner.host.email %></td></p>
+      <p><td><%= dinner.description %></td></p>
+      <p>Date: <td><%= dinner.date %></td></p>
+      <p>Location: <td><%= dinner.location %></td></p>
+      <td><%= dinner.price %></td>
+      <p>Seats Available: <td><%= dinner.seats_available %></td></p>
+    </div>
+  </tr>
+  <br>
+</div>
+<% end %>

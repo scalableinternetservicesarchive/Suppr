@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'event/list' 
-  get 'event/detail'
+  devise_for :users
+  # get 'event/list' 
+  # get 'event/detail'
+
+
+  # get 'event/:id' => 'event#show'
+
 
   get 'home/welcome'
   get 'home/login'
@@ -19,8 +24,10 @@ Rails.application.routes.draw do
   #root 'welcome#index'
   #root 'home'
   #root 'home#welcome'
-  root 'event#list'
 
+  root 'home#welcome'
+  get 'dinners/join/:id' => 'dinners#join', as: :join_dinner
+  get 'dinners/leave/:id' => 'dinners#leave', as: :leave_dinner
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

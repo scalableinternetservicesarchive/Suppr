@@ -1,0 +1,6 @@
+<% if @dinner.errors.has_key?(:join) %>
+   alert('<%= @dinner.errors[:join][0] %>');
+<% else %>
+   $('a[href$="join/<%= @dinner.id %>"').html('<button type=\"button\" class=\"btn btn-primary btn-lg\">Leave</button>');
+   $('a[href$="join/<%= @dinner.id %>"').attr('href', Routes.leave_dinner_path(<%=@dinner.id %>));
+<% end %>

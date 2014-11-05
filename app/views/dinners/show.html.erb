@@ -1,20 +1,24 @@
+
+<!-- Dinner/Show.html -->
+
 <p id="notice"><%= notice %></p>
 
+<div>
+  <%= image_tag(@dinner.photo, class: "image_full") %> 
+</div>
+
+
+<p>
+  <h1><%= sanitize @dinner.title %></h1>
+</p>
 <p>
   <strong>Date:</strong>
   <%= @dinner.date %>
 </p>
-
 <p>
   <strong>Location:</strong>
   <%= sanitize @dinner.location %>
 </p>
-
-<p>
-  <strong>Title:</strong>
-  <%= sanitize @dinner.title %>
-</p>
-
 <p>
   <strong>Description:</strong>
   <%= sanitize @dinner.description %>
@@ -31,8 +35,24 @@
 </p>
 
 <p>
+  <strong>Total Seats:</strong>
+  <%= @dinner.seats %>
+</p>
+
+<p>
   <strong>Seats available:</strong>
   <%= @dinner.seats_available %>
+</p>
+
+<p>
+  <strong>Participants:</strong>
+  <% if @dinner.reservations.length != 0 %>
+     <% @dinner.reservations.each do |r| %>
+         <%= r.user.email %>
+     <% end %>
+  <% else %>
+     No one already joined this Suppr, be the first!
+  <% end %>
 </p>
 
 <p>
@@ -40,5 +60,4 @@
   <%= @dinner.stamp %>
 </p>
 
-<%= link_to 'Edit', edit_dinner_path(@dinner) %> |
 <%= link_to 'Back', dinners_path %>
