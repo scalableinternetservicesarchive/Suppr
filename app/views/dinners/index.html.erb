@@ -12,6 +12,7 @@
 <% end %>
 
 <% @dinners.each do |dinner| %>
+<% next if dinner.date.past? %>
 <div class="list_row">
   <tr>
     <td>
@@ -46,8 +47,8 @@
       <p><td><%= dinner.description %></td></p>
       <p>Date: <td><%= dinner.date %></td></p>
       <p>Location: <td><%= dinner.location %></td></p>
-      <td><%= dinner.price %></td>
-      <p>Seats Available: <td><%= dinner.seats_available %></td></p>
+      <p>Price: <td><%= dinner.price %></td></p>
+      <!-- <p>Seats Available: <td><%= dinner.seats_available %></td></p> -->
     </div>
   </tr>
   <br>
