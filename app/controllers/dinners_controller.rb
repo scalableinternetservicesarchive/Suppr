@@ -5,7 +5,7 @@ class DinnersController < ApplicationController
   # GET /dinners
   # GET /dinners.json
   def index
-    @dinners = Dinner.all # (:order => 'dinner.date DESC')
+    @dinners = Dinner.order(':date').page(params[:page])#.per(25) # (:order => 'dinner.date DESC')
   end
 
   # GET /dinners/1
@@ -56,8 +56,6 @@ class DinnersController < ApplicationController
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
       end
     end
-    # For testing purpose
-    @last_outcome = success
   end
 
   # DELETE /dinners/1
