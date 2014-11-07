@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20141107080436) do
     t.string   "photo"
     t.integer  "seats",                          default: 0
     t.integer  "host_id"
+    t.integer  "lock_version"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(version: 20141107080436) do
     t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lock_version"
   end
 
   add_index "reservations", ["dinner_id"], name: "index_reservations_on_dinner_id"

@@ -1,0 +1,31 @@
+<% if not dinner.date.past? %>
+<tr class="list_row">
+  <td>
+    <div class="div_image">
+      <%= link_to image_tag(dinner.photo, class: 'list_image'), {:id => dinner.id, :controller => "dinners", :action => "show"} %>
+    </div>
+  </td>
+  <td class="list_text">
+    <h2><%= dinner.title %></h2>
+    <p><%= dinner.host.email %></p>
+    <p><%= dinner.description %></p>
+    <p>Date: <%= dinner.date %></p>
+    <p>Location: <%= dinner.location %></p>
+    <p>Price: <%= dinner.price %></p>
+    <p>Seats Available: <span id="suppr_seats_available"><%= dinner.seats_available %></span></p>
+  </td>
+  <td></td>
+  <td>
+      <% if user_signed_in? %>
+      <% if dinner.reservations.exists? user_id: current_user.id, dinner_id: dinner.id %>
+      <%= link_to '<button type="button" class="btn btn-primary btn-lg">Leave</button>'.html_safe, leave_dinner_path(dinner), :class => "fill-div", :remote => true %>
+      <% else %>
+      <%= link_to '<button type="button" class="btn btn-primary btn-lg">Join</button>'.html_safe, join_dinner_path(dinner), :class => "fill-div", :remote => true %>
+      <% end %>
+      <% else %>
+      <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Join</button>'.html_safe, join_dinner_path(dinner), :class => "fill-div", :remote => true %>
+      <% end %>    
+      <%= link_to '<button type="button" class="btn btn-primary btn-lg">More</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "show"}, :class => "fill-div" %>
+  </td>
+</tr>
+<% end %>

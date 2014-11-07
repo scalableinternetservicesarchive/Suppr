@@ -47,3 +47,5 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 # gem 'debugger', group: [:development, :test]
 
 gem 'tzinfo-data'
+
+gem 'kaminari'
