@@ -2,6 +2,7 @@ class Dinner < ActiveRecord::Base
   has_many :reservations
   has_many :users, :through => :reservations
   belongs_to :host, :class_name => "User"
+  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
   CATEGORIES = ["American", "Chinese", "Italian", "Japanese", "Indian"]
 	validates :location, :description, :title, :category, :price, :seats, :host, presence: true

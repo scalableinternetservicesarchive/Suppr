@@ -4,6 +4,7 @@ class DinnersController < ApplicationController
 
   # GET /dinners
   # GET /dinners.json
+
   def index
     @dinners = Dinner.all # (:order => 'dinner.date DESC')
   end
@@ -75,11 +76,15 @@ class DinnersController < ApplicationController
   end
 
   def leave
+    puts @dinner.reservations.exists?(user_id: current_user.id, dinner_id: @dinner.id) ? "1" : "0"
+     puts @dinner.seats_available 
+     puts @dinner.seats
     success = false
     if @dinner.reservations.exists?(user_id: current_user.id, dinner_id: @dinner.id) and @dinner.seats_available < @dinner.seats
       @dinner.seats_available += 1
       @dinner.reservations.find_by(user: current_user, dinner: @dinner).destroy
       success = true
+      puts "1"
     end
 
     respond_to do |format|
@@ -88,17 +93,20 @@ class DinnersController < ApplicationController
           format.js
           format.html { redirect_to dinners_url, notice: 'Successfully left a Suppr.' }
           format.json { render :show, status: :ok, location: dinners_url }
+          puts "2"
         else
           @dinner.errors.add(:leave, "Error, in elaborating your request")
           format.js
           format.html { redirect_to dinners_url }
           format.json { render json: @dinner.errors, status: :unprocessable_entity }
+          puts "3"
         end
       else
         @dinner.errors.add(:leave, "Cannot elaborate your request")
         format.js
         format.html { redirect_to dinners_url, notice: "Cannot elaborate your request"}
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
+        puts "4"
       end
     end
 
@@ -148,6 +156,6 @@ class DinnersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dinner_params
-      params.require(:dinner).permit(:photo, :date, :location, :title, :description, :category, :price, :seats, :stamp)
+      params.require(:dinner).permit(:image, :photo, :date, :location, :title, :description, :category, :price, :seats, :stamp)
     end
 end
