@@ -74,9 +74,10 @@ class DinnersController < ApplicationController
 
   def leave
     success = false
-    if @dinner.reservations.exists?(user_id: current_user.id, dinner_id: @dinner.id) and @dinner.seats_available < @dinner.seats
+    rsvp = @dinner.reservations.find_by(user: current_user, dinner: @dinner)
+    if rsvp and @dinner.seats_available < @dinner.seats
       @dinner.seats_available += 1
-      @dinner.reservations.find_by(user: current_user, dinner: @dinner).destroy
+      rsvp.destroy
       success = true
     end
 

@@ -1,2 +1,3 @@
 $('a[href$="leave/<%= @dinner.id %>"').html('<button type=\"button\" class=\"btn btn-primary btn-lg\">Join</button>');
 $('a[href$="leave/<%= @dinner.id %>"').attr('href', Routes.join_dinner_path(<%= @dinner.id %>));
+$("#seats_available").html(<%= @dinner.seats_available %>);
