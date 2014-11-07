@@ -1,5 +1,5 @@
 class Dinner < ActiveRecord::Base
-  has_many :reservations, :dependent => :destroy
+  has_many :reservations, :dependent => :delete_all
   has_many :users, :through => :reservations
   belongs_to :host, :class_name => "User"
 
@@ -14,4 +14,11 @@ class Dinner < ActiveRecord::Base
 			errors.add(:date, 'Dinner can not be hosted in the past')
 		end
 	end
+
+  def self.remove_old
+    # FIXME: users do not see old supprs, so they should not be able to interfer
+    # with this command
+    now = Time.now
+    Dinner.where("date < ?", now).destroy_all
+  end
 end
