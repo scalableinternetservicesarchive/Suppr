@@ -45,3 +45,5 @@ gem 'js-routes'
 # gem 'debugger', group: [:development, :test]
 
 gem 'tzinfo-data'
+
+gem 'kaminari'

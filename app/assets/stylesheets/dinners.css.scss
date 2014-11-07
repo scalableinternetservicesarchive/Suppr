@@ -11,6 +11,10 @@
 		width:50%;
 	}
 
+  #list_dinners 
+  {
+     width: 100%;
+  } 
 
 	//A single dinner row
 	.list_row
@@ -19,7 +23,6 @@
 		background-color: #FFFFCC;	//http://www.w3schools.com/cssref/css_colors.asp
 		height:160px;
 		margin:10px;
-
 		
 		//Dinner Image
 		.div_image 
