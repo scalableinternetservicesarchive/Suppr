@@ -27,7 +27,6 @@ user1.save!
                 :stamp => DateTime.current(), 
                 :created_at => DateTime.current(), 
                 :updated_at => DateTime.current(), 
-                :photo => "http://www.niceplacesonearth.com/wp-content/uploads/2014/07/best-food-subotica-620x264.jpg"
                 )
 end
 

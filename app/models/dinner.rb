@@ -9,6 +9,7 @@ class Dinner < ActiveRecord::Base
 	validates_numericality_of :seats, :price, :greater_than_or_equal_to =>0
 	validate :not_past_date
   validates :seats, numericality: { :greater_than_or_equal_to => :seats_available}
+  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
 	def not_past_date
 		if self.date.past?
