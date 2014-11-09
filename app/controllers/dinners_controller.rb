@@ -110,9 +110,8 @@ class DinnersController < ApplicationController
 
   def join
     success = true
-    # We never be enough safe
+
     if @dinner.seats_available <= 0
-      # No seats available
       success = false
       error_msg = "no seats available."
     else
@@ -120,7 +119,6 @@ class DinnersController < ApplicationController
       begin
         @dinner.reservations.create!({:dinner_id => @dinner.id, :user_id => current_user.id, :date => @dinner.date, :yday => @dinner.date.yday})
       rescue
-        # User already has a suppr scheduled
         success = false
         error_msg = "you already has scheduled a Suppr in the same day."
       end
