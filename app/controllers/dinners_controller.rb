@@ -118,7 +118,7 @@ class DinnersController < ApplicationController
     success = false
     if not @dinner.reservations.exists?(user_id: current_user.id, dinner_id: @dinner.id) and @dinner.seats_available > 0
       @dinner.seats_available -= 1
-      @dinner.reservations.create!({:dinner => @dinner, :user => current_user, :date => Time.now})
+      @dinner.reservations.create!({:dinner => @dinner, :user => current_user, :date => @dinner.date})
       success = true
     end
 

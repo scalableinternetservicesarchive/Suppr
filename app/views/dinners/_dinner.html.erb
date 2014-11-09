@@ -12,7 +12,7 @@
     <p>Date: <%= dinner.date %></p>
     <p>Location: <%= dinner.location %></p>
     <p>Price: <%= dinner.price %></p>
-    <p>Seats Available: <span id="suppr_seats_available"><%= dinner.seats_available %></span></p>
+    <p>Seats Available: <span id="suppr_seats_available-<%= dinner.id %>"><%= dinner.seats_available %></span></p>
   </td>
   <td></td>
   <td>
@@ -24,7 +24,7 @@
       <% end %>
       <% else %>
       <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Join</button>'.html_safe, join_dinner_path(dinner), :class => "fill-div", :remote => true %>
-      <% end %>    
+      <% end %>
       <%= link_to '<button type="button" class="btn btn-primary btn-lg">More</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "show"}, :class => "fill-div" %>
   </td>
 </tr>
