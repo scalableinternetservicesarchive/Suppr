@@ -74,16 +74,12 @@ class DinnersController < ApplicationController
   end
 
   def leave
-    puts @dinner.reservations.exists?(user_id: current_user.id, dinner_id: @dinner.id) ? "1" : "0"
-     puts @dinner.seats_available 
-     puts @dinner.seats
     success = false
     rsvp = @dinner.reservations.find_by(user: current_user, dinner: @dinner)
     if rsvp and @dinner.seats_available < @dinner.seats
       @dinner.seats_available += 1
       rsvp.destroy
       success = true
-      puts "1"
     end
 
     respond_to do |format|
@@ -92,20 +88,17 @@ class DinnersController < ApplicationController
           format.js
           format.html { redirect_to dinners_url, notice: 'Successfully left a Suppr.' }
           format.json { render :show, status: :ok, location: dinners_url }
-          puts "2"
         else
           @dinner.errors.add(:leave, "Error, in elaborating your request")
           format.js
           format.html { redirect_to dinners_url }
           format.json { render json: @dinner.errors, status: :unprocessable_entity }
-          puts "3"
         end
       else
         @dinner.errors.add(:leave, "Cannot elaborate your request")
         format.js
         format.html { redirect_to dinners_url, notice: "Cannot elaborate your request"}
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
-        puts "4"
       end
     end
 
