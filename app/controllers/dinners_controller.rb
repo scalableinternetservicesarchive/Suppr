@@ -29,6 +29,7 @@ class DinnersController < ApplicationController
     @dinner = Dinner.new(dinner_params)
     @dinner.seats_available = @dinner.seats
     @dinner.host = current_user
+
     respond_to do |format|
       if @dinner.save
         format.html { redirect_to @dinner, notice: 'Supper successfully created.' }
@@ -75,7 +76,7 @@ class DinnersController < ApplicationController
 
   def leave
     success = false
-    rsvp = @dinner.reservations.find_by(user: current_user, dinner: @dinner)
+    rsvp = @dinner.reservations.find_by(user_id: current_user.id, dinner: @dinner)
     if rsvp and @dinner.seats_available < @dinner.seats
       @dinner.seats_available += 1
       rsvp.destroy
@@ -108,11 +109,21 @@ class DinnersController < ApplicationController
   end
 
   def join
-    success = false
-    if not @dinner.reservations.exists?(user_id: current_user.id, dinner_id: @dinner.id) and @dinner.seats_available > 0
+    success = true
+    # We never be enough safe
+    if @dinner.seats_available <= 0
+      # No seats available
+      success = false
+      error_msg = "no seats available."
+    else
       @dinner.seats_available -= 1
-      @dinner.reservations.create!({:dinner => @dinner, :user => current_user, :date => @dinner.date})
-      success = true
+      begin
+        @dinner.reservations.create!({:dinner_id => @dinner.id, :user_id => current_user.id, :date => @dinner.date, :yday => @dinner.date.yday})
+      rescue
+        # User already has a suppr scheduled
+        success = false
+        error_msg = "you already has scheduled a Suppr in the same day."
+      end
     end
 
     respond_to do |format|
@@ -128,7 +139,7 @@ class DinnersController < ApplicationController
           format.json { render json: @dinner.errors, status: :unprocessable_entity }
         end
       else
-        @dinner.errors.add(:join, "Cannot join this Suppr")
+        @dinner.errors.add(:join, "Cannot join this Suppr: " + error_msg)
         format.js
         format.html { redirect_to dinners_url, notice: "Cannot join this Suppr"}
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
