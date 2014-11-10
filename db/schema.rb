@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107230041) do
+ActiveRecord::Schema.define(version: 20141109193916) do
 
   create_table "dinners", force: true do |t|
     t.datetime "date"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20141107230041) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "lock_version"
+    t.integer  "yday"
   end
 
   add_index "reservations", ["dinner_id"], name: "index_reservations_on_dinner_id"
