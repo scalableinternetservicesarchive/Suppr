@@ -6,7 +6,7 @@ class DinnersController < ApplicationController
   # GET /dinners.json
 
   def index
-    @dinners = Dinner.order(':date').page(params[:page])#.per(25) # (:order => 'dinner.date DESC')
+    @dinners = Dinner.order('date').page(params[:page]).per(25) # (:order => 'dinner.date DESC')
   end
 
   # GET /dinners/1
