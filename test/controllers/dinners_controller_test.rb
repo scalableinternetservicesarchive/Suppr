@@ -87,4 +87,6 @@ class DinnersControllerTest < ActionController::TestCase
     get :join, id: @dinner.id
     assert_redirected_to new_user_session_path
   end
+
+  #TODO: test not join if no room, not join if the same day
 end
