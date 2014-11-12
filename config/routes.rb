@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'home/login'
   get 'home/about'
   get 'home/contact'
+  get 'home/home'
+  get 'home/myAccount'
 
   #get 'event#list', as: 'event'
 
