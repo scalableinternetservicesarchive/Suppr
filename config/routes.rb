@@ -4,17 +4,18 @@ Rails.application.routes.draw do
   get 'home/login'
   get 'home/about'
   get 'home/contact'
+  get 'home/home'
+  get 'home/myAccount'
 
   authenticated :user do
     root :to => "dinners#index", :as => :auth_root
-    # Rails 4 users must specify the 'as' option to give it a unique name
-    # root :to => "main#dashboard", :as => "authenticated_root"
   end  
   root 'home#welcome'
 
   
   get 'dinners/join/:id' => 'dinners#join', as: :join_dinner
   get 'dinners/leave/:id' => 'dinners#leave', as: :leave_dinner
+  get 'my_account/myAccount' => 'my_account#myAccount', as: :myAccount
 
   resources :comments
   resources :dinners
