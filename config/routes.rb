@@ -1,35 +1,23 @@
 Rails.application.routes.draw do
-
-  resources :comments
-
-  devise_for :users
-  # get 'event/list' 
-  # get 'event/detail'
-
-
-  # get 'event/:id' => 'event#show'
-
-
+  match "/comments", to: "dinners#index", :via => 'get'
   get 'home/welcome'
   get 'home/login'
   get 'home/about'
   get 'home/contact'
-
-  #get 'event#list', as: 'event'
-
-  resources :dinners
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  #root 'welcome#index'
-  #root 'home'
-  #root 'home#welcome'
-
+  authenticated :user do
+    root :to => "dinners#index", :as => :auth_root
+    # Rails 4 users must specify the 'as' option to give it a unique name
+    # root :to => "main#dashboard", :as => "authenticated_root"
+  end  
   root 'home#welcome'
   get 'dinners/join/:id' => 'dinners#join', as: :join_dinner
   get 'dinners/leave/:id' => 'dinners#leave', as: :leave_dinner
+
+  resources :comments
+  resources :dinners
+  devise_for :users
+
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
