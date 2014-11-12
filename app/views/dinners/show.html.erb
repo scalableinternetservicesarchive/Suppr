@@ -57,5 +57,9 @@
   <strong>Stamp:</strong>
   <%= @dinner.stamp %>
 </p>
-
+<% if user_signed_in? %>
+   <%= link_to '<button type="button" class="btn btn-primary btn-lg">Comment</button>'.html_safe, new_comment_path(@dinner), :class => "fill-div" %>
+<% else %>
+   <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Comment</button>'.html_safe, new_comment_path(@dinner), :class => "fill-div" %>
+<% end %>
 <%= link_to 'Back', dinners_path %>
