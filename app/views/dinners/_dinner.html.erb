@@ -7,7 +7,7 @@
   </td>
   <td class="list_text">
     <h2><%= dinner.title %></h2>
-    <p><%= dinner.host.email %></p>
+    <p><%= dinner.host.first_name %> <%= dinner.host.last_name %></p>
     <p><%= dinner.description %></p>
     <p>Date:
       <%= dinner.date.strftime("%B") %> <%= dinner.date.strftime("%d") %>,

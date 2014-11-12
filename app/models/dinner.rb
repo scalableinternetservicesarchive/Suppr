@@ -4,6 +4,8 @@ class Dinner < ActiveRecord::Base
   has_many :reservations, :dependent => :delete_all
   has_many :users, :through => :reservations
   belongs_to :host, :class_name => "User"
+  has_many :comments, :dependent => :destroy
+
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
   CATEGORIES = ["American", "Chinese", "Italian", "Japanese", "Indian"]

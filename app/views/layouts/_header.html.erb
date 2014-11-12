@@ -7,7 +7,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">Suppr</a>
+    <%= link_to 'Suppr', root_path, class: "navbar-brand" %>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -21,13 +21,14 @@
     <ul class="nav navbar-nav navbar-right">
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "About Suppr", home_about_path %></li> 
-      <li><% if user_signed_in? %>
-        <li><%= link_to "My Account", myAccount_path %></li>
-        <%= link_to 'Log Out', destroy_user_session_path,
-          method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% else %>
-        <%= link_to 'Log In', new_user_session_path %>
-    <% end %></li>
+      <% if user_signed_in? %>      
+        <li><%= link_to current_user.first_name, '.' %></li> 
+        <li><%= link_to 'Log Out', destroy_user_session_path,
+          method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        <% else %>
+        <li><%= link_to 'Log In', new_user_session_path %></li>
+        <li><%= link_to 'Sign Up', new_user_registration_path %></li>      
+    <% end %>
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
