@@ -26,10 +26,14 @@ Rails.application.routes.draw do
   #root 'welcome#index'
   #root 'home'
   #root 'home#welcome'
+  authenticated :user do
+    root :to => "dinners#index", :as => "authenticated_root"
+  end
 
   root 'home#welcome'
   get 'dinners/join/:id' => 'dinners#join', as: :join_dinner
   get 'dinners/leave/:id' => 'dinners#leave', as: :leave_dinner
+  get 'my_account/myAccount' => 'my_account#myAccount', as: :myAccount
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
