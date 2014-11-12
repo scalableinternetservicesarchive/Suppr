@@ -46,7 +46,7 @@
   <strong>Participants:</strong>
   <% if @dinner.reservations.length != 0 %>
      <% @dinner.reservations.each do |r| %>
-         <%= r.user.email %>
+         <%= r.user.first_name %> <%= r.user.last_name %>
      <% end %>
   <% else %>
      No one has joined this Suppr yet. Be the first!
