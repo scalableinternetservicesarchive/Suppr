@@ -4,8 +4,9 @@ class DinnersController < ApplicationController
 
   # GET /dinners
   # GET /dinners.json
+
   def index
-    @dinners = Dinner.all # (:order => 'dinner.date DESC')
+    @dinners = Dinner.order('date').page(params[:page]).per(25) # (:order => 'dinner.date DESC')
   end
 
   # GET /dinners/1
@@ -28,6 +29,7 @@ class DinnersController < ApplicationController
     @dinner = Dinner.new(dinner_params)
     @dinner.seats_available = @dinner.seats
     @dinner.host = current_user
+
     respond_to do |format|
       if @dinner.save
         format.html { redirect_to @dinner, notice: 'Supper successfully created.' }
@@ -56,8 +58,6 @@ class DinnersController < ApplicationController
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
       end
     end
-    # For testing purpose
-    @last_outcome = success
   end
 
   # DELETE /dinners/1
@@ -76,9 +76,10 @@ class DinnersController < ApplicationController
 
   def leave
     success = false
-    if @dinner.reservations.exists?(user_id: current_user.id, dinner_id: @dinner.id) and @dinner.seats_available < @dinner.seats
+    rsvp = @dinner.reservations.find_by(user_id: current_user.id, dinner: @dinner)
+    if rsvp and @dinner.seats_available < @dinner.seats
       @dinner.seats_available += 1
-      @dinner.reservations.find_by(user: current_user, dinner: @dinner).destroy
+      rsvp.destroy
       success = true
     end
 
@@ -108,11 +109,19 @@ class DinnersController < ApplicationController
   end
 
   def join
-    success = false
-    if not @dinner.reservations.exists?(user_id: current_user.id, dinner_id: @dinner.id) and @dinner.seats_available > 0
+    success = true
+
+    if @dinner.seats_available <= 0
+      success = false
+      error_msg = "no seats available."
+    else
       @dinner.seats_available -= 1
-      @dinner.reservations.create!({:dinner => @dinner, :user => current_user, :date => Time.now})
-      success = true
+      begin
+        @dinner.reservations.create!({:dinner_id => @dinner.id, :user_id => current_user.id, :date => @dinner.date, :yday => @dinner.date.yday})
+      rescue
+        success = false
+        error_msg = "you already has scheduled a Suppr in the same day."
+      end
     end
 
     respond_to do |format|
@@ -128,7 +137,7 @@ class DinnersController < ApplicationController
           format.json { render json: @dinner.errors, status: :unprocessable_entity }
         end
       else
-        @dinner.errors.add(:join, "Cannot join this Suppr")
+        @dinner.errors.add(:join, "Cannot join this Suppr: " + error_msg)
         format.js
         format.html { redirect_to dinners_url, notice: "Cannot join this Suppr"}
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
@@ -148,6 +157,6 @@ class DinnersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dinner_params
-      params.require(:dinner).permit(:photo, :date, :location, :title, :description, :category, :price, :seats, :stamp)
+      params.require(:dinner).permit(:image, :date, :location, :title, :description, :category, :price, :seats, :stamp)
     end
 end

@@ -11,22 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101002955) do
+ActiveRecord::Schema.define(version: 20141109193916) do
 
   create_table "dinners", force: true do |t|
     t.datetime "date"
     t.string   "location"
     t.string   "title"
-    t.text     "description",     limit: 255
+    t.text     "description",        limit: 255
     t.string   "category"
-    t.float    "price",                       default: 0.0
-    t.integer  "seats_available",             default: 0
+    t.float    "price",                          default: 0.0
+    t.integer  "seats_available",                default: 0
     t.datetime "stamp"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "photo"
-    t.integer  "seats",                       default: 0
+    t.integer  "seats",                          default: 0
     t.integer  "host_id"
+    t.integer  "lock_version"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "dinners", ["host_id"], name: "index_dinners_on_host_id"
@@ -37,6 +41,8 @@ ActiveRecord::Schema.define(version: 20141101002955) do
     t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lock_version"
+    t.integer  "yday"
   end
 
   add_index "reservations", ["dinner_id"], name: "index_reservations_on_dinner_id"

@@ -31,6 +31,8 @@ gem 'spring',        group: :development
 
 gem 'devise'
 gem 'js-routes'
+gem 'bootstrap-sass'
+gem 'paperclip', github: 'thoughtbot/paperclip'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -45,3 +47,5 @@ gem 'js-routes'
 # gem 'debugger', group: [:development, :test]
 
 gem 'tzinfo-data'
+
+gem 'kaminari'

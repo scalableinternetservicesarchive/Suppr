@@ -1,48 +1,21 @@
-<h1>Listing dinners</h1>
+<div class="host_suppr">
+    <%= link_to '<button type="button" class="btn btn-primary btn-lg">Host a Suppr</button>'.html_safe, new_dinner_path %>
+  </div>
+<form>
+  <input type="text" placeholder="Search for Suppr.." required>
+  <input type="button" value="Search">
+</form>
+
+<h1>Listing Supprs</h1>
+<p>Reported times are intended to be local times</p>
 <% if notice %>
-<p id="notice"><%= notice %></p>
+    <p id="notice"><%= notice %></p>
 <% end %>
 
+<table id="list_dinners">
+  <tbody class="page">
+    <%= render @dinners %>
+  </tbody>
+</table>
 
-<% @dinners.each do |dinner| %>
-<div class="list_row">
-  <tr>
-    <td>
-      <div id="div_button_rsvp">
-        <% if user_signed_in? %>
-            <% if dinner.reservations.exists? user_id: current_user.id, dinner_id: dinner.id %>
-               <%= link_to '<button type="button" class="btn btn-primary btn-lg">Leave</button>'.html_safe, leave_dinner_path(dinner), :class => "fill-div", :remote => true %>
-            <% else %>
-               <%= link_to '<button type="button" class="btn btn-primary btn-lg">Join</button>'.html_safe, join_dinner_path(dinner), :class => "fill-div", :remote => true %>
-            <% end %>
-        <% else %>
-               <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Join</button>'.html_safe, join_dinner_path(dinner), :class => "fill-div", :remote => true %>
-        <% end %>
-        
-
-      </div>
-      <div class="div_button_info">
-        <%= link_to '<button type="button" class="btn btn-primary btn-lg">More</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "show"}, :class => "fill-div" %>
-      </div>
-    </td>
-    <td>
-    </td>
-
-    <td>
-      <div class="div_image">
-        <%= link_to image_tag(dinner.photo, class: 'list_image'), {:id => dinner.id, :controller => "dinners", :action => "show"} %>
-      </div>
-    </td>
-    <div class="list_text">
-      <h2><td><%= dinner.title %></td></h2>
-      <p><td><%= dinner.host.email %></td></p>
-      <p><td><%= dinner.description %></td></p>
-      <p>Date: <td><%= dinner.date %></td></p>
-      <p>Location: <td><%= dinner.location %></td></p>
-      <td><%= dinner.price %></td>
-      <p>Seats Available: <td><%= dinner.seats_available %></td></p>
-    </div>
-  </tr>
-  <br>
-</div>
-<% end %>
+<%= paginate @dinners %>

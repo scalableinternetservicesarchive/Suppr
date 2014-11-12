@@ -16,3 +16,5 @@
 //= require_tree .
 //= require bootstrap.min
 //= require js-routes
+//= require jquery.infinitescroll
+//= require utils

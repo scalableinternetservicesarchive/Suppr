@@ -2,5 +2,6 @@
    alert('<%= @dinner.errors[:join][0] %>');
 <% else %>
    $('a[href$="join/<%= @dinner.id %>"').html('<button type=\"button\" class=\"btn btn-primary btn-lg\">Leave</button>');
-   $('a[href$="join/<%= @dinner.id %>"').attr('href', Routes.leave_dinner_path(<%=@dinner.id %>));
+   $('a[href$="join/<%= @dinner.id %>"').attr('href', Routes.leave_dinner_path(<%= @dinner.id %>));
+   $("#suppr_seats_available-<%= @dinner.id %>").html(<%= @dinner.seats_available %>);
 <% end %>
