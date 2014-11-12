@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'multi_json','1.7.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
