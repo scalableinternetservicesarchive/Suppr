@@ -149,6 +149,11 @@ class DinnersController < ApplicationController
     end
   end
 
+  def search    
+    keys = params[:q]
+    @dinners = Dinner.where(:title => keys).order('date').page(params[:page]).per(25)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dinner
