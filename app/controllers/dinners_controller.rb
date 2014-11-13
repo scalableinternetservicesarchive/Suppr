@@ -149,6 +149,11 @@ class DinnersController < ApplicationController
     end
   end
 
+  def search    
+    query = params[:q]
+    @dinners = Dinner.where("title = :query OR  category = :query OR price = :query OR seats_available = :query", query: query).order('date').page(params[:page]).per(25)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dinner

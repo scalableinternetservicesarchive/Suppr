@@ -12,7 +12,7 @@
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <%= form_tag(locator_search_path, method: 'get', :class => "navbar-form navbar-left") do %>
+    <%= form_tag(search_path, method: 'get', :class => "navbar-form navbar-left") do %>
     <%= label_tag(:q, "") %>
     <%= text_field_tag(:q, nil,  class: "form-control") %>
     <%= submit_tag("Search", class: "btn btn-default") %>
