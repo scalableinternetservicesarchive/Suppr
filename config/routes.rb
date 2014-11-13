@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
   match "/comments", to: "dinners#index", :via => 'get'
   get 'home/welcome'
   get 'home/login'
@@ -6,6 +8,7 @@ Rails.application.routes.draw do
   get 'home/contact'
   get 'home/home'
   get 'home/myAccount'
+
 
   authenticated :user do
     root :to => "dinners#index", :as => :auth_root
@@ -15,12 +18,12 @@ Rails.application.routes.draw do
   
   get 'dinners/join/:id' => 'dinners#join', as: :join_dinner
   get 'dinners/leave/:id' => 'dinners#leave', as: :leave_dinner
-  get 'my_account/myAccount' => 'my_account#myAccount', as: :myAccount
+  
 
   resources :comments
   resources :dinners
   devise_for :users, :controllers => { registrations: 'registrations' }
-
+  get 'users/:id' => 'users#show', as: :user
   
 
   # Example of regular route:
