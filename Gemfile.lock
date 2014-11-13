@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/thoughtbot/paperclip.git
-  revision: 17cae0e7956e4c78891875ede83f1c4f173bc9ce
+  revision: 804b4edc1d8d7ca9865170e34f26da7d66f6d0d5
   specs:
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
@@ -39,7 +39,7 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.9)
-    bootstrap-sass (3.3.0.1)
+    bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
     builder (3.2.2)
     climate_control (0.0.3)
@@ -81,9 +81,9 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
-    minitest (5.4.2)
-    multi_json (1.10.1)
-    mysql2 (0.3.16)
+    minitest (5.4.3)
+    multi_json (1.7.8)
+    mysql2 (0.3.17)
     orm_adapter (0.5.0)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -107,7 +107,7 @@ GEM
     rdoc (4.1.2)
       json (~> 1.4)
     ref (1.0.5)
-    responders (1.1.1)
+    responders (1.1.2)
       railties (>= 3.2, < 4.2)
     sass (3.2.19)
     sass-rails (4.0.4)
@@ -135,11 +135,11 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
-    turbolinks (2.5.1)
+    turbolinks (2.5.2)
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2014.9)
+    tzinfo-data (1.2014.10)
       tzinfo (>= 1.0.0)
     uglifier (2.5.3)
       execjs (>= 0.3.0)
@@ -158,6 +158,7 @@ DEPENDENCIES
   jquery-rails
   js-routes
   kaminari
+  multi_json (= 1.7.8)
   mysql2
   paperclip!
   rails (= 4.1.6)
