@@ -150,8 +150,9 @@ class DinnersController < ApplicationController
   end
 
   def search    
-    keys = params[:q]
-    @dinners = Dinner.where(:title => keys).order('date').page(params[:page]).per(25)
+    query = params[:q]
+    query_sanitized = ActiveRecord::Base::sanitize(query)
+    @dinners = Dinner.where(title: query_sanitized).order('date').page(params[:page]).per(25)
   end
 
   private
