@@ -1,4 +1,7 @@
 <h1>Matched Supprs</h1>
+<% if @dinners.length == 0 %>
+<p>No Suppr found. You can search for a Suppr according its category, title, price or seats avaialable.</p>
+<% else %>
 <p>Times are local to the event.</p>
 <table id="list_dinners">
   <tbody class="page">
@@ -6,3 +9,4 @@
   </tbody>
 </table>
 <%= paginate @dinners %>
+<% end %>
