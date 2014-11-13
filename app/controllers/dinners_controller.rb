@@ -1,6 +1,6 @@
 class DinnersController < ApplicationController
   before_action :set_dinner, only: [:show, :edit, :update, :destroy, :join, :leave]
-  before_action :authenticate_user!, only: [:create, :edit, :new, :update, :join, :leave]
+  before_action :authenticate_user!, only: [:index, :create, :edit, :new, :update, :join, :leave]
 
   # GET /dinners
   # GET /dinners.json
@@ -49,12 +49,12 @@ class DinnersController < ApplicationController
       success = true
     end
     respond_to do |format|
-      # FIXME: check seats and seats_available
-      if @dinner.update(dinner_params)
-        format.html { redirect_to @dinner, notice: success ? 'Suppr has been successfully updated.' : 'You can not modify this Suppr' }
+      # FIXME: check seats and seats_available      
+      if success and @dinner.update(dinner_params)
+        format.html { redirect_to @dinner, notice: 'Suppr has been successfully updated.' }
         format.json { render :show, status: :ok, location: @dinner }
       else
-        format.html { render :edit }
+        format.html { redirect_to @dinner, notice: 'You can not modify this Suppr.' }
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
       end
     end
@@ -90,15 +90,15 @@ class DinnersController < ApplicationController
           format.html { redirect_to dinners_url, notice: 'Successfully left a Suppr.' }
           format.json { render :show, status: :ok, location: dinners_url }
         else
-          @dinner.errors.add(:leave, "Error, in elaborating your request")
+          @dinner.errors.add(:leave, "We cannot complete your request.")
           format.js
           format.html { redirect_to dinners_url }
           format.json { render json: @dinner.errors, status: :unprocessable_entity }
         end
       else
-        @dinner.errors.add(:leave, "Cannot elaborate your request")
+        @dinner.errors.add(:leave, "We cannot complete your request.")
         format.js
-        format.html { redirect_to dinners_url, notice: "Cannot elaborate your request"}
+        format.html { redirect_to dinners_url, notice: "We cannot complete your request."}
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
       end
     end
