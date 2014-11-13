@@ -34,10 +34,11 @@
           <% else %>
               <%= link_to '<button type="button" class="btn btn-primary btn-lg">Join</button>'.html_safe, join_dinner_path(dinner), :class => "fill-div", :remote => true %>
           <% end %>
-          <%= link_to '<button type="button" class="btn btn-primary btn-lg">Cancel</button>'.html_safe, dinner, method: :delete, data: {confirm: 'Are you sure?'}, :class => "fill-div" %>
+          <% if dinner.host == current_user %> 
+             <%= link_to '<button type="button" class="btn btn-primary btn-lg">Cancel</button>'.html_safe, dinner, method: :delete, data: {confirm: 'Are you sure?'}, :class => "fill-div" %>
+          <% end %>
       <% else %>
           <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Join</button>'.html_safe, '.', :class => "fill-div" %>
-          <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Cancel</button>'.html_safe, '.', :class => "fill-div" %>
       <% end %>
          <%= link_to '<button type="button" class="btn btn-primary btn-lg">More</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "show"}, :class => "fill-div" %>
   </td>
