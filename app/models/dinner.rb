@@ -6,12 +6,12 @@ class Dinner < ActiveRecord::Base
   belongs_to :host, :class_name => "User"
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
-  CATEGORIES = ["American", "Chinese", "Italian", "Japanese", "Indian"]
+  CATEGORIES = ["American", "Chinese","Indian", "Italian", "Japanese", "Thai", "Other"]
 	validates :location, :description, :title, :category, :price, :seats, :host, presence: true
 	validates_numericality_of :seats, :price, :greater_than_or_equal_to =>0
 	validate :not_past_date
   validates :seats, numericality: { :greater_than_or_equal_to => :seats_available}
-  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
+  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/jfif"]
 
 	def not_past_date
 		if self.date.past?
