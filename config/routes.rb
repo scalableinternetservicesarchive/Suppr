@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  get 'locator/search'
   get 'users/show'
-
   match "/comments", to: "dinners#index", :via => 'get'
+  match "/search", to: "locator#search", :via => "get"
   get 'home/welcome'
   get 'home/login'
   get 'home/about'

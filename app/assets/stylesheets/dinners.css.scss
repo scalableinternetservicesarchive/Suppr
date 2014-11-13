@@ -5,97 +5,90 @@
 .dinners
 {
 
-	//image in Show page
-	.image_full
-	{
-		width:50%;
-	}
+  .image_full
+  {
+    width:50%;
+  }
 
-  #list_dinners 
+  #list_dinners
   {
      width: 100%;
-  } 
+  }
 
-	//A single dinner row
-	.list_row
-	{
+  .td_side
+  {
+  width: 20em;
+  }
 
-		background-color: #EFEFEF;	//http://www.w3schools.com/cssref/css_colors.asp
-		height:160px;
-		margin:10px;
-		border: 3px solid grey;
-		
-		//Dinner Image
-		.div_image 
-		{
-			float: left;
-			height: 160px;
-			width: 160px;
-			background-color: gray;
-			img 
-			{
+  .list_dinners_row
+  {
 
-				height:100%;
-				width: 100%;	//100% of the div
-				overflow:hidden;
-			}
-		}
+    background-color: #EFEFEF;	//http://www.w3schools.com/cssref/css_colors.asp
+    height:160px;
+    width: 1024px;
+    margin:10px;
+    border-bottom: 0.5em solid white;
 
-		//Dinner Text
-		.list_text
-		{
-			background-color: #e8e8e8;
-			//float:left;
-			height:100%;
-			padding-left:100px;
-		}
+    //Dinner Image
+    .div_dinner_image
+    {
+      margin-top:0.1em;
+      margin-left:4em;
 
+      height: 12em;
+      width: 12em;
+      background-color: gray;
+      img
+      {
+        height:100%;
+        width: 100%;	//100% of the div
+        overflow:hidden;
+      }
+    }
 
+    //Dinner Text
+    .list_dinner_text
+    {
+      background-color: #e8e8e8;
+      height:100%;
+      padding-left:100px;
+    }
 
-		//More Info button
-		.div_button_info
-		{
+    .div_join
+    {
+      height: 3.8em;
+      width: 11.4em;
+      border: 2px solid #efefef;
+      margin-top:0.1em;
+      margin-left: 4em;
+    }
 
-    		margin-left: auto;
-   			margin-right: auto;
-			//float:right;
-			height:100%;
-			text-align:right;
-			a{
-				text-decoration:none;
-			}
-		}
+    .div_more
+    {
+      height: 3.8em;
+      width: 11.4em;
+      border: 2px solid #efefef;
+      margin-top:0.1em;
+      margin-left: 4em;
+    }
 
+    .div_delete
+    {
+      height: 3.8em;
+      width: 11.4em;
+      border: 2px solid #efefef;
+      margin-top:0.1em;
+      margin-left: 4em;
+    }
 
-		//RSVP button
-		#div_button_rsvp
-		{	
-    		margin-left: auto;
-    		margin-right: auto;
-			//float:right;
-			width:100px;
-			height:100%;
-			text-align:center;
-		}
+    #host_suppr
+    {
 
-		//RSVP button
-		#host_suppr
-		{
+      margin-left: auto;
+      margin-right: auto;
+      padding-right: 20px;
+      text-align:center;
+    }
 
-    	margin-left: auto;
-    	margin-right: auto;
-    	//float:right;
-     	padding-right: 20px;
-			text-align:center;
-		}
-
-		//Cause a link to fill the entire div it's contained in
-		a.fill-div {
-		    display: block;
-		    height: 100%;
-		    width: 100%;
-		    text-decoration: none;
-		    color:white;
-		}
-	}
+  }
 }
