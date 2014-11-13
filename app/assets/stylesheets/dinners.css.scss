@@ -20,9 +20,10 @@
 	.list_row
 	{
 
-		background-color: #FFFFCC;	//http://www.w3schools.com/cssref/css_colors.asp
+		background-color: #EFEFEF;	//http://www.w3schools.com/cssref/css_colors.asp
 		height:160px;
 		margin:10px;
+		border: 3px solid grey;
 		
 		//Dinner Image
 		.div_image 
@@ -31,7 +32,6 @@
 			height: 160px;
 			width: 160px;
 			background-color: gray;
-
 			img 
 			{
 
@@ -55,7 +55,10 @@
 		//More Info button
 		.div_button_info
 		{
-			float:right;
+
+    		margin-left: auto;
+   			margin-right: auto;
+			//float:right;
 			height:100%;
 			text-align:right;
 			a{
@@ -66,8 +69,10 @@
 
 		//RSVP button
 		#div_button_rsvp
-		{
-			float:right;
+		{	
+    		margin-left: auto;
+    		margin-right: auto;
+			//float:right;
 			width:100px;
 			height:100%;
 			text-align:center;
@@ -76,7 +81,10 @@
 		//RSVP button
 		#host_suppr
 		{
-    	float:right;
+
+    	margin-left: auto;
+    	margin-right: auto;
+    	//float:right;
      	padding-right: 20px;
 			text-align:center;
 		}
