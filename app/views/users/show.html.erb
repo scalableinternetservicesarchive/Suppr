@@ -1,1 +1,15 @@
-<%= @user.first_name %>
+<div class="container">
+      <div class="jumbotron">
+        <STYLE type="text/css">
+  		h2 { text-align: left}
+  		p { text-align: justify}
+  		p { text-align: left}
+ </STYLE>
+        <h2>Account information</h2>
+        <p class="lead">
+        	<%= @user.first_name %>
+			<%= @user.last_name %><br>
+			<%= @user.email %>
+        </p>
+        <!--<p><a class="btn btn-lg btn-success" <%= link_to 'Edit profile', edit_user_registration_path %> </a></p> -->
+      </div>
