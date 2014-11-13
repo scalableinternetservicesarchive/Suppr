@@ -56,18 +56,16 @@
 
 <p>
   <strong>Comments:</strong>
-  <table id="list_dinners">
-  <tbody class="page">
+  <table id="list_comments">
     <%= render @dinner.comments %>
-  </tbody>
   </table>
 </p>
 
 
 <% if user_signed_in? %>
-   <%= link_to '<button type="button" class="btn btn-primary btn-lg">Comment</button>'.html_safe, {:dinner => @dinner.id, :controller => "comments", :action => "new"}, :class => "fill-div" %>
+   <%= link_to '<button type="button" class="btn btn-primary btn-lg">Comment</button>'.html_safe, {:dinner => @dinner.id, :controller => "comments", :action => "new"}%>
 <% else %>
-   <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Comment</button>'.html_safe, ".", :class => "fill-div" %>
+   <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Comment</button>'.html_safe, "."%>
 <% end %>
 
 <%= link_to 'Back', dinners_path %>

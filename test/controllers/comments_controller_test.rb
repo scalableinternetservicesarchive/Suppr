@@ -6,7 +6,7 @@ class CommentsControllerTest < ActionController::TestCase
   Warden.test_mode!
 
   setup do
-    @comment = comments(:one)
+    @comment = comments(:comment_one)
     sign_in users(:one)
   end
 
@@ -23,26 +23,25 @@ class CommentsControllerTest < ActionController::TestCase
     assert_redirected_to comment_path(assigns(:comment))
   end
 
-  test "should show comment" do
-    get :show, id: @comment
-    assert_response :success
-  end
-
   test "should get edit" do
     get :edit, id: @comment
     assert_response :success
   end
 
-  # test "should update comment" do
-  #   patch :update, id: @comment, comment: { content: @comment.content, dinner_id: @comment.dinner_id, user_id: @comment.user_id }
-  #   assert_redirected_to comment_path(assigns(:comment))
-  # end
+  test "should update comment" do
+    patch :update, id: @comment, comment: { content: @comment.content, dinner_id: @comment.dinner_id, user_id: @comment.user_id }
+    assert_redirected_to comment_path(assigns(:comment))
+  end
 
-  # test "should destroy comment" do
-  #   assert_difference('Comment.count', -1) do
-  #     delete :destroy, id: @comment
-  #   end
+  test "should destroy comment" do
+    puts @comment.user_id
+    puts @comment.dinner_id
+    puts @comment.content
 
-  #   assert_redirected_to comments_path
-  # end
+    assert_difference('Comment.count', -1) do
+      delete :destroy, id: @comment
+    end
+
+    assert_redirected_to comments_path
+  end
 end

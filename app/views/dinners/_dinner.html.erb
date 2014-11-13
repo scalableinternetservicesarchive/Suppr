@@ -1,11 +1,11 @@
 <% if not dinner.date.past? %>
-<tr class="list_row">
+<tr class="list_dinners_row">
   <td class="td_side">
-    <div class="div_image">
+    <div class="div_dinner_image">
       <%= link_to image_tag(dinner.image, class: 'list_image'), {:id => dinner.id, :controller => "dinners", :action => "show"} %>
     </div>
   </td>
-  <td class="list_text">
+  <td class="list_dinner_text">
     <h2><%= dinner.title %></h2>
     <p><%= dinner.host.first_name %> <%= dinner.host.last_name %></p>
     <p><%= dinner.description %></p>
@@ -31,24 +31,24 @@
       <% if user_signed_in? %>
       <div class="div_join">
           <% if dinner.reservations.exists? user_id: current_user.id, dinner_id: dinner.id %>
-              <%= link_to '<button type="button" class="btn btn-primary btn-lg">Leave</button>'.html_safe, leave_dinner_path(dinner), :class => "fill-div", :remote => true %>
+              <%= link_to '<button type="button" class="btn btn-primary btn-lg">Leave</button>'.html_safe, leave_dinner_path(dinner), :remote => true %>
           <% else %>
-              <%= link_to '<button type="button" class="btn btn-primary btn-lg">Join</button>'.html_safe, join_dinner_path(dinner), :class => "fill-div", :remote => true %>
+              <%= link_to '<button type="button" class="btn btn-primary btn-lg">Join</button>'.html_safe, join_dinner_path(dinner), :remote => true %>
           <% end %>
           </div>
           <% if dinner.host == current_user %> 
           <div class="div_delete">        
-             <%= link_to '<button type="button" class="btn btn-primary btn-lg">Cancel</button>'.html_safe, dinner, method: :delete, data: {confirm: 'Are you sure?'}, :class => "fill-div" %>
+             <%= link_to '<button type="button" class="btn btn-primary btn-lg">Cancel</button>'.html_safe, dinner, method: :delete, data: {confirm: 'Are you sure?'} %>
           <% end %>
           </div>
       <% else %>
       <div class="div_join">
-          <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Join</button>'.html_safe, '.', :class => "fill-div" %>
+          <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Join</button>'.html_safe, '.'%>
       </div>
       <% end %>
       <div class="div_more">
-         <%= link_to '<button type="button" class="btn btn-primary btn-lg">More</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "show"}, :class => "fill-div" %>
-         </div>
+         <%= link_to '<button type="button" class="btn btn-primary btn-lg">More</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "show"}%>
+      </div>
   </td>
 
 </tr>

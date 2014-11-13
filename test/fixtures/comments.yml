@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id: 
-  dinner_id: 
-  content: MyText
+comment_one:
+  user_id: one 
+  dinner_id: suppr_one
+  content: This is a text example
 
-two:
-  user_id: 
-  dinner_id: 
-  content: MyText
+comment_two:
+  user_id: two
+  dinner_id: suppr_two
+  content: This is a text example
