@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
   # GET /comments/new
   def new
     @comment = Comment.new
+    @dinner_id =  params[:dinner]
   end
 
   # GET /comments/1/edit
@@ -27,6 +28,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
+    # dinner id is in a hidden field
 
     respond_to do |format|
       if @comment.save

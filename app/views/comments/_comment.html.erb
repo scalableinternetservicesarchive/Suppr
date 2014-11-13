@@ -1,0 +1,10 @@
+<tr class="list_row">
+  <td class="td_side">
+    <div class="div_image">
+      <%= User.find(comment.user_id).first_name %>
+    </div>
+  </td>
+  <td class="list_text">
+    <%= comment.content %>
+  </td>
+</tr>

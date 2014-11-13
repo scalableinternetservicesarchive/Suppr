@@ -11,10 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :dinner_id %><br>
-    <%= f.text_field :dinner_id %>
-  </div>
+  <%= f.hidden_field :dinner_id, :value => @dinner_id %>
   <div class="field">
     <%= f.label :content %><br>
     <%= f.text_area :content %>
