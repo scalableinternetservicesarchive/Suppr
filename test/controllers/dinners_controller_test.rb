@@ -79,7 +79,7 @@ class DinnersControllerTest < ActionController::TestCase
     sign_in users(:two)
     @dinner.price -= 1.0
     patch :update, id: @dinner, dinner: { category: @dinner.category, date: @dinner.date, description: @dinner.description, location: @dinner.location, price: @dinner.price, stamp: @dinner.stamp, title: @dinner.title }
-    assert_equal 'You can not modify this Suppr', flash[:notice]
+    assert_equal 'You can not modify this Suppr.', flash[:notice]
   end
 
   test "should not join if not logged in" do
