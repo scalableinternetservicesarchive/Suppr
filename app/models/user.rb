@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
   # :confirmable, #Add this for email confirmation
   :recoverable, :rememberable, :trackable, :validatable
+  validates :first_name, :last_name, presence: true
 end
 
 def only_if_unconfirmed
