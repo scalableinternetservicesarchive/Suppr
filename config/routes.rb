@@ -16,16 +16,17 @@ Rails.application.routes.draw do
   end  
   root 'home#welcome'
 
-  
   get 'dinners/join/:id' => 'dinners#join', as: :join_dinner
   get 'dinners/leave/:id' => 'dinners#leave', as: :leave_dinner
   
-
   resources :comments
   resources :dinners
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: "users/omniauth_callbacks" }
   get 'users/:id' => 'users#show', as: :user
-  
+
+  # devise_scope :user do
+  #   get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  # end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

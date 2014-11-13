@@ -51,4 +51,5 @@ gem 'tzinfo-data'
 gem 'kaminari'
 gem 'multi_json','1.7.8'
 
-
+gem 'omniauth'
+gem 'omniauth-facebook'
