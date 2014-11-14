@@ -56,15 +56,15 @@
 <%= f.hidden_field :dinner_id, :value => @dinner.id %>
   <div class="field">
     <%= f.label :comment %><br>
-    <%= f.text_area :content, class: "form-control", id: "exampleInputPassword1", placeholder: "Comment" %>
+    <%= f.text_area :content, class: "form-control", placeholder: "Comment", rows: "4" %>
   </div>
   <div class="actions">
     <%= f.submit "Submit", class: "btn btn-default" %>
   </div>
 <% end %>
-
+<br><br>
 <p>
-  <table id="list_dinners">
+  <table class="table table-striped">
     <%= render @dinner.comments %>
   </table>
 </p>
