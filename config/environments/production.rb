@@ -34,6 +34,9 @@ Rails.application.configure do
     enable_starttls_auto: true
 }
 
+  # Don't care if the mailer can't send.
+config.action_mailer.default_url_options = { :host => 'supprwith.us:80' }
+
 
 
 
