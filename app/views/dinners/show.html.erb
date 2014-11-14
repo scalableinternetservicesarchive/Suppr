@@ -52,18 +52,21 @@
   <% end %>
 </p>
 
+<%= form_for(@comment) do |f|%>
+<%= f.hidden_field :dinner_id, :value => @dinner.id %>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :content, :cols => "80", :rows => "4" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-primary btn-lg" %>
+  </div>
+<% end %>
+
 <p>
-  <strong>Comments:</strong>
-  <table id="list_comments">
+  <table id="list_dinners">
     <%= render @dinner.comments %>
   </table>
 </p>
-
-
-<% if user_signed_in? %>
-   <%= link_to '<button type="button" class="btn btn-primary btn-lg">Comment</button>'.html_safe, {:dinner => @dinner.id, :controller => "comments", :action => "new"}%>
-<% else %>
-   <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Comment</button>'.html_safe, "."%>
-<% end %>
 
 <%= link_to 'Back', dinners_path %>
