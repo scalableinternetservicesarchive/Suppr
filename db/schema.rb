@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113223518) do
+ActiveRecord::Schema.define(version: 20141114213552) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -80,6 +80,10 @@ ActiveRecord::Schema.define(version: 20141113223518) do
     t.datetime "confirmation_sent_at"
     t.string   "provider"
     t.string   "uid"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
