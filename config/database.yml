@@ -28,7 +28,7 @@ production:
  database: suppr_production
  pool: 5
  username: root
- password: YftTXhNLZFHj9Set
+ password:  "<%= ENV["SUPPR_MYSQL_PW"] %>"
  host: localhost
 
 

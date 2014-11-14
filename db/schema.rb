@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20141113223518) do
     t.datetime "stamp"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo"
     t.integer  "seats",                          default: 0
     t.integer  "host_id"
     t.integer  "lock_version"
@@ -77,8 +78,11 @@ ActiveRecord::Schema.define(version: 20141113223518) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+<<<<<<< HEAD
+=======
     t.string   "provider"
     t.string   "uid"
+>>>>>>> 6a57076d2081149f40b66e621eb1f69964448887
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
