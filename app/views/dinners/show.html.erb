@@ -51,11 +51,11 @@
      No one has joined this Suppr yet. Be the first!
   <% end %>
 </p>
-
+<br>
 <%= form_for(@comment) do |f|%>
 <%= f.hidden_field :dinner_id, :value => @dinner.id %>
   <div class="field">
-    <%= f.label :comment %><br>
+    <%= f.label :leave_a_comment %><br>
     <%= f.text_area :content, class: "form-control", placeholder: "Comment", rows: "4" %>
   </div>
   <div class="actions">
