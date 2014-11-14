@@ -10,6 +10,7 @@ class Dinner < ActiveRecord::Base
 
   CATEGORIES = ["American", "Chinese","Indian", "Italian", "Japanese", "Thai", "Other"]
 	validates :location, :description, :title, :category, :price, :seats, :host, presence: true
+  validates_length_of :description, :maximum => 500, :allow_blank => false
 	validates_numericality_of :seats, :price, :greater_than_or_equal_to =>0
 	validate :not_past_date
   validates :seats, numericality: { :greater_than_or_equal_to => :seats_available}

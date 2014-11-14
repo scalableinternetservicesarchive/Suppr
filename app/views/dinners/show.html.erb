@@ -13,11 +13,6 @@
   <%= sanitize @dinner.location %>
 </p>
 <p>
-  <strong>Description:</strong>
-  <%= sanitize @dinner.description %>
-</p>
-
-<p>
   <strong>Category:</strong>
   <%= sanitize @dinner.category %>
 </p>
@@ -36,7 +31,10 @@
   <strong>Seats available:</strong>
   <%= @dinner.seats_available %>
 </p>
-
+<p>
+  <strong>Description:</strong>
+  <%= sanitize @dinner.description %>
+</p>
 <p>
   <strong>Participants:</strong>
   <% if @dinner.reservations.length != 0 %>
