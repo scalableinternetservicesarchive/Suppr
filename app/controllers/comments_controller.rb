@@ -20,17 +20,16 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     # dinner id is in a hidden field
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @comment.dinner, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
-        format.html { render :new }
+        format.html { redirect_to @comment.dinner }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -40,7 +39,6 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1.json
   def update
     success = @comment.user_id == current_user.id ? true : false
-
     respond_to do |format|
       if success and @comment.update(comment_params)
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }

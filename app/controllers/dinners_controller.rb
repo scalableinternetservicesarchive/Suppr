@@ -12,6 +12,7 @@ class DinnersController < ApplicationController
   # GET /dinners/1
   # GET /dinners/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /dinners/new

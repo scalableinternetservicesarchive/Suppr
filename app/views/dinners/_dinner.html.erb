@@ -31,23 +31,23 @@
       <% if user_signed_in? %>
       <div class="div_join">
           <% if dinner.reservations.exists? user_id: current_user.id, dinner_id: dinner.id %>
-              <%= link_to '<button type="button" class="btn btn-primary btn-lg">Leave</button>'.html_safe, leave_dinner_path(dinner), :remote => true %>
+              <%= link_to '<button type="button" class="btn btn-primary">Leave</button>'.html_safe, leave_dinner_path(dinner), :remote => true %>
           <% else %>
-              <%= link_to '<button type="button" class="btn btn-primary btn-lg">Join</button>'.html_safe, join_dinner_path(dinner), :remote => true %>
+              <%= link_to '<button type="button" class="btn btn-primary">Join</button>'.html_safe, join_dinner_path(dinner), :remote => true %>
           <% end %>
           </div>
           <% if dinner.host == current_user %> 
           <div class="div_delete">        
-             <%= link_to '<button type="button" class="btn btn-primary btn-lg">Cancel</button>'.html_safe, dinner, method: :delete, data: {confirm: 'Are you sure?'} %>
+             <%= link_to '<button type="button" class="btn btn-primary">Cancel</button>'.html_safe, dinner, method: :delete, data: {confirm: 'Are you sure?'} %>
           <% end %>
           </div>
       <% else %>
       <div class="div_join">
-          <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Join</button>'.html_safe, '.'%>
+          <%= link_to '<button type="button" class="btn btn-primary" disabled>Join</button>'.html_safe, '.'%>
       </div>
       <% end %>
       <div class="div_more">
-         <%= link_to '<button type="button" class="btn btn-primary btn-lg">More</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "show"}%>
+         <%= link_to '<button type="button" class="btn btn-primary">More</button>'.html_safe, {:id => dinner.id, :controller => "dinners", :action => "show"}%>
       </div>
   </td>
 
