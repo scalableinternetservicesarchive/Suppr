@@ -125,10 +125,17 @@ a{
 .auth-div {
     overflow: hidden;  
     width: 50%;
+    height: 50%;
     float: left
 }
 
 .auth-pic {
     overflow: hidden;  
+    height: 50%;
     width: 50%;
+}
+
+.devise-links {
+     clear: both;
+     padding-top: 3%;
 }
