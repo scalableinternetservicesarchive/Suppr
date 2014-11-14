@@ -1,13 +1,15 @@
 <div class="container">
       <div class="jumbotron">
-        <STYLE type="text/css">
+<STYLE type="text/css">
   		h2 { text-align: left}
   		p { text-align: justify}
   		p { text-align: left}
+
  </STYLE>
         <h2>Account information</h2>
         <p class="lead">
-        	<%= @user.first_name %>
+          <%= image_tag @user.image.url(:medium)%><br>
+          <%= @user.first_name %>
 			<%= @user.last_name %><br>
 			<%= @user.email %>
         </p>
