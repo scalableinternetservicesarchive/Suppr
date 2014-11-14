@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       puts auth.info.name
       user.first_name = auth.info.name
+      # DB workaround
       user.last_name = ' '
       # user.image = auth.info.image # assuming the user model has an image
     end
