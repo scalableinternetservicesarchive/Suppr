@@ -46,7 +46,6 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-
 gem 'tzinfo-data'
 gem 'kaminari'
 gem 'multi_json','1.7.8'
