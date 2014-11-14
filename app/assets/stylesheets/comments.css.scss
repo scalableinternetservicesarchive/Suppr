@@ -1,0 +1,51 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comments
+{
+
+   #list_comments
+   {
+      width: 100%;
+   }
+
+  .td_comments_side
+  {
+    width: 20em;
+  }
+
+
+  .list_comments_row
+  {
+
+    background-color: black;
+    height:160px;
+    width: 100%;
+    margin:10px;
+    border-bottom: 0.5em solid white;
+
+    .div_comment_image
+    {
+      margin-top:0.1em;
+      margin-left:4em;
+      height: 6em;
+      width: 6em;
+      background-color: gray;
+      img
+      {
+        height:100%;
+        width: 100%;	//100% of the div
+        overflow:hidden;
+      }
+    }
+
+    .list_comment_text
+    {
+      background-color: #e8e8e8;
+      //float:left;
+      height:100%;
+      padding-left:100px;
+    }
+  }
+}

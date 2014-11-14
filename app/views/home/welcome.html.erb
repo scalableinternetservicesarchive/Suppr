@@ -1,19 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+  </head>
 
-<%= link_to '<div id=signup_link></div>'.html_safe, dinners_path %>
+  <body>
+
+    <div class="container">
+
+      <div class="jumbotron">
+        <STYLE type="text/css">
+  		H1 { text-align: center}
+  		p { text-align: justify}
+  		p { text-align: center}
+ </STYLE>
+        <h1>Welcome to Suppr.com</h1>
+        <p class="lead">
+        	Welcome to Suppr.com! <br>
+          We love food. We love people. Our hope is to bring people together while enjoying a good meal.<br>
+        	Dig in!<br>
+        </p>
+        <p><a class="btn btn-lg btn-success" <%= link_to 'Sign Up', new_user_registration_path%> </a></p>
+      </div>
+<!--
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <h4>Link to about</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+        </div>
+
+        <div class="col-lg-6">
+          <h4>Link to How does it work</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+        </div>
+
+        <div class="col-lg-6">
+          <h4>Link to something else?</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+        </div>
+      </div>
+-->
+      <div class="footer">
+        <p>Copyright &copy; 2014</p>
+      </div>
+
+    </div> <!-- /container -->
 
 
-<div class="div_button">
-	<%= link_to 'Upcomming Supprs', dinners_path, class:"myButton" %>
-</div>
-
-<p>Welcome to Suppr.com. We love food. We love people. Our hope is to bring people together while enjoying a good meal.</p>
-
-<p>To us, the word 'supper' means more than a single meal you have at night. It means communing together and honestly, why not do it any time of the day? If you want to host a meal, buy the materials and tell everyone about it. Then everyone can respond, help you share the cost, and at the same time enjoy your skill in kitchen. If you're like our programmers and cannot cook, join the community anyway to see where meals are being hosted in your area. Just click RSVP and show up!</p>
-
-Buon appetito!<br>
-Bon appetit!<br>
-Velbekomme!<br>
-Dig in!<br>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
 
 
-<p>The Suppr Team</p>

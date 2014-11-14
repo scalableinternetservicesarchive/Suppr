@@ -6,9 +6,15 @@
 #
 
 one:
+  first_name: one
+  last_name: one
   email: one@test.com
   encrypted_password: asdasdasd
+  confirmed_at: <%= Time.now %>   
 
 two:
+  confirmed_at: <%= Time.now %>   
+  first_name: two
+  last_name: two
   email: two@test.com
   encrypted_password: asdasdasd

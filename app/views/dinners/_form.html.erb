@@ -1,8 +1,7 @@
 <%= form_for @dinner, html: { multipart: true } do |f| %>
   <% if @dinner.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@dinner.errors.count, "error") %> prohibited this dinner from being saved:</h2>
-
+      <h2><%= pluralize(@dinner.errors.count, "error") %> can not save this Suppr:</h2>
       <ul>
       <% @dinner.errors.full_messages.each do |message| %>
         <li><%= message %></li>

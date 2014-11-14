@@ -1,33 +1,32 @@
 Rails.application.routes.draw do
-
-  devise_for :users
-  # get 'event/list' 
-  # get 'event/detail'
-
-
-  # get 'event/:id' => 'event#show'
-
+  get 'users/show'
+  match "/comments", to: "dinners#index", :via => 'get'
+  get 'search' => 'dinners#search', as: :search
 
   get 'home/welcome'
   get 'home/login'
   get 'home/about'
   get 'home/contact'
+  get 'home/home'
+  get 'home/myAccount'
 
-  #get 'event#list', as: 'event'
 
-  resources :dinners
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  #root 'welcome#index'
-  #root 'home'
-  #root 'home#welcome'
-
+  authenticated :user do
+    root :to => "dinners#index", :as => :auth_root
+  end  
   root 'home#welcome'
+
   get 'dinners/join/:id' => 'dinners#join', as: :join_dinner
   get 'dinners/leave/:id' => 'dinners#leave', as: :leave_dinner
+  
+  resources :comments
+  resources :dinners
+  devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: "users/omniauth_callbacks" }
+  get 'users/:id' => 'users#show', as: :user
+
+  # devise_scope :user do
+  #   get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  # end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

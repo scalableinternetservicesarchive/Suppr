@@ -1,4 +1,42 @@
 Rails.application.configure do
+
+
+
+ # same code for email is also in production.rb
+ # reply-to address is in devise.rb
+
+ #https://github.com/plataformatec/devise/wiki/How-To%3a-Add-%3aconfirmable-to-Users
+ # mailer for devise 
+  #config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.delivery_method = :smtp
+
+
+  # Defaults to:
+  # config.action_mailer.sendmail_settings = {
+  #   location: '/usr/sbin/sendmail',
+  #   arguments: '-i -t'
+  # }
+
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'no-reply@supprwith.us'}
+
+
+  config.action_mailer.smtp_settings = { 
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "supprwith.us", 
+    authentication: "plain",
+    user_name: "supprwithus", 
+    password: "YftTXhNLZFHj9Set", 
+    enable_starttls_auto: true
+}
+
+
+
+
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

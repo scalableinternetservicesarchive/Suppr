@@ -2882,6 +2882,7 @@ fieldset[disabled] .btn-default.active {
   color: #fff;
   background-color: #428bca;
   border-color: #357ebd;
+  width: 8em;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -2918,10 +2919,12 @@ fieldset[disabled] .btn-primary:active,
 fieldset[disabled] .btn-primary.active {
   background-color: #428bca;
   border-color: #357ebd;
+  width: 2em;
 }
 .btn-primary .badge {
   color: #428bca;
   background-color: #fff;
+  width: 2em;
 }
 .btn-success {
   color: #fff;

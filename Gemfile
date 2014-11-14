@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'multi_json','1.7.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
@@ -48,4 +48,7 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 
 gem 'tzinfo-data'
 gem 'kaminari'
-gem 'multi_json', '1.7.8'
+gem 'multi_json','1.7.8'
+
+gem 'omniauth'
+gem 'omniauth-facebook'

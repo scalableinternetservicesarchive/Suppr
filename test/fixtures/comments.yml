@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+comment_one:
+  user_id: one 
+  dinner_id: suppr_one
+  content: This is a text example
+
+comment_two:
+  user_id: two
+  dinner_id: suppr_two
+  content: This is a text example
