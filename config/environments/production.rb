@@ -29,7 +29,8 @@ Rails.application.configure do
     domain: "supprwith.us", 
     authentication: "plain",
     user_name: "supprwithus", 
-    password: "YftTXhNLZFHj9Set", 
+    #password: "REPLACE THIS WITH OUR SUPPR GMAIL PASSWORD DO NOT PUSH TO GITHUB", 
+    PASSWORD: "<%= ENV["SUPPR_MAIL_PW"] %>"
     enable_starttls_auto: true
 }
 
