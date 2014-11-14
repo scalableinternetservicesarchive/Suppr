@@ -102,3 +102,33 @@ a{
     text-decoration: none; 
 	}
 }
+
+.form-control.small_first_name {
+   width: 41%;
+   float: left;
+   margin-right: 3%;
+   margin-bottom: 2%;
+}
+
+.form-control.small_last_name {
+   width: 41%;
+   overflow: hidden;
+   margin-bottom: 2%;
+}
+
+.form-control.small_box {
+   width:85%;
+   overflow: hidden;
+   margin-bottom: 2%;
+}
+
+.auth-div {
+    overflow: hidden;  
+    width: 50%;
+    float: left
+}
+
+.auth-pic {
+    overflow: hidden;  
+    width: 50%;
+}
