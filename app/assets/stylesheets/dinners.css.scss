@@ -20,6 +20,11 @@
   width: 20em;
   }
 
+  .index-container
+  {
+        width: 100%;
+  }
+
   .list_dinners_row
   {
 
@@ -81,14 +86,13 @@
       margin-left: 4em;
     }
 
-    #host_suppr
+  }
+    .host_suppr
     {
-
-      margin-left: auto;
-      margin-right: auto;
-      padding-right: 20px;
+      height: 3.8em;
+      width: 11.4em;
+      margin-left: 81%;
       text-align:center;
     }
 
-  }
 }
