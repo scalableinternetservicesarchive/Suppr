@@ -21,7 +21,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'devise'
 gem 'js-routes'
 gem 'bootstrap-sass'
-gem 'paperclip', github: 'thoughtbot/paperclip'
+gem "paperclip", "~> 4.2"
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Use unicorn as the app server

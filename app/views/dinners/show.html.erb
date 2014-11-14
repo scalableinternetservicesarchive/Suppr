@@ -51,19 +51,22 @@
      No one has joined this Suppr yet. Be the first!
   <% end %>
 </p>
-
+<br>
+<%= form_for(@comment) do |f|%>
+<%= f.hidden_field :dinner_id, :value => @dinner.id %>
+  <div class="field">
+    <%= f.label :leave_a_comment %><br>
+    <%= f.text_area :content, class: "form-control", placeholder: "Comment", rows: "4" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-default" %>
+  </div>
+<% end %>
+<br><br>
 <p>
-  <strong>Comments:</strong>
-  <table id="list_comments">
+  <table class="table table-striped">
     <%= render @dinner.comments %>
   </table>
 </p>
-
-
-<% if user_signed_in? %>
-   <%= link_to '<button type="button" class="btn btn-primary btn-lg">Comment</button>'.html_safe, {:dinner => @dinner.id, :controller => "comments", :action => "new"}%>
-<% else %>
-   <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Comment</button>'.html_safe, "."%>
-<% end %>
 
 <%= link_to 'Back', dinners_path %>
