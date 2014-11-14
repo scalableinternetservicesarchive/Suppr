@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :dinners, :through => :reservations
 
   devise :database_authenticatable, :registerable,
-  # :confirmable, #Add this for email confirmation
+  :confirmable, #Add this for email confirmation
   :recoverable, :rememberable, :trackable, :validatable,
   :omniauthable, :omniauth_providers => [:facebook]
   validates :first_name, :email, # :last_name,
