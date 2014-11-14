@@ -1,50 +1,58 @@
-<%= form_for @dinner, html: { multipart: true } do |f| %>
+<%= form_for @dinner, class: "form-inline", html: { multipart: true } do |f| %>
+  <div class="dinner-div">  
   <% if @dinner.errors.any? %>
-    <div id="error_explanation">
+  <div id="error_explanation">
       <h2><%= pluralize(@dinner.errors.count, "error") %> can not save this Suppr:</h2>
       <ul>
-      <% @dinner.errors.full_messages.each do |message| %>
+        <% @dinner.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-      <% end %>
+        <% end %>
       </ul>
-    </div>
+  </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :image %>
-    <%= f.file_field :image, class: "form-control" %>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "form-control small_box" %>
   </div>
-
   <div class="field">
     <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
+    <%= f.datetime_select :date, class: "form-control small_box" %>
   </div>
   <div class="field">
     <%= f.label :location %><br>
-    <%= f.text_field :location %>
+    <%= f.text_field :location, class: "form-control small_box" %>
   </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, rows: 10 %> 
- </div>
-  <div class="field">
-    <%= f.label :category %><br>
-    <%= f.select :category, Dinner::CATEGORIES,
-        prompt: 'Select a category' %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :seats %><br>
-    <%= f.number_field :seats %>
-  </div>
+
+  <div class="clearfix">
+    <div class="span3">
+      <%= f.label :seats, class: "div-seats" %>
+      <%= f.label :price %>
+    </div>
+    <div class="span1">
+      <%= f.number_field :seats, class: "form-control seats" %>
+      <%= f.text_field :price, class: "form-control price" %>
+    </div>
+    <div class="field">
+      <%= f.label :category %><br>
+      <%= f.select :category, Dinner::CATEGORIES,
+          prompt: 'Select a category' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_area :description, class: "form-control desc", rows: "4" %>
+    </div>
+</div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", class: "btn btn-success" %>
   </div>
+</div>
+
+  <div class="dinner-pic">
+    <%= f.label :image %>
+    <%= f.file_field :image%>
+  </div>
+</div>  
 <% end %>

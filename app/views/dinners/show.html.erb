@@ -1,12 +1,8 @@
-
-<!-- Dinner/Show.html -->
-
-<%= image_tag @dinner.image.url %>
-
-
+<div class="dinner-div">
 <p>
   <h1><%= sanitize @dinner.title %></h1>
 </p>
+
 <p>
   <strong>Date:</strong>
   <%= @dinner.date.strftime("%B") %> <%= @dinner.date.strftime("%d") %>,
@@ -51,7 +47,12 @@
      No one has joined this Suppr yet. Be the first!
   <% end %>
 </p>
+</div>
+<div class="dinner-pic">
+  <%= image_tag @dinner.image.url, size: "500x300" %>
+</div>
 <br>
+
 <%= form_for(@comment) do |f|%>
 <%= f.hidden_field :dinner_id, :value => @dinner.id %>
   <div class="field">
