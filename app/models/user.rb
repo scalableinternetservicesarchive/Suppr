@@ -1,6 +1,8 @@
-class User < ActiveRecord::Base
+ class User < ActiveRecord::Base
   has_many :reservations
   has_many :dinners, :through => :reservations
+  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/jfif"]
 
   devise :database_authenticatable, :registerable,
   :confirmable, #Add this for email confirmation
