@@ -30,7 +30,7 @@ Rails.application.configure do
     authentication: "plain",
     user_name: "supprwithus", 
     #password: "REPLACE THIS WITH OUR SUPPR GMAIL PASSWORD DO NOT PUSH TO GITHUB", 
-    PASSWORD: "<%= ENV["SUPPR_MAIL_PW"] %>"
+    password: ENV['SUPPR_MAIL_PW'],
     enable_starttls_auto: true
 }
 
