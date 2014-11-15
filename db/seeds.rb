@@ -12,7 +12,7 @@ user1.last_name = 'Redini'
 user1.email = 'lol@lol.it'
 user1.password = 'asdasdasd'
 user1.password_confirmation = 'asdasdasd'
-user1.image_file_name = "johndoe.jpg"
+user1.image = File.open(Rails.root.join('app', 'assets', 'images', 'medium', 'johndoe.jpg'))
 user1.save!
 
 75.times do 
@@ -30,6 +30,7 @@ user1.save!
                 :stamp => DateTime.current(), 
                 :created_at => DateTime.current(), 
                 :updated_at => DateTime.current(), 
+                :image => File.open(Rails.root.join('app', 'assets', 'images', 'original', 'suppr_default.jpg'))
                 )
 end
 

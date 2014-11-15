@@ -1,30 +1,30 @@
 <div class="container">
+  <h2>Account information</h2>
   <div class="jumbotron">
-    <STYLE type="text/css">
-  		h2 { text-align: left}
-  		p { text-align: justify}
-  		p { text-align: left}          
-    </STYLE>
-    <h2>Account information</h2>
-    <div class="auth-div">
-      <br><br>
+    <div class="info-div">
+      <br>
       <p>
-        Name: <%= @user.first_name %>
-			  <%= @user.last_name %></p><br>
-			<p>Email: <%= @user.email %></p>
-      <%= link_to 'Edit', edit_user_registration_path, class: 'btn btn-warning' %>
-
+       Full name: <%= @user.first_name %>
+			  <%= @user.last_name %></p>
+      <br>
+			<p>Registered email: <%= @user.email %></p>
+      <%= link_to 'Edit Info', edit_user_registration_path(current_user), class: 'btn btn-warning' %>
     </div>
-    <div class="auth-pic">
-      <%= image_tag @user.image.url(:medium)%><br>
-    </div>
+    
+    <%= image_tag @user.image.url(:medium), class: "user-pic"%><br>
   </div>
   
-  <% if @reservations != nil %>
-  <table class="reservations list_reservations">
-    <tbody>
-      <%= render @reservations %>
-    </tbody>
-  </table>
-  <% end %>
+  <br>
+  <h2>Joined Suppr</h2>
+  <div class="div-reservations">
+    <% if @reservations != nil %>
+    <table id="list_reservations">
+      <tbody>
+        <%= render @reservations %>
+      </tbody>
+    </table>
+    <% end %>
+  </div>
+  <%= link_to 'Back', :back %>
 </div>
+
