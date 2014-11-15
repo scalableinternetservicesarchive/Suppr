@@ -17,6 +17,7 @@
 
 *.jpg
 *.jpeg
+<<<<<<< HEAD
 *.png
-*.lock
+y*.lock
 *.gem

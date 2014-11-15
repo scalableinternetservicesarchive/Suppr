@@ -8,7 +8,7 @@ set :repo_url, 'ec2-user@supprwith.us:~/git/Suppr.git'
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, '/var/www/Suppr'
+#set :deploy_to, '/var/www/Suppr'
 
 # Default value for :scm is :git
 # set :scm, :git
