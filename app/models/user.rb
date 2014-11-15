@@ -19,6 +19,8 @@
    
    validates :first_name, :email, # :last_name,
    presence: true
+
+	validates_numericality_of :n_joined, :n_hosted, :greater_than_or_equal_to =>0
    
    def self.from_omniauth(auth)
      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
