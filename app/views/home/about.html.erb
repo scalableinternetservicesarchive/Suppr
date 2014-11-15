@@ -27,7 +27,9 @@
 
 <p>The Suppr Team</p>
         </p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+        <% if not user_signed_in? %>
+        <p><%= link_to 'Sign up today', new_user_registration_path, class: "btn btn-lg btn-success" %></p>
+        <% end %>
       </div>
 
       <div class="footer">

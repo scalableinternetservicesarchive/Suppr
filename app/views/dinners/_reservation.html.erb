@@ -1,0 +1,19 @@
+<tr class="list_dinners_row">
+  <td class="td_side">
+    <div class="div_dinner_image">
+      <%= link_to image_tag(reservation.dinner.image, class: 'list_image'), {:id => reservations.dinner.id, :controller => "dinners", :action => "show"} %>
+    </div>
+  </td>
+  <td class="list_dinner_text">
+    <h2><%= reservation.dinner.title %></h2>
+    <p><%= reservation.dinner.host.first_name %> <%= reservation.dinner.host.last_name %></p>
+    <p>Date:
+      <%= reservation.dinner.date.strftime("%B") %> <%= reservation.dinner.date.strftime("%d") %>,
+      <%= reservation.dinner.date.strftime("%Y") %> at <%= reservation.dinner.date.strftime("%H") %>:<%= dinner.date.strftime("%M") %>
+    </p>
+
+    <p>Location: <%= reservation.dinner.location %></p>
+    <p>Price: <%= reservation.dinner.price %></p>
+    <p>Seats Available: <span id="suppr_seats_available-<%= dinner.id %>"><%= reservation.dinner.seats_available %></span></p>
+  </td>
+</tr>
