@@ -30,9 +30,10 @@ class DinnersController < ApplicationController
     @dinner = Dinner.new(dinner_params)
     @dinner.seats_available = @dinner.seats
     @dinner.host = current_user
+    current_user.increment :n_hosted
 
     respond_to do |format|
-      if @dinner.save
+      if current_user.save and @dinner.save
         format.html { redirect_to @dinner, notice: 'Supper successfully created.' }
         format.json { render :show, status: :created, location: @dinner }
       else
@@ -66,6 +67,8 @@ class DinnersController < ApplicationController
   def destroy
     success = false
     if @dinner.host == current_user
+      current_user.decrement :n_hosted
+      current_user.save
       @dinner.destroy
       success = true
     end

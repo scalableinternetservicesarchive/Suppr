@@ -7,7 +7,8 @@
   </td>
   <td class="list_dinner_text">
     <h2><%= dinner.title %></h2>
-    <p><%= dinner.host.first_name %> <%= dinner.host.last_name %></p>
+    <p>Hosted by: <%= link_to dinner.host.first_name, {:id => dinner.host.id, :controller => "users", :action => "show"} %> 
+      <%= link_to dinner.host.last_name, {:id => dinner.host.id, :controller => "users", :action => "show"} %>
     <p>Date:
       <%= dinner.date.strftime("%B") %> <%= dinner.date.strftime("%d") %>,
       <%= dinner.date.strftime("%Y") %> at <%= dinner.date.strftime("%H") %>:<%= dinner.date.strftime("%M") %>

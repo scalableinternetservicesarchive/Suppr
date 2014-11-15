@@ -15,6 +15,8 @@ user1.password_confirmation = 'asdasdasd'
 user1.image = File.open(Rails.root.join('app', 'assets', 'images', 'medium', 'johndoe.jpg'))
 user1.save!
 
+img = File.open(Rails.root.join('app', 'assets', 'images', 'original', 'suppr_default.jpg'))
+
 75.times do 
   n = rand(1..365*60)
   Dinner.create(
@@ -30,7 +32,7 @@ user1.save!
                 :stamp => DateTime.current(), 
                 :created_at => DateTime.current(), 
                 :updated_at => DateTime.current(), 
-                :image => File.open(Rails.root.join('app', 'assets', 'images', 'original', 'suppr_default.jpg'))
+                :image => img
                 )
 end
 
