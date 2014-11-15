@@ -14,18 +14,18 @@
 			<p>Email: <%= @user.email %></p>
       <%= link_to 'Edit', edit_user_registration_path, class: 'btn btn-warning' %>
 
-      <% if @reservations != nil %>
-      <table id="list_dinners">
-        <tbody class="page">
-          <%= render @reservations %>
-        </tbody>
-      </table>
-      <% end %>
-
     </div>
     <div class="auth-pic">
       <%= image_tag @user.image.url(:medium)%><br>
     </div>
-        <!--<p><a class="btn btn-lg btn-success" <%= link_to 'Edit profile', edit_user_registration_path %> </a></p> -->
   </div>
+  
+  <% if @reservations != nil %>
+  <table class="reservations list_reservations">
+    <tbody>
+      <%= render @reservations %>
+    </tbody>
+  </table>
+  <% end %>
+
 </div>
