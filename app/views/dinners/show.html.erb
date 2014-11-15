@@ -45,6 +45,9 @@
      No one has joined this Suppr yet. Be the first!
   <% end %>
 </p>
+<% if user_signed_in? and current_user == @dinner.host%>
+<%= link_to 'Edit Suppr', edit_dinner_path, class: 'btn btn-warning' %>
+<% end %>
 </div>
 <div class="dinner-pic">
   <%= image_tag @dinner.image.url, width: "100%", height: "60%" %>
