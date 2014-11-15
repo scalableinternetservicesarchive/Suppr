@@ -42,8 +42,9 @@ gem 'sqlite3', group: :development
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 # Use Capistrano for deployment
+gem 'capistrano', '~> 3.2.0' group: :development
 gem 'capistrano-rails', group: :development
-gem 'capistrano', '~> 3.2.0'
+
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
