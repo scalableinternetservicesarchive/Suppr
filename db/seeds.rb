@@ -35,7 +35,7 @@ N.times do
                 :stamp => DateTime.current(), 
                 :created_at => DateTime.current(), 
                 :updated_at => DateTime.current(), 
-                :image => img
+                :image => img,
                 :currency => '$'
                 )
 end
