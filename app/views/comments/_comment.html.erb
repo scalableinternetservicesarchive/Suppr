@@ -1,7 +1,8 @@
 <tr class="list_comments_row">
   <td>
-      <div class="div_comment_image">
-        <%= image_tag User.find(comment.user_id).image.url(:thumb)%>
+    <%= comment.user.first_name %> <%= comment.user.last_name %>
+    <div class="div_comment_image">
+      <%= image_tag comment.user.image.url(:thumb)%>        
     </div>
   </td>
   <td>

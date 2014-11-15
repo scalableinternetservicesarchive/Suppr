@@ -1,6 +1,7 @@
  class User < ActiveRecord::Base
    has_many :reservations
    has_many :dinners, :through => :reservations
+   has_many :comments
    has_attached_file :image, 
    :styles => { :medium => "300x300>", :small => "200x200>", :thumb => "100x100>" },
    :default_url => ":style/johndoe.jpg"
