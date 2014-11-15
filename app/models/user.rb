@@ -3,7 +3,11 @@
    has_many :dinners, :through => :reservations
    has_many :comments
    has_attached_file :image, 
-   :styles => { :medium => "300x300>", :small => "200x200>", :thumb => "100x100>" },
+   :styles => { 
+     :medium => "300x300>", 
+     :small => "200x200>", 
+     :thumb => "100x100>" 
+   },
    :default_url => ":style/johndoe.jpg"
    
    validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/jfif"]
