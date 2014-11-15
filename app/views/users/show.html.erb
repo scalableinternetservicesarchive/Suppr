@@ -1,19 +1,25 @@
 <div class="container">
-  <h2>Account information</h2>
-  <div class="jumbotron">
+  <h2><%=@user.first_name %> information</h2>
+  <!-- <div > -->
+    <!-- class="jumbotron" -->
     <div class="info-div">
       <br>
       <p>
-       Full name: <%= @user.first_name %>
-			  <%= @user.last_name %></p>
+       <b>Full name</b>: <%= @user.first_name %>
+        <%= @user.last_name %></p>
+      <p><b>Email</b>: <%= @user.email %></p>
+      <p><b>Registration date</b>:
+      <%= @user.created_at.strftime("%B") %> <%= @user.created_at.strftime("%d") %>,
+      <%= @user.created_at.strftime("%Y") %></p>
+      <p><b>Hosted Suppr</b>: <%= @user.n_hosted %>
+        <b>Joined Suppr</b>: <%= @user.n_joined %></p>
       <br>
-			<p>Registered email: <%= @user.email %></p>
       <%= link_to 'Edit Info', edit_user_registration_path(current_user), class: 'btn btn-warning' %>
     </div>
-    
+
     <%= image_tag @user.image.url(:medium), class: "user-pic"%><br>
-  </div>
-  
+  <!-- </div> -->
+
   <br>
   <h2>Joined Suppr</h2>
   <div class="div-reservations">
@@ -23,8 +29,10 @@
         <%= render @reservations %>
       </tbody>
     </table>
+    <% else %>
+    <p><i>No Suppr joined</i></p>
     <% end %>
+
   </div>
   <%= link_to 'Back', :back %>
 </div>
-

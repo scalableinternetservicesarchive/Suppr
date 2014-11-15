@@ -6,16 +6,21 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+N = 75
+
 user1 = User.new
 user1.first_name = 'Nilo'
 user1.last_name = 'Redini'
 user1.email = 'lol@lol.it'
 user1.password = 'asdasdasd'
 user1.password_confirmation = 'asdasdasd'
+user1.n_hosted = 75
 user1.image = File.open(Rails.root.join('app', 'assets', 'images', 'medium', 'johndoe.jpg'))
 user1.save!
 
-75.times do 
+img = File.open(Rails.root.join('app', 'assets', 'images', 'original', 'suppr_default.jpg'))
+
+N.times do 
   n = rand(1..365*60)
   Dinner.create(
                 :host => user1, 
@@ -30,7 +35,7 @@ user1.save!
                 :stamp => DateTime.current(), 
                 :created_at => DateTime.current(), 
                 :updated_at => DateTime.current(), 
-                :image => File.open(Rails.root.join('app', 'assets', 'images', 'original', 'suppr_default.jpg'))
+                :image => img
                 )
 end
 
