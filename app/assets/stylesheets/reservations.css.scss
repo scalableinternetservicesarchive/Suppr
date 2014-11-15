@@ -2,12 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.reservations
+.users
 {
 
-  .container{
-  width: 1024px;
-  }      
+  .container {
+   height: 30em;
+   clear: both;
+  }
+
+  .jumbotron{
+   height: 100%;
+  }
+
   .image_full
   {
     width:50%;
@@ -137,7 +143,7 @@
   }
 
   .reservation-pic {
-    overflow: hidden;  
+    overflow: hidden;
     height: 50%;
     width: 50%;
   }

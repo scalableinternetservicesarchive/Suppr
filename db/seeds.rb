@@ -12,6 +12,7 @@ user1.last_name = 'Redini'
 user1.email = 'lol@lol.it'
 user1.password = 'asdasdasd'
 user1.password_confirmation = 'asdasdasd'
+user1.image_file_name = "johndoe.jpg"
 user1.save!
 
 75.times do 
