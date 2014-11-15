@@ -1,17 +1,31 @@
 <div class="container">
-      <div class="jumbotron">
-<STYLE type="text/css">
+  <div class="jumbotron">
+    <STYLE type="text/css">
   		h2 { text-align: left}
   		p { text-align: justify}
-  		p { text-align: left}
+  		p { text-align: left}          
+    </STYLE>
+    <h2>Account information</h2>
+    <div class="auth-div">
+      <br><br>
+      <p>
+        Name: <%= @user.first_name %>
+			  <%= @user.last_name %></p><br>
+			<p>Email: <%= @user.email %></p>
+      <%= link_to 'Edit', edit_user_registration_path, class: 'btn btn-warning' %>
 
- </STYLE>
-        <h2>Account information</h2>
-        <p class="lead">
-          <%= image_tag @user.image.url(:medium)%><br>
-          <%= @user.first_name %>
-			<%= @user.last_name %><br>
-			<%= @user.email %>
-        </p>
-        <!--<p><a class="btn btn-lg btn-success" <%= link_to 'Edit profile', edit_user_registration_path %> </a></p> -->
-      </div>
+    </div>
+    <div class="auth-pic">
+      <%= image_tag @user.image.url(:medium)%><br>
+    </div>
+  </div>
+  
+  <% if @reservations != nil %>
+  <table class="reservations list_reservations">
+    <tbody>
+      <%= render @reservations %>
+    </tbody>
+  </table>
+  <% end %>
+
+</div>
