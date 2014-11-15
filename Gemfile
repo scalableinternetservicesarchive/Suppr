@@ -68,3 +68,4 @@ gem 'mysql2', group: :production
 
 
 
+gem 'open_uri_redirections'

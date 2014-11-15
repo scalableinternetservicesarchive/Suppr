@@ -21,8 +21,8 @@
   <!-- </div> -->
 
   <br>
-  <h2>Joined Suppr</h2>
   <div class="div-reservations">
+    <h2>Joined Suppr</h2>
     <% if @reservations != nil %>
     <table id="list_reservations">
       <tbody>
@@ -32,7 +32,6 @@
     <% else %>
     <p><i>No Suppr joined</i></p>
     <% end %>
-
+    <%= link_to 'Back', :back %>
   </div>
-  <%= link_to 'Back', :back %>
 </div>

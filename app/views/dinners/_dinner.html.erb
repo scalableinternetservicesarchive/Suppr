@@ -22,7 +22,7 @@
     </p>
 
     <p>Location: <%= dinner.location %></p>
-    <p>Price: <%= dinner.price %> 	<%= dinner.currency %></p>
+    <p>Current Price Per Person: <%= number_with_precision(dinner.price / ((dinner.seats - dinner.seats_available) + 1), :precision => 2)%> 	<%= dinner.currency %></p>
     <p>Seats Available: <span id="suppr_seats_available-<%= dinner.id %>"><%= dinner.seats_available %></span></p>
   </td>
   <td></td>

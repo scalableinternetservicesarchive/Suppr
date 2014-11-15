@@ -15,4 +15,9 @@
     <p>Price: <%= reservation.dinner.price %> <%= reservation.dinner.currency %></p>
     <p>Seats Available: <span id="suppr_seats_available-<%= reservation.dinner.id %>"><%= reservation.dinner.seats_available %></span></p>
   </td>
+  <td class="td_side">
+    <div class="div_more">
+      <%= link_to '<button type="button" class="btn btn-primary">More</button>'.html_safe, {:id => reservation.dinner.id, :controller => "dinners", :action => "show"}%>
+    </div>
+  </td>
 </tr>
