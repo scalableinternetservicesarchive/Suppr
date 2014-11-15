@@ -6,7 +6,13 @@ class Dinner < ActiveRecord::Base
   belongs_to :host, :class_name => "User"
   has_many :comments, :dependent => :destroy
 
-  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :image, :styles => { 
+    :big => "500x500>",
+    :medium => "300x300>", 
+    :small => "200x200>",
+    :thumb => "100x100>"
+  },
+  :default_url => ":style/suppr_default.jpg"
 
   CATEGORIES = ["American", "Chinese","Indian", "Italian", "Japanese", "Thai", "Other"]
 	validates :location, :description, :title, :category, :price, :seats, :host, presence: true

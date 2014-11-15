@@ -30,6 +30,7 @@ user1.save!
                 :stamp => DateTime.current(), 
                 :created_at => DateTime.current(), 
                 :updated_at => DateTime.current(), 
+                :image => File.open(Rails.root.join('app', 'assets', 'images', 'original', 'suppr_default.jpg'))
                 )
 end
 
