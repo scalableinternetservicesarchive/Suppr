@@ -12,7 +12,7 @@
         Name: <%= @user.first_name %>
 			  <%= @user.last_name %></p><br>
 			<p>Email: <%= @user.email %></p>
-      <%= link_to 'Edit', edit_user_registration_path, class: 'btn btn-warning' %>
+      <%= link_to 'Edit', edit_user_registration_path(current_user), class: 'btn btn-warning' %>
 
     </div>
     <div class="auth-pic">
