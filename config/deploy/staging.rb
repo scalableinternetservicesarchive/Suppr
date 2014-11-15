@@ -17,8 +17,7 @@ role :db,  %w{ec2-user@supprwith.us}
 
 server 'supprwith.us', user: 'ec2-user', roles: %w{web app}, my_property: :my_value
 
-set :deploy_to, '/var/www/Suppr/staging'
-
+set :deploy_to, '/var/www/Suppr/staging/'
 
 # Custom SSH Options
 # ==================

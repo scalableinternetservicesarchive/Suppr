@@ -25,7 +25,7 @@ gem "paperclip", "~> 4.2"
 
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 # Use unicorn as the app server
 # gem 'unicorn'
 gem 'tzinfo-data'
@@ -37,14 +37,15 @@ gem 'omniauth-facebook'
 
 #development only
 
-# Use sqlite3 as the development database for Active Record
-gem 'sqlite3', group: :development
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
-# Use Capistrano for deployment
-gem 'capistrano', '~> 3.2.0' group: :development
-gem 'capistrano-rails', group: :development
-
+group :development, :test do
+	# Use sqlite3 as the development database for Active Record
+	gem 'sqlite3', group: :development
+	# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+	gem 'spring',        group: :development
+	# Use Capistrano for deployment
+	gem 'capistrano', '~> 3.2.0', group: :development
+	gem 'capistrano-rails', group: :development
+end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
