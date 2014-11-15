@@ -1,12 +1,8 @@
-
-<!-- Dinner/Show.html -->
-
-<%= image_tag @dinner.image.url %>
-
-
+<div class="dinner-div">
 <p>
   <h1><%= sanitize @dinner.title %></h1>
 </p>
+
 <p>
   <strong>Date:</strong>
   <%= @dinner.date.strftime("%B") %> <%= @dinner.date.strftime("%d") %>,
@@ -16,11 +12,6 @@
   <strong>Location:</strong>
   <%= sanitize @dinner.location %>
 </p>
-<p>
-  <strong>Description:</strong>
-  <%= sanitize @dinner.description %>
-</p>
-
 <p>
   <strong>Category:</strong>
   <%= sanitize @dinner.category %>
@@ -40,7 +31,10 @@
   <strong>Seats available:</strong>
   <%= @dinner.seats_available %>
 </p>
-
+<p>
+  <strong>Description:</strong>
+  <%= sanitize @dinner.description %>
+</p>
 <p>
   <strong>Participants:</strong>
   <% if @dinner.reservations.length != 0 %>
@@ -51,7 +45,15 @@
      No one has joined this Suppr yet. Be the first!
   <% end %>
 </p>
+<% if user_signed_in? and current_user == @dinner.host%>
+<%= link_to 'Edit Suppr', edit_dinner_path, class: 'btn btn-warning' %>
+<% end %>
+</div>
+<div class="dinner-pic">
+  <%= image_tag @dinner.image.url, width: "100%", height: "60%" %>
+</div>
 <br>
+
 <%= form_for(@comment) do |f|%>
 <%= f.hidden_field :dinner_id, :value => @dinner.id %>
   <div class="field">

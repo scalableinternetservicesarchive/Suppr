@@ -1,7 +1,7 @@
-<tr class="list_dinners_row">
+<tr class="list_comments_row">
   <td>
-    <div>
-      <%= User.find(comment.user_id).first_name %>
+      <div class="div_comment_image">
+        <%= image_tag User.find(comment.user_id).image.url(:thumb)%>
     </div>
   </td>
   <td>

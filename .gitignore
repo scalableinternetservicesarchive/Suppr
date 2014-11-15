@@ -18,3 +18,5 @@
 *.jpg
 *.jpeg
 *.png
+*.lock
+*.gem

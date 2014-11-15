@@ -1,23 +1,26 @@
-// Place all the styles related to the dinners controller here.
+// Place all the styles related to the reservations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.dinners
+.reservations
 {
 
+  .container{
+  width: 1024px;
+  }      
   .image_full
   {
     width:50%;
   }
 
-  #list_dinners
+  #list_reservations
   {
      width: 100%;
   }
 
   .td_side
   {
-  width: 20em;
+        width: 20em;
   }
 
   .index-container
@@ -25,17 +28,16 @@
         width: 100%;
   }
 
-  .list_dinners_row
+  .list_reservations_row
   {
-
     background-color: #EFEFEF;	//http://www.w3schools.com/cssref/css_colors.asp
     height:160px;
     width: 1024px;
     margin:10px;
     border-bottom: 0.5em solid white;
 
-    //Dinner Image
-    .div_dinner_image
+    //Reservation Image
+    .div_reservation_image
     {
       margin-top:0.1em;
       margin-left:4em;
@@ -51,8 +53,8 @@
       }
     }
 
-    //Dinner Text
-    .list_dinner_text
+    //Reservation Text
+    .list_reservation_text
     {
       background-color: #e8e8e8;
       height:100%;
@@ -96,14 +98,14 @@
     text-align:center;
   }
 
-  .dinner-div {
+  .reservation-div {
     overflow: hidden;
     width: 50%;
     height: 50%;
     float: left;
   }
 
-  .dinner-pic {
+  .reservation-pic {
     overflow: hidden;
     height: 50%;
     width: 50%;
@@ -134,7 +136,7 @@
      margin-bottom: 2%;
   }
 
-  .dinner-pic {
+  .reservation-pic {
     overflow: hidden;  
     height: 50%;
     width: 50%;
