@@ -18,8 +18,13 @@
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @dinner.price %>
+  <strong>Total Price:</strong>
+  <%= @dinner.price %> <%= @dinner.currency %>
+</p>
+
+<p>
+  <strong>Current Price Per Person:</strong>
+  <%= number_with_precision(@dinner.price / ((@dinner.seats - @dinner.seats_available) + 1), :precision => 2) %> <%= @dinner.currency %>
 </p>
 
 <p>
@@ -28,7 +33,7 @@
 </p>
 
 <p>
-  <strong>Seats available:</strong>
+  <strong>Seats Available:</strong>
   <%= @dinner.seats_available %>
 </p>
 <p>
@@ -45,15 +50,25 @@
      No one has joined this Suppr yet. Be the first!
   <% end %>
 </p>
-<% if user_signed_in? and current_user == @dinner.host%>
-<%= link_to 'Edit Suppr', edit_dinner_path, class: 'btn btn-warning' %>
+<% if user_signed_in?%>
+   <% if current_user == @dinner.host%>
+      <%= link_to 'Edit Suppr', edit_dinner_path, class: 'btn btn-warning' %>
+      &nbsp
+   <% end %>
+   <% if @dinner.reservations.exists? user_id: current_user.id, dinner_id: @dinner.id %>
+      <%= link_to '<button type="button" class="btn btn-primary">Leave</button>'.html_safe, leave_dinner_path(@dinner), :remote => true %>
+   <% else %>
+      <%= link_to '<button type="button" class="btn btn-primary">Join</button>'.html_safe, join_dinner_path(@dinner), :remote => true %>
+   <% end %>
+
 <% end %>
+
 </div>
 <div class="dinner-pic">
   <%= image_tag @dinner.image.url, width: "80%", height: "50%" %>
 </div>
 <br>
-
+<br>
 <%= form_for(@comment) do |f|%>
 <%= f.hidden_field :dinner_id, :value => @dinner.id %>
 <br>
