@@ -79,7 +79,7 @@ a{
 	background:-ms-linear-gradient(top, #378de5 5%, #79bbff 100%);
 	background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff',GradientType=0);
-	background-color:black;
+	background-color: transparent;                                           
 }
 .myButton:active {
 	position:relative;
@@ -101,4 +101,41 @@ a{
  		background-color: transparent;
     text-decoration: none; 
 	}
+}
+
+.form-control.small_first_name {
+   width: 41%;
+   float: left;
+   margin-right: 3%;
+   margin-bottom: 2%;
+}
+
+.form-control.small_last_name {
+   width: 41%;
+   overflow: hidden;
+   margin-bottom: 2%;
+}
+
+.form-control.small_box {
+   width:85%;
+   overflow: hidden;
+   margin-bottom: 2%;
+}
+
+.auth-div {
+    overflow: hidden;  
+    width: 50%;
+    height: 50%;
+    float: left
+}
+
+.auth-pic {
+    overflow: hidden;  
+    height: 50%;
+    width: 50%;
+}
+
+.devise-links {
+     clear: both;
+     padding-top: 3%;
 }

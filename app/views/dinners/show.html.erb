@@ -1,12 +1,8 @@
-
-<!-- Dinner/Show.html -->
-
-<%= image_tag @dinner.image.url %>
-
-
+<div class="dinner-div">
 <p>
   <h1><%= sanitize @dinner.title %></h1>
 </p>
+
 <p>
   <strong>Date:</strong>
   <%= @dinner.date.strftime("%B") %> <%= @dinner.date.strftime("%d") %>,
@@ -17,18 +13,18 @@
   <%= sanitize @dinner.location %>
 </p>
 <p>
-  <strong>Description:</strong>
-  <%= sanitize @dinner.description %>
-</p>
-
-<p>
   <strong>Category:</strong>
   <%= sanitize @dinner.category %>
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @dinner.price %>
+  <strong>Total Price:</strong>
+  <%= @dinner.price %> <%= @dinner.currency %>
+</p>
+
+<p>
+  <strong>Current Price Per Person:</strong>
+  <%= number_with_precision(@dinner.price / ((@dinner.seats - @dinner.seats_available) + 1), :precision => 2) %> <%= @dinner.currency %>
 </p>
 
 <p>
@@ -37,33 +33,58 @@
 </p>
 
 <p>
-  <strong>Seats available:</strong>
+  <strong>Seats Available:</strong>
   <%= @dinner.seats_available %>
 </p>
-
+<p>
+  <strong>Description:</strong>
+  <%= sanitize @dinner.description %>
+</p>
 <p>
   <strong>Participants:</strong>
   <% if @dinner.reservations.length != 0 %>
      <% @dinner.reservations.each do |r| %>
-         <%= r.user.first_name %> <%= r.user.last_name %>
+         <%= link_to r.user.first_name + ' ' + r.user.last_name, {:id => r.user.id, :controller => "users", :action => "show"} %>
      <% end %>
   <% else %>
      No one has joined this Suppr yet. Be the first!
   <% end %>
 </p>
+<% if user_signed_in?%>
+   <% if current_user == @dinner.host%>
+      <%= link_to 'Edit Suppr', edit_dinner_path, class: 'btn btn-warning' %>
+      &nbsp
+   <% end %>
+   <% if @dinner.reservations.exists? user_id: current_user.id, dinner_id: @dinner.id %>
+      <%= link_to '<button type="button" class="btn btn-primary">Leave</button>'.html_safe, leave_dinner_path(@dinner), :remote => true %>
+   <% else %>
+      <%= link_to '<button type="button" class="btn btn-primary">Join</button>'.html_safe, join_dinner_path(@dinner), :remote => true %>
+   <% end %>
 
+<% end %>
+
+</div>
+<div class="dinner-pic">
+  <%= image_tag @dinner.image.url, width: "80%", height: "50%" %>
+</div>
+<br>
+<br>
+<%= form_for(@comment) do |f|%>
+<%= f.hidden_field :dinner_id, :value => @dinner.id %>
+<br>
+  <div class="field">
+    <%= f.label :leave_a_comment %><br>
+    <%= f.text_area :content, class: "form-control", placeholder: "Comment", rows: "4" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-default" %>
+  </div>
+<% end %>
+<br><br>
 <p>
-  <strong>Comments:</strong>
-  <table id="list_comments">
+  <table class="table table-striped">
     <%= render @dinner.comments %>
   </table>
 </p>
-
-
-<% if user_signed_in? %>
-   <%= link_to '<button type="button" class="btn btn-primary btn-lg">Comment</button>'.html_safe, {:dinner => @dinner.id, :controller => "comments", :action => "new"}%>
-<% else %>
-   <%= link_to '<button type="button" class="btn btn-primary btn-lg" disabled>Comment</button>'.html_safe, "."%>
-<% end %>
 
 <%= link_to 'Back', dinners_path %>

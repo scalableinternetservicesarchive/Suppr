@@ -29,9 +29,13 @@ Rails.application.configure do
     domain: "supprwith.us", 
     authentication: "plain",
     user_name: "supprwithus", 
-    password: "YftTXhNLZFHj9Set", 
+    #password: "REPLACE THIS WITH OUR SUPPR GMAIL PASSWORD DO NOT PUSH TO GITHUB", 
+    password: ENV['SUPPR_MAIL_PW'],
     enable_starttls_auto: true
 }
+
+  # Don't care if the mailer can't send.
+config.action_mailer.default_url_options = { :host => 'supprwith.us:80' }
 
 
 

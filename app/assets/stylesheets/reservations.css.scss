@@ -1,0 +1,95 @@
+// Place all the styles related to the reservations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.users
+{
+
+  .container {
+   height: 30em;
+   clear: both;
+  }
+
+  .jumbotron{
+   height: 65%;
+  }
+
+  .div-reservations{
+    float:left; 
+    clear: left;  
+    width: 100%;
+   }   
+
+   .info-div {
+     overflow: hidden;  
+     width: 50%;
+     height: 50%;
+     float: left
+  }
+
+
+  #list_reservations
+  {
+     width: 100%;
+  }
+
+  .td_side
+  {
+        width: 20em;
+  }
+
+  .list_reservations_row
+  {
+    background-color: #EFEFEF;	//http://www.w3schools.com/cssref/css_colors.asp
+    height:160px;
+    width: 1024px;
+    margin:10px;
+    border-bottom: 0.5em solid white;
+
+    //Reservation Image
+    .div_reservation_image
+    {
+      margin-top:0.1em;
+      margin-left:4em;
+
+      height: 11em;
+      width: 12em;
+      background-color: gray;
+      img
+      {
+        height:100%;
+        width: 100%;	//100% of the div
+        overflow:hidden;
+      }
+    }
+
+    //Reservation Text
+    .list_reservation_text
+    {
+      background-color: #e8e8e8;
+      height:100%;
+      padding-left:100px;
+    }
+
+    .div_more
+    {
+      height: 3.8em;
+      width: 11.4em;
+      border: 2px solid #efefef;
+      margin-top:0.1em;
+      margin-left: 5em;
+    }
+
+  }
+
+  .user-pic {
+    overflow: hidden;
+    margin-left: 15%;
+  }
+
+  .reservation-pic {
+    overflow: hidden;
+    height: 50%;
+    width: 50%;
+  }
+}
