@@ -22,8 +22,6 @@ gem 'devise'
 gem 'js-routes'
 gem 'bootstrap-sass'
 gem "paperclip", "~> 4.2"
-
-
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Use unicorn as the app server
@@ -33,9 +31,10 @@ gem 'kaminari'
 gem 'multi_json','1.7.8'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'open_uri_redirections'
 
 
-#development only
+# ****** development only *******
 
 group :development, :test do
 	# Use sqlite3 as the development database for Active Record
@@ -47,15 +46,10 @@ group :development, :test do
 	gem 'capistrano-rails', group: :development
 end
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
 
-gem 'tzinfo-data'
-gem 'kaminari'
-gem 'multi_json','1.7.8'
-gem 'open_uri_redirections'
 
-# production only
+# ****** production only *******
 
-# Use mysql2 as the production database for Active Record
-gem 'mysql2', group: :production
+group :production do
+	gem 'mysql2'
+end
