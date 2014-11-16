@@ -4,4 +4,4 @@
 bundle install --without development test;
 rake assets:precompile RAILS_ENV=production
 sudo service httpd restart
-sudo chmod 0700 install.sh
+sudo chmod 0700 *.sh
