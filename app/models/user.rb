@@ -23,16 +23,18 @@
   validates_numericality_of :n_joined, :n_hosted, :greater_than_or_equal_to =>0
 
    def self.from_omniauth(auth)
+     puts "HEREEEEEEEEEEEEE"
+     puts auth
      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
        user.email = auth.info.email
        user.password = Devise.friendly_token[0,20]
        puts auth.info.name
-       user.first_name = auth.info.name
+       user.first_name = auth.info.first_name
        # user.image = auth.info.image
        # DB workaround
-       user.last_name = ' '
+       user.last_name = auth.info.last_time
        if auth.info.image.present?
-         avatar_url = process_uri(auth.info['image']['large'])
+         avatar_url = process_uri(auth.info.image)
          user.update_attribute(:image, URI.parse(avatar_url))
        end
      end
@@ -46,6 +48,11 @@
      end
    end
 
+   # def self.process_uri(uri)
+   #   avatar_url = URI.parse(uri)
+   #   avatar_url.scheme = 'https'
+   #   avatar_url.to_s
+   # end
    private
    def self.process_uri(uri)
      require 'open-uri'
