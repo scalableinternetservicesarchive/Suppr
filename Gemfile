@@ -33,6 +33,9 @@ gem 'kaminari'
 gem 'multi_json','1.7.8'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'open_uri_redirections'
+gem 'gmaps4rails'
+gem 'geocoder'
 
 
 #development only
@@ -68,6 +71,3 @@ gem 'mysql2', group: :production
 
 
 
-gem 'open_uri_redirections'
-gem 'gmaps4rails'
-gem 'geocoder'
