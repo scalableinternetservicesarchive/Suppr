@@ -12,6 +12,10 @@ class DinnersController < ApplicationController
   # GET /dinners/1
   # GET /dinners/1.json
   def show
+    # Use this to calculate the path to the suppr
+    # request.location.latitude
+    # request.location.longitude
+    
     @hash = Gmaps4rails.build_markers(@dinner) do |dinner, marker|
       marker.lat dinner.latitude
       marker.lng dinner.longitude
