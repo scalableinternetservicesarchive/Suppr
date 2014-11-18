@@ -33,6 +33,10 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'open_uri_redirections'
 
+gem 'open_uri_redirections'
+gem 'gmaps4rails'
+gem 'geocoder'
+
 
 # ****** development only *******
 
