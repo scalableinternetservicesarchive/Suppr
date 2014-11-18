@@ -20,6 +20,9 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'open_uri_redirections'
+gem 'gmaps4rails'
+gem 'geocoder'
+
 
 # ****** development only *******
 group :development, :test do
@@ -32,7 +35,13 @@ group :development, :test do
 	gem 'capistrano-rails', group: :development
 end
 
-# ****** production only *******
-group :production do
-	gem 'mysql2'
-end
+# Use debugger
+# gem 'debugger', group: [:development, :test]
+
+
+
+
+# production only
+
+# Use mysql2 as the production database for Active Record
+gem 'mysql2', group: :production
