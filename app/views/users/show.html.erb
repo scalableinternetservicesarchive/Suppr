@@ -30,7 +30,7 @@
       </tbody>
     </table>
     <% else %>
-    <p><i>No Suppr joined</i></p>
+    <p><i><%= @user.first_name %> is currently not joining any Supprs</i></p>
     <% end %>
     <%= link_to 'Back', :back %>
   </div>
