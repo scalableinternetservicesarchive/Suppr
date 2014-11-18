@@ -23,7 +23,7 @@
   <br>
   <div class="div-reservations">
     <h2>Joined Suppr</h2>
-    <% if @reservations != nil %>
+    <% if @reservations.length > 0  %>
     <table id="list_reservations">
       <tbody>
         <%= render @reservations %>
