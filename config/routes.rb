@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get 'home/home'
   get 'home/myAccount'
 
-
   authenticated :user do
     root :to => "dinners#index", :as => :auth_root
   end  
