@@ -1,37 +1,35 @@
-<div class="container">
-  <h2><%=@user.first_name %> information</h2>
-  <!-- <div > -->
-    <!-- class="jumbotron" -->
-    <div class="info-div">
-      <br>
-      <p>
-       <b>Full name</b>: <%= @user.first_name %>
-        <%= @user.last_name %></p>
-      <p><b>Email</b>: <%= @user.email %></p>
-      <p><b>Registration date</b>:
-      <%= @user.created_at.strftime("%B") %> <%= @user.created_at.strftime("%d") %>,
-      <%= @user.created_at.strftime("%Y") %></p>
-      <p><b>Hosted Suppr</b>: <%= @user.n_hosted %>
-        <b>Joined Suppr</b>: <%= @user.n_joined %></p>
-      <br>
-      <%= link_to 'Edit Info', edit_user_registration_path(current_user), class: 'btn btn-warning' %>
-    </div>
-
-    <%= image_tag @user.image.url(:medium), class: "user-pic"%><br>
-  <!-- </div> -->
-
+<h2><%=@user.first_name %> information</h2>
+<!-- <div > -->
+<!-- class="jumbotron" -->
+<div class="info-div">
   <br>
-  <div class="div-reservations">
-    <h2>Joined Suppr</h2>
-    <% if @reservations.length > 0  %>
-    <table id="list_reservations">
-      <tbody>
-        <%= render @reservations %>
-      </tbody>
-    </table>
-    <% else %>
-    <p><i><%= @user.first_name %> is currently not joining any Supprs</i></p>
-    <% end %>
-    <%= link_to 'Back', :back %>
-  </div>
+  <p>
+    <b>Full name</b>: <%= @user.first_name %>
+    <%= @user.last_name %></p>
+  <p><b>Email</b>: <%= @user.email %></p>
+  <p><b>Registration date</b>:
+    <%= @user.created_at.strftime("%B") %> <%= @user.created_at.strftime("%d") %>,
+    <%= @user.created_at.strftime("%Y") %></p>
+  <p><b>Hosted Suppr</b>: <%= @user.n_hosted %>
+    <b>Joined Suppr</b>: <%= @user.n_joined %></p>
+  <br>
+  <%= link_to 'Edit Info', edit_user_registration_path(current_user), class: 'btn btn-warning' %>
+</div>
+
+<%= image_tag @user.image.url(:medium), class: "user-pic"%><br>
+<!-- </div> -->
+
+<br>
+<div class="div-reservations">
+  <h2>Joined Suppr</h2>
+  <% if @reservations.length > 0 %>
+  <table id="list_reservations">
+    <tbody>
+      <%= render @reservations %>
+    </tbody>
+  </table>
+  <% else %>
+  <p><i><%= @user.first_name %> is currently not joining any Supprs</i></p>
+  <% end %>
+  <%= link_to 'Back', :back %>
 </div>
