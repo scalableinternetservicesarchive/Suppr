@@ -35,7 +35,13 @@ group :development, :test do
 	gem 'capistrano-rails', group: :development
 end
 
-# ****** production only *******
-group :production do
-	gem 'mysql2'
-end
+# Use debugger
+# gem 'debugger', group: [:development, :test]
+
+
+
+
+# production only
+
+# Use mysql2 as the production database for Active Record
+gem 'mysql2', group: :production
