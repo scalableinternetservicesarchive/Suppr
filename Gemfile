@@ -69,3 +69,5 @@ gem 'mysql2', group: :production
 
 
 gem 'open_uri_redirections'
+gem 'gmaps4rails'
+gem 'geocoder'
