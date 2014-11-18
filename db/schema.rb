@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20141118030349) do
     t.datetime "stamp"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "photo"
     t.integer  "seats",                          default: 0
     t.integer  "host_id"
     t.integer  "lock_version"
