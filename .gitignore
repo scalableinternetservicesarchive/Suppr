@@ -15,9 +15,6 @@
 /log/*.log
 /tmp
 
-*.jpg
-*.jpeg
-<<<<<<< HEAD
-*.png
-y*.lock
+*.lock
 *.gem
+/public/*
