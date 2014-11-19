@@ -31,7 +31,7 @@
 
        # FB workaround
        user.last_name = user.last_name == nil ? ' ' : user.last_name
-       
+
        if auth.info.image.present?
          avatar_url = process_uri(auth.info.image)
          user.update_attribute(:image, URI.parse(avatar_url))

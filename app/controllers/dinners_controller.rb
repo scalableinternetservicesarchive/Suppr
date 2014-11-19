@@ -15,13 +15,13 @@ class DinnersController < ApplicationController
     # Use this to calculate the path to the suppr
     # request.location.latitude
     # request.location.longitude
-    
+
     @hash = Gmaps4rails.build_markers(@dinner) do |dinner, marker|
       marker.lat dinner.latitude
       marker.lng dinner.longitude
       marker.title dinner.title
     end
-    @comment = Comment.new    
+    @comment = Comment.new
   end
 
   # GET /dinners/new
@@ -60,7 +60,7 @@ class DinnersController < ApplicationController
       success = true
     end
     respond_to do |format|
-      # FIXME: check seats and seats_available      
+      # FIXME: check seats and seats_available
       if success and @dinner.update(dinner_params)
         format.html { redirect_to @dinner, notice: 'Suppr has been successfully updated.' }
         format.json { render :show, status: :ok, location: @dinner }
@@ -166,7 +166,7 @@ class DinnersController < ApplicationController
     end
   end
 
-  def search    
+  def search
     query = params[:q]
     @dinners = Dinner.where("title = :query OR  category = :query OR price = :query OR seats_available = :query", query: query).order('date').page(params[:page]).per(25)
   end

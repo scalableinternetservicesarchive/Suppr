@@ -37,7 +37,7 @@ class ConfirmationsController < Devise::ConfirmationsController
     end
     if !@confirmable.errors.empty?
       self.resource = @confirmable
-      render 'devise/confirmations/new' #Change this if you don't have the views on default path 
+      render 'devise/confirmations/new' #Change this if you don't have the views on default path
     end
   end
 
