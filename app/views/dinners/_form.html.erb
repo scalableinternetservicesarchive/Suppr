@@ -1,5 +1,5 @@
 <%= form_for @dinner, class: "form-inline", html: { multipart: true } do |f| %>
-  <div class="dinner-div">  
+  <div class="dinner-div">
   <% if @dinner.errors.any? %>
   <div id="error_explanation">
       <h2><%= pluralize(@dinner.errors.count, "error") %> can not save this Suppr:</h2>
@@ -23,7 +23,7 @@
     <%= f.label :location %><br>
     <%= f.text_field :location, class: "form-control small_box", placeholder: "Number, Street Address, City, ZIP" %>
   </div>
-  
+
   <div class="clearfix">
     <div class="span3">
       <%= f.label :seats, class: "div-seats" %>
@@ -35,18 +35,18 @@
       <%= f.text_field :currency, class: "form-control currency" %>
     </div>
   </div>
-  
+
   <div class="field">
     <%= f.label :category %><br>
     <%= f.select :category, Dinner::CATEGORIES,
         prompt: 'Select a category' %>
   </div>
-  
+
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description, class: "form-control desc", rows: "4", placeholder: "Write something awesome" %>
   </div>
-  
+
   <div class="actions">
     <%= f.submit "Submit", class: "btn btn-success" %>
   </div>
@@ -56,5 +56,5 @@
     <%= f.label :image %>
     <%= f.file_field :image%>
   </div>
-</div>  
+</div>
 <% end %>

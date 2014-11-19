@@ -22,7 +22,7 @@
     </p>
 
     <p>Location: <%= dinner.location %></p>
-    <p>Current Price Per Person: <%= number_with_precision(dinner.price / ((dinner.seats - dinner.seats_available) + 1), :precision => 2)%> 	<%= dinner.currency %></p>
+    <p>Current Price Per Person: <%= number_with_precision(dinner.price / ((dinner.seats - dinner.seats_available) + 1), :precision => 2)%>   <%= dinner.currency %></p>
     <p>Seats Available: <span id="suppr_seats_available-<%= dinner.id %>"><%= dinner.seats_available %></span></p>
   </td>
   <td></td>
@@ -35,8 +35,8 @@
               <%= link_to '<button type="button" class="btn btn-primary">Join</button>'.html_safe, join_dinner_path(dinner), :remote => true %>
           <% end %>
           </div>
-          <% if dinner.host == current_user %> 
-          <div class="div_delete">        
+          <% if dinner.host == current_user %>
+          <div class="div_delete">
              <%= link_to '<button type="button" class="btn btn-primary">Cancel</button>'.html_safe, dinner, method: :delete, data: {confirm: 'Are you sure?'} %>
           <% end %>
           </div>
