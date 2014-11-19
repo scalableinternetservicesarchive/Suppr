@@ -9,9 +9,9 @@ class Dinner < ActiveRecord::Base
   belongs_to :host, :class_name => "User"
   has_many :comments, :dependent => :destroy
 
-  has_attached_file :image, :styles => { 
+  has_attached_file :image, :styles => {
     :big => "500x500>",
-    :medium => "300x300>", 
+    :medium => "300x300>",
     :small => "200x200>",
     :thumb => "100x100>"
   },
@@ -20,11 +20,11 @@ class Dinner < ActiveRecord::Base
   CATEGORIES = ["American", "Chinese","Indian", "Italian", "Japanese", "Thai", "Other"]
   CURRENCIES = ['$', '£', '€']
 
-	validates :currency, :location, :description, :title, :category, :price, :seats, :host, presence: true
+  validates :currency, :location, :description, :title, :category, :price, :seats, :host, presence: true
   validates_length_of :description, :maximum => 500, :allow_blank => false
-	validates_numericality_of :seats, :price, :greater_than_or_equal_to =>0
-	validate :not_past_date
-	validate :valid_currency
+  validates_numericality_of :seats, :price, :greater_than_or_equal_to =>0
+  validate :not_past_date
+  validate :valid_currency
   validates :seats, numericality: { :greater_than_or_equal_to => :seats_available}
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/jfif"]
 
@@ -34,11 +34,11 @@ class Dinner < ActiveRecord::Base
     end
   end
 
-	def not_past_date
-		if self.date.past?
-			errors.add(:date, 'Dinner can not be hosted in the past')
-		end
-	end
+  def not_past_date
+    if self.date.past?
+      errors.add(:date, 'Dinner can not be hosted in the past')
+    end
+  end
 
   def self.remove_old
     # FIXME: users do not see old supprs, so they should not be able to interfer
