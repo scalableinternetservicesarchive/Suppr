@@ -17,7 +17,7 @@
 
 *.jpg
 *.jpeg
-<<<<<<< HEAD
 *.png
-y*.lock
+*.lock
 *.gem
+/public/*
