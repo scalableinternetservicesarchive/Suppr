@@ -2,7 +2,7 @@
   <td class="td_side">
     <%= comment.user.first_name %> <%= comment.user.last_name %>
     <div class="div_comment_image">
-      <%= link_to( image_tag(comment.user.image.url(:thumb)),  {:id => comment.user.id, :controller => "users", :action => "show"}) %>        
+      <%= link_to( image_tag(comment.user.image.url(:thumb)),  {:id => comment.user.id, :controller => "users", :action => "show"}) %>
     </div>
   </td>
   <td>

@@ -6,6 +6,6 @@ function set_user_timezone(mm, dd, yyyy, hh, min) {
     var tmp = hh + hour_offset;
 
     dd = dd + Math.floor(tmp / 24);
-    hh = tmp % 24;    
+    hh = tmp % 24;
     document.write(mm.toString() + '/' + dd.toString() + '/' + yyyy.toString() + ' at ' + hh.toString() + ':' + min.toString());
 }

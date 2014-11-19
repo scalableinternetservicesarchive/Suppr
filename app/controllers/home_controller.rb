@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def welcome
   end
 
-  def login    
+  def login
   end
 
   def about
@@ -10,5 +10,5 @@ class HomeController < ApplicationController
 
   def contact
   end
-  
+
 end
