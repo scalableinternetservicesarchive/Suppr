@@ -17,4 +17,4 @@
 
 *.lock
 *.gem
-/public/*
+public/*
