@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'users/show'
   match "/comments", to: "dinners#index", :via => 'get'
+  match "/comments/new", to: "dinners#index", :via => 'get'
+
   get 'search' => 'dinners#search', as: :search
 
   get 'home/welcome'
