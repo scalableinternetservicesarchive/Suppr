@@ -40,7 +40,6 @@ class DinnersController < ApplicationController
     @dinner.seats_available = @dinner.seats
     @dinner.host = current_user
     current_user.n_hosted += 1
-
     respond_to do |format|
       if current_user.save and @dinner.save
         format.html { redirect_to @dinner, notice: 'Supper successfully created.' }
@@ -48,6 +47,7 @@ class DinnersController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
+        logger.error @dinner.errors.full_messages
       end
     end
   end
@@ -67,6 +67,7 @@ class DinnersController < ApplicationController
       else
         format.html { redirect_to @dinner, notice: 'You can not modify this Suppr.' }
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
+        logger.error @dinner.errors.full_messages
       end
     end
   end
@@ -109,6 +110,7 @@ class DinnersController < ApplicationController
           format.js
           format.html { redirect_to dinners_url }
           format.json { render json: @dinner.errors, status: :unprocessable_entity }
+          logger.error @dinner.errors.full_messages
         end
       else
         @dinner.errors.add(:leave, "We cannot complete your request.")
@@ -152,12 +154,14 @@ class DinnersController < ApplicationController
           format.js
           format.html { redirect_to dinners_url }
           format.json { render json: @dinner.errors, status: :unprocessable_entity }
+          logger.error @dinner.errors.full_messages
         end
       else
         @dinner.errors.add(:join, "Cannot join this Suppr: " + error_msg)
         format.js
         format.html { redirect_to dinners_url, notice: "Cannot join this Suppr"}
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
+        logger.error @dinner.errors.full_messages
       end
     end
 
