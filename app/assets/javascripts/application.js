@@ -13,10 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require_tree .
 //= require bootstrap.min
 //= require js-routes
 //= require jquery.infinitescroll
 //= require utils
 //= require underscore
 //= require gmaps/google
-//= require_tree .

@@ -10,11 +10,6 @@ class CommentsControllerTest < ActionController::TestCase
     sign_in users(:one)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
   test "should create comment" do
     assert_difference('Comment.count') do
       post :create, comment: { content: @comment.content, dinner_id: @comment.dinner_id, user_id: @comment.user_id }
