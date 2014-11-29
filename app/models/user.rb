@@ -13,7 +13,7 @@
    validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/jfif"]
 
    devise :database_authenticatable, :registerable,
-   :confirmable, #Add this for email confirmation
+   # :confirmable, #Add this for email confirmation
    :recoverable, :rememberable, :trackable, :validatable,
    :omniauthable, :omniauth_providers => [:facebook]
 
