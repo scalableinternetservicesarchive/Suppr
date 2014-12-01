@@ -1,6 +1,6 @@
 class DinnersController < ApplicationController
   before_action :set_dinner, only: [:show, :edit, :update, :destroy, :join, :leave]
-  before_action :authenticate_user!, only: [:index, :create, :edit, :new, :update, :join, :leave]
+  before_action :authenticate_user!, only: [:create, :edit, :new, :update, :join, :leave]
 
   # GET /dinners
   # GET /dinners.json
