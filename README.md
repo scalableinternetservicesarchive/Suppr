@@ -3,6 +3,7 @@ README
 
 # Suppr
 [http://supprwith.us](http://supprwith.us)
+[Funkload Test Results](http://suppr-funk.dyndns.org)
 
 Suppr is a social as well as economically sound website that lets people connect and share the costs of a meal, whether they are strangers or friends. 
 Food is costly and buying in bulks is often the best way to keep cost of meals low. It also leaves you with a lot of food left over and high lump sums. 
