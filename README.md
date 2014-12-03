@@ -2,7 +2,7 @@ README
 ==
 
 # Suppr
-[http://supprwith.us](http://supprwith.us)
+[https://supprwith.us](https://supprwith.us)
 
 [Funkload Test Results](http://suppr-funk.dyndns.org)
 
