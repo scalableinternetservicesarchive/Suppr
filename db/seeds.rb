@@ -6,7 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-<<<<<<< HEAD
 N = 10000
 
 user1 = User.new
@@ -19,8 +18,7 @@ user1.n_hosted = 75
 user1.image = File.open(Rails.root.join('app', 'assets', 'images', 'medium', 'johndoe.jpg'))
 user1.save!
 
-=======
->>>>>>> bc680693809f3800776b1d46166bf578c86c37c6
+
 img = File.open(Rails.root.join('app', 'assets', 'images', 'original', 'suppr_default.jpg'))
 
 N = 500000
