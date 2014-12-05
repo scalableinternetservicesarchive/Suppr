@@ -1,3 +1,7 @@
+
+
+
+
 #Run this on the ec2 server from the application root directory
 #/var/www/Suppr/production/current/
 #/var/www/Suppr/staging/current/
