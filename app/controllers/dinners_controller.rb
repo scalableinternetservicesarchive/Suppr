@@ -1,6 +1,6 @@
 class DinnersController < ApplicationController
   before_action :set_dinner, only: [:show, :edit, :update, :destroy, :join, :leave]
-  before_action :authenticate_user!, only: [:index, :create, :edit, :new, :update, :join, :leave]
+  before_action :authenticate_user!, only: [:create, :edit, :new, :update, :join, :leave]
 
   # GET /dinners
   # GET /dinners.json
@@ -16,11 +16,11 @@ class DinnersController < ApplicationController
     # request.location.latitude
     # request.location.longitude
 
-    @hash = Gmaps4rails.build_markers(@dinner) do |dinner, marker|
-      marker.lat dinner.latitude
-      marker.lng dinner.longitude
-      marker.title dinner.title
-    end
+    # @hash = Gmaps4rails.build_markers(@dinner) do |dinner, marker|
+    #   marker.lat dinner.latitude
+    #   marker.lng dinner.longitude
+    #   marker.title dinner.title
+    # end
     @comment = Comment.new
   end
 
