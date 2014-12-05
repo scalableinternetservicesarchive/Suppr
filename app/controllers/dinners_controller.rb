@@ -16,11 +16,11 @@ class DinnersController < ApplicationController
     # request.location.latitude
     # request.location.longitude
 
-    @hash = Gmaps4rails.build_markers(@dinner) do |dinner, marker|
-      marker.lat dinner.latitude
-      marker.lng dinner.longitude
-      marker.title dinner.title
-    end
+    # @hash = Gmaps4rails.build_markers(@dinner) do |dinner, marker|
+    #   marker.lat dinner.latitude
+    #   marker.lng dinner.longitude
+    #   marker.title dinner.title
+    # end
     @comment = Comment.new
   end
 

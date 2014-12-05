@@ -19,4 +19,3 @@
 //= require jquery.infinitescroll
 //= require utils
 //= require underscore
-//= require gmaps/google
