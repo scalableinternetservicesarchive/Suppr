@@ -52,9 +52,9 @@ namespace :deploy do
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
-      within release_path do
-          execute runOnServerOnly.sh
-      end
+      #within release_path do
+      execute "./runOnServerOnly.sh"
+      #end
     end
   end
 
