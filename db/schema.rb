@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118030349) do
+ActiveRecord::Schema.define(version: 20141209213009) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -20,9 +20,6 @@ ActiveRecord::Schema.define(version: 20141118030349) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "comments", ["dinner_id"], name: "index_comments_on_dinner_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "dinners", force: true do |t|
     t.datetime "date"
@@ -48,8 +45,6 @@ ActiveRecord::Schema.define(version: 20141118030349) do
     t.float    "latitude",                       default: 0.0
   end
 
-  add_index "dinners", ["host_id"], name: "index_dinners_on_host_id"
-
   create_table "reservations", force: true do |t|
     t.integer  "user_id"
     t.integer  "dinner_id"
@@ -59,9 +54,6 @@ ActiveRecord::Schema.define(version: 20141118030349) do
     t.integer  "lock_version"
     t.integer  "yday"
   end
-
-  add_index "reservations", ["dinner_id"], name: "index_reservations_on_dinner_id"
-  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -90,9 +82,5 @@ ActiveRecord::Schema.define(version: 20141118030349) do
     t.integer  "n_joined",               default: 0
     t.integer  "n_hosted",               default: 0
   end
-
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
