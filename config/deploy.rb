@@ -2,7 +2,9 @@
 lock '3.2.1'
 
 set :application, 'Suppr'
-set :repo_url, 'ec2-user@supprwith.us:~/git/Suppr.git'
+# set :repo_url, 'ec2-user@supprwith.us:~/git/Suppr.git'
+set :repo_url, 'https://github.com/scalableinternetservices/Suppr.git'
+
 
 # Default branch is :master
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -52,6 +54,9 @@ namespace :deploy do
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
+      #within release_path do
+      #execute "sudo ./runOnServerOnly.sh"
+      #end
     end
   end
 
