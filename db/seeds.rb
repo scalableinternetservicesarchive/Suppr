@@ -1,7 +1,3 @@
-;; This buffer is for notes you don't want to save, and for Lisp evaluation.
-;; If you want to create a file, visit that file with C-x C-f,
-;; then enter the text in that file's own buffer.
-
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -10,19 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
-user1 = User.new
-user1.first_name = 'Nilo'
-user1.last_name = 'Redini'
-user1.email = 'lol@lol.it'
-user1.password = 'asdasdasd'
-user1.password_confirmation = 'asdasdasd'
-user1.n_hosted = 75
-user1.image = File.open(Rails.root.join('app', 'assets', 'images', 'medium', 'johndoe.jpg'))
-user1.save!
-
-
-img = File.open(Rails.root.join('app', 'assets', 'images', 'original', 'suppr_default.jpg'))
 
 N = 500000
 NC = 10
@@ -53,7 +36,6 @@ for i in 0..N
                 :stamp => DateTime.current(), 
                 :created_at => DateTime.current(), 
                 :updated_at => DateTime.current(), 
-                :image => img,
                 :currency => '$'
                 )
   dinner.save!
