@@ -30,4 +30,4 @@ production:
  username: root
  password:  "<%= ENV["SUPPR_MYSQL_PW"] %>"
 # host: localhost
- host: suppr-db.dyndns.org
+ host: localhost
