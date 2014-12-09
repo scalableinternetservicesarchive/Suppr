@@ -1,3 +1,7 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -9,6 +13,8 @@
 img = File.open(Rails.root.join('app', 'assets', 'images', 'original', 'suppr_default.jpg'))
 
 N = 500000
+NC = 10
+     
 for i in 0..N
   user = User.new(
                      :first_name => "user" + i.to_s,
@@ -22,7 +28,7 @@ for i in 0..N
   user.save!
 
   n = rand(1..365*60)
-  Dinner.create(
+  dinner = Dinner.new(
                 :host => user, 
                 :date => n.days.from_now, 
                 :location => "Test1", 
@@ -38,6 +44,14 @@ for i in 0..N
                 :image => img,
                 :currency => '$'
                 )
+  dinner.save!
 
+  for i in 0..NC
+    Comment.create(
+                   :user => user, 
+                   :dinner => dinner, 
+                   :content => "Cantami o diva del pelide Achille l ira funesta."
+                   )
+  end
 end
 
