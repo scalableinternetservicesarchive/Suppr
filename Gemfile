@@ -45,3 +45,4 @@ end
 
 # Use mysql2 as the production database for Active Record
 gem 'mysql2', group: :production
+gem 'thin'
