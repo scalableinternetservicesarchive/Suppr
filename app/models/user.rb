@@ -2,15 +2,15 @@
    has_many :reservations
    has_many :dinners, :through => :reservations
    has_many :comments
-   has_attached_file :image,
-   :styles => {
-     :medium => "300x300>",
-     :small => "200x200>",
-     :thumb => "100x100>"
-   },
-   :default_url => ":style/johndoe.jpg"
+#   has_attached_file :image,
+#   :styles => {
+#     :medium => "300x300>",
+#     :small => "200x200>",
+#     :thumb => "100x100>"
+#   },
+ #  :default_url => ":style/johndoe.jpg"
 
-   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/jfif"]
+#   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/jfif"]
 
    devise :database_authenticatable, :registerable,
    # :confirmable, #Add this for email confirmation
@@ -32,10 +32,10 @@
        # FB workaround
        user.last_name = user.last_name == nil ? ' ' : user.last_name
 
-       if auth.info.image.present?
-         avatar_url = process_uri(auth.info.image)
-         user.update_attribute(:image, URI.parse(avatar_url))
-       end
+#       if auth.info.image.present?
+#         avatar_url = process_uri(auth.info.image)
+#         user.update_attribute(:image, URI.parse(avatar_url))
+#       end
      end
    end
 

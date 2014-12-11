@@ -1,9 +1,9 @@
 <% if not dinner.date.past? %>
 <tr class="list_dinners_row">
-  <td class="td_side">
+<%#  <td class="td_side">
     <div class="div_dinner_image">
       <%= link_to image_tag(dinner.image, class: 'list_image'), {:id => dinner.id, :controller => "dinners", :action => "show"} %>
-    </div>
+    </div>  
   </td>
   <td class="list_dinner_text">
     <h2><%= dinner.title %></h2>

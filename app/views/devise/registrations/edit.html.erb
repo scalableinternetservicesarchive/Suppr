@@ -37,12 +37,12 @@
   </div>
 <br><br>
 </div>
-<div class="auth-pic">
+<%#<div class="auth-pic">
   <div class="form-group">
     <%= f.label :image %>
-    <%= f.file_field :image %>
+ <%#   <%= f.file_field :image %>
   </div>
-  <%= image_tag(current_user.image.url(:medium)) %>
+ <%# <%= image_tag(current_user.image.url(:medium)) %>
 </div>
 <% end %>
 

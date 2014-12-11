@@ -14,7 +14,7 @@ user1.email = 'lol@lol.it'
 user1.password = 'asdasdasd'
 user1.password_confirmation = 'asdasdasd'
 user1.n_hosted = 75
-user1.image = File.open(Rails.root.join('app', 'assets', 'images', 'medium', 'johndoe.jpg'))
+#user1.image = File.open(Rails.root.join('app', 'assets', 'images', 'medium', 'johndoe.jpg'))
 user1.save!
 
 
@@ -29,7 +29,7 @@ for i in 0..N
                      :password => "asdasdasd",
                      :password_confirmation => 'asdasdasd',
                      :n_hosted => 1,
-                     :image => File.open(Rails.root.join('app', 'assets', 'images', 'medium', 'johndoe.jpg'))
+#                     :image => File.open(Rails.root.join('app', 'assets', 'images', 'medium', 'johndoe.jpg'))
                      )
   user.save!
 
@@ -47,7 +47,7 @@ for i in 0..N
                 :stamp => DateTime.current(), 
                 :created_at => DateTime.current(), 
                 :updated_at => DateTime.current(), 
-                :image => img,
+#                :image => img,
                 :currency => '$'
                 )
 
