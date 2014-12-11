@@ -90,36 +90,37 @@ class DinnersController < ApplicationController
 
   def leave
     success = false
-    rsvp = @dinner.reservations.find_by(user_id: current_user.id, dinner: @dinner)
-    if rsvp and @dinner.seats_available < @dinner.seats
-      @dinner.seats_available += 1
-      current_user.n_joined -= 1
-      if current_user.save and rsvp.destroy
-        success = true
+    Dinner.transaction do
+      rsvp = @dinner.reservations.find_by(user_id: current_user.id, dinner: @dinner)
+      if rsvp and @dinner.seats_available < @dinner.seats
+        @dinner.seats_available += 1
+        current_user.n_joined -= 1
+        if current_user.save and rsvp.destroy
+          success = true
+        end
       end
-    end
 
-    respond_to do |format|
-      if success
-        if @dinner.save
-          format.js
-          format.html { redirect_to dinners_url, notice: 'Successfully left a Suppr.' }
-          format.json { render :show, status: :ok, location: dinners_url }
+      respond_to do |format|
+        if success
+          if @dinner.save
+            format.js
+            format.html { redirect_to dinners_url, notice: 'Successfully left a Suppr.' }
+            format.json { render :show, status: :ok, location: dinners_url }
+          else
+            @dinner.errors.add(:leave, "We cannot complete your request.")
+            format.js
+            format.html { redirect_to dinners_url }
+            format.json { render json: @dinner.errors, status: :unprocessable_entity }
+            logger.error @dinner.errors.full_messages
+          end
         else
           @dinner.errors.add(:leave, "We cannot complete your request.")
           format.js
-          format.html { redirect_to dinners_url }
+          format.html { redirect_to dinners_url, notice: "We cannot complete your request."}
           format.json { render json: @dinner.errors, status: :unprocessable_entity }
-          logger.error @dinner.errors.full_messages
         end
-      else
-        @dinner.errors.add(:leave, "We cannot complete your request.")
-        format.js
-        format.html { redirect_to dinners_url, notice: "We cannot complete your request."}
-        format.json { render json: @dinner.errors, status: :unprocessable_entity }
       end
     end
-
     if @dinner.errors.has_key?(:leave)
       @dinner.errors.delete(:leave)
     end
@@ -127,48 +128,49 @@ class DinnersController < ApplicationController
 
   def join
     success = true
-
-    if @dinner.seats_available <= 0
-      success = false
-      error_msg = "no seats available."
-    else
-      current_user.n_joined += 1
-      @dinner.seats_available -= 1
-      begin
-        current_user.save!
-        @dinner.reservations.create!({:dinner_id => @dinner.id, :user_id => current_user.id, :date => @dinner.date, :yday => @dinner.date.yday})
-      rescue
+    Dinner.transaction do
+      if @dinner.seats_available <= 0
         success = false
-        error_msg = "you already has scheduled a Suppr in the same day."
+        error_msg = "no seats available."
+      else
+        current_user.n_joined += 1
+        @dinner.seats_available -= 1
+        begin
+          current_user.save!
+          @dinner.reservations.create!({:dinner_id => @dinner.id, :user_id => current_user.id, :date => @dinner.date, :yday => @dinner.date.yday})
+        rescue
+          success = false
+          error_msg = "you already has scheduled a Suppr in the same day."
+        end
       end
-    end
 
-    respond_to do |format|
-      if success
-        if @dinner.save
-          format.js
-          format.html { redirect_to @dinner, notice: 'Successfully joined to a Suppr.' }
-          format.json { render :show, status: :ok, location: dinners_url }
+      respond_to do |format|
+        if success
+          if @dinner.save
+            format.js
+            format.html { redirect_to @dinner, notice: 'Successfully joined to a Suppr.' }
+            format.json { render :show, status: :ok, location: dinners_url }
+          else
+            @dinner.errors.add(:join, "Error, in elaborating your request")
+            format.js
+            format.html { redirect_to dinners_url }
+            format.json { render json: @dinner.errors, status: :unprocessable_entity }
+            logger.error @dinner.errors.full_messages
+          end
         else
-          @dinner.errors.add(:join, "Error, in elaborating your request")
+          @dinner.errors.add(:join, "Cannot join this Suppr: " + error_msg)
           format.js
-          format.html { redirect_to dinners_url }
+          format.html { redirect_to dinners_url, notice: "Cannot join this Suppr"}
           format.json { render json: @dinner.errors, status: :unprocessable_entity }
           logger.error @dinner.errors.full_messages
         end
-      else
-        @dinner.errors.add(:join, "Cannot join this Suppr: " + error_msg)
-        format.js
-        format.html { redirect_to dinners_url, notice: "Cannot join this Suppr"}
-        format.json { render json: @dinner.errors, status: :unprocessable_entity }
-        logger.error @dinner.errors.full_messages
       end
     end
-
     if @dinner.errors.has_key?(:join)
       @dinner.errors.delete(:join)
     end
   end
+
 
   def search
     query = params[:q]
