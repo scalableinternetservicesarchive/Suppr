@@ -53,6 +53,7 @@ namespace :deploy do
       # Here we can do anything such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
+      execute '/var/www/Suppr/production/current/runOnServerOnly.sh'
       # end
       #within release_path do
       #execute "sudo ./runOnServerOnly.sh"
