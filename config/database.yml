@@ -22,6 +22,7 @@ test:
 
 
 production:
+ production:
  adapter: mysql2
  encoding: utf8
  reconnect: false
@@ -30,4 +31,4 @@ production:
  username: root
  password:  "<%= ENV["SUPPR_MYSQL_PW"] %>"
 # host: localhost
- host: suppr-db.dyndns.org
+ host: 54.148.41.25
