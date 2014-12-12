@@ -6,7 +6,7 @@ class DinnersController < ApplicationController
   # GET /dinners.json
 
   def index
-    @dinners = Dinner.fetch_page(:page => (params[:page] || 1), :per => 10, :order => :date) # (:order => 'dinner.date DESC')
+    @dinners = Dinner.fetch_page(:page => (params[:page] || 1), :per => 10, :order => :date)
   end
 
   # GET /dinners/1
@@ -39,6 +39,8 @@ class DinnersController < ApplicationController
     @dinner = Dinner.new(dinner_params)
     @dinner.seats_available = @dinner.seats
     @dinner.host = current_user
+    
+    Rails.cache.clear #Awful hack, but it is the only way to work fine with kaminari-cache
     current_user.n_hosted += 1
     respond_to do |format|
       if current_user.save and @dinner.save
@@ -58,6 +60,8 @@ class DinnersController < ApplicationController
     success = false
     if @dinner.host == current_user
       success = true
+      @dinner.touch
+      Rails.cache.clear #Awful hack, but it is the only way to work fine with kaminari-cache
     end
     respond_to do |format|
       # FIXME: check seats and seats_available
@@ -69,7 +73,7 @@ class DinnersController < ApplicationController
         format.json { render json: @dinner.errors, status: :unprocessable_entity }
         logger.error @dinner.errors.full_messages
       end
-    end
+   end
   end
 
   # DELETE /dinners/1
