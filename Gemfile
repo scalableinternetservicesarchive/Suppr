@@ -15,6 +15,7 @@ gem "paperclip", "~> 4.2"
 gem 'bcrypt', '~> 3.1.7'
 gem 'tzinfo-data'
 gem 'kaminari'
+gem 'kaminari-cache'
 gem 'multi_json','1.7.8'
 gem 'devise'
 gem 'omniauth'
