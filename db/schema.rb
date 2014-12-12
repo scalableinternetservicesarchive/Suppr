@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118030349) do
+ActiveRecord::Schema.define(version: 20141212024544) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -21,34 +21,33 @@ ActiveRecord::Schema.define(version: 20141118030349) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["dinner_id"], name: "index_comments_on_dinner_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["dinner_id"], name: "index_comments_on_dinner_id", using: :btree
 
   create_table "dinners", force: true do |t|
     t.datetime "date"
     t.string   "location"
     t.string   "title"
-    t.text     "description",        limit: 255
+    t.text     "description"
     t.string   "category"
-    t.float    "price",                          default: 0.0
-    t.integer  "seats_available",                default: 0
+    t.float    "price",              limit: 24, default: 0.0
+    t.integer  "seats_available",               default: 0
     t.datetime "stamp"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo"
-    t.integer  "seats",                          default: 0
+    t.integer  "seats",                         default: 0
     t.integer  "host_id"
     t.integer  "lock_version"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "currency",                       default: "$"
-    t.float    "longitude",                      default: 0.0
-    t.float    "latitude",                       default: 0.0
+    t.string   "currency",                      default: "$"
+    t.float    "longitude",          limit: 24, default: 0.0
+    t.float    "latitude",           limit: 24, default: 0.0
   end
 
-  add_index "dinners", ["host_id"], name: "index_dinners_on_host_id"
+  add_index "dinners", ["host_id"], name: "index_dinners_on_host_id", using: :btree
 
   create_table "reservations", force: true do |t|
     t.integer  "user_id"
@@ -60,8 +59,8 @@ ActiveRecord::Schema.define(version: 20141118030349) do
     t.integer  "yday"
   end
 
-  add_index "reservations", ["dinner_id"], name: "index_reservations_on_dinner_id"
-  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id"
+  add_index "reservations", ["dinner_id"], name: "index_reservations_on_dinner_id", using: :btree
+  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -91,8 +90,8 @@ ActiveRecord::Schema.define(version: 20141118030349) do
     t.integer  "n_hosted",               default: 0
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
