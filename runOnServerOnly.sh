@@ -7,5 +7,5 @@ source /var/www/SupprSetup/*
 
 bundle install --without development test;
 rake assets:precompile RAILS_ENV=production
-sudo service httpd restart
-sudo chmod 0700 *.sh
+# sudo service httpd restart
+# sudo chmod 0700 *.sh
