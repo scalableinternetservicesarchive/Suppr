@@ -25,9 +25,9 @@ production:
  adapter: mysql2
  encoding: utf8
  reconnect: false
- database: suppr_production
+ database: suppr_test0
  pool: 5
  username: root
  password:  "<%= ENV["SUPPR_MYSQL_PW"] %>"
 # host: localhost
- host: localhost
+ host: 54.148.41.25
