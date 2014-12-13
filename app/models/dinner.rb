@@ -3,7 +3,6 @@ class Dinner < ActiveRecord::Base
   default_scope { order("date ASC") }
   geocoded_by :location
   after_validation :geocode
-
   has_many :reservations, :dependent => :delete_all
   has_many :users, :through => :reservations
   belongs_to :host, :class_name => "User"
