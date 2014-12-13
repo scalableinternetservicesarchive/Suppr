@@ -6,7 +6,7 @@ class DinnersController < ApplicationController
   # GET /dinners.json
 
   def index
-    @dinners = Dinner.fetch_page(:page => (params[:page] || 1), :per => 10, :order => :date) # (:order => 'dinner.date DESC')
+    @dinners = Dinner.fetch_page(:page => (params[:page] || 1), :per => 25, :order => :date) # (:order => 'dinner.date DESC')
   end
 
   # GET /dinners/1
@@ -40,6 +40,7 @@ class DinnersController < ApplicationController
     @dinner.seats_available = @dinner.seats
     @dinner.host = current_user
     current_user.n_hosted += 1
+    Rails.cache.clear
     respond_to do |format|
       if current_user.save and @dinner.save
         format.html { redirect_to @dinner, notice: 'Supper successfully created.' }
@@ -58,6 +59,8 @@ class DinnersController < ApplicationController
     success = false
     if @dinner.host == current_user
       success = true
+      @dinner.touch
+      Rails.cache.clear
     end
     respond_to do |format|
       # FIXME: check seats and seats_available
