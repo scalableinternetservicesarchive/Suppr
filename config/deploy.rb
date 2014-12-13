@@ -1,5 +1,5 @@
 # config valid only for Capistrano 3.1
-lock '3.2.1'
+lock '3.3.5'
 
 set :application, 'Suppr'
 set :repo_url, 'https://github.com/scalableinternetservices/Suppr.git'
@@ -49,9 +49,11 @@ namespace :deploy do
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
-      # within release_path do
+      within release_path do
+        execute "echo hello*******************"
       #   execute :rake, 'cache:clear'
-      # end
+      # execute :rake, 'cache:clear'
+      end
     end
   end
 
