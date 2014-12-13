@@ -1,4 +1,4 @@
-35# This file should contain all the record creation needed to seed the database with its default values.
+# This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 # Examples:
@@ -16,17 +16,20 @@ comments = []
 
 CONN = ActiveRecord::Base.connection
 N.times do |i|
-  name = "user" + i.to_s
-  email = i.to_s + "@email.com"
-  
+  uid = i + 1
+  did = i + 1
+
+  name = "user" + uid.to_s
+  email = uid.to_s + "@email.com"
+
   users.push ("( '2014-12-11 23:26:42.610064','"  + email + "', '$2a$10$AkvE0Pr6NLJkg1z3B9RIP.wde1PAViWNm.oB0fgdaVbNwJz6zb.qu','" + name + "','" + name + "','2014-12-11 23:26:42.610064')")
   year = 2014
-  dinners.push("('Chinese', '2014-12-11 23:26:42.610064', '" + year.to_s + "-12-11 23:26:42.610064', 'asdasdasd'," + i.to_s + ", 'asd', 0, 2.0, 1, 1, 'asd', '2014-12-11 23:26:42.610064')")
+  dinners.push("('Chinese', '2014-12-11 23:26:42.610064', '" + year.to_s + "-12-11 23:26:42.610064', 'asdasdasd'," + uid.to_s + ", 'asd', 0, 2.0, 1, 1, 'asd', '2014-12-11 23:26:42.610064')")
 
     
 
     for j in 0..NC
-      comments.push("('cantami o diva del pelide achille', '2014-12-11 23:26:42.610064', " + i.to_s + ", '2014-12-11 23:26:42.610064', "+ i.to_s + ")")
+      comments.push("('cantami o diva del pelide achille', '2014-12-11 23:26:42.610064', " + did.to_s + ", '2014-12-11 23:26:42.610064', "+ uid.to_s + ")")
    end
 
   
