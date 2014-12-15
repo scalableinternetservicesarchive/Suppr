@@ -70,10 +70,15 @@
 
 </div>
 
+<div class="dinner-pic">
+  <div class="gmaps" id="map"></div>
+</div>
 <div class="div-comments-form">
   <%= form_for(@comment) do |f|%>
   <%= f.hidden_field :dinner_id, :value => @dinner.id %>
   <br>
+  <br>
+
   <div class="field">
     <%= f.label :leave_a_comment %><br>
     <%= f.text_area :content, class: "form-control", placeholder: "Comment", rows: "4" %>

@@ -101,6 +101,7 @@ class DinnersController < ApplicationController
         current_user.n_joined -= 1
         if current_user.save and rsvp.destroy
           success = true
+          Rails.cache.clear #Awful hack, but it is the only way to work fine with kaminari-cache
         end
       end
 
@@ -139,6 +140,7 @@ class DinnersController < ApplicationController
       else
         current_user.n_joined += 1
         @dinner.seats_available -= 1
+        Rails.cache.clear #Awful hack, but it is the only way to work fine with kaminari-cache
         begin
           current_user.save!
           @dinner.reservations.create!({:dinner_id => @dinner.id, :user_id => current_user.id, :date => @dinner.date, :yday => @dinner.date.yday})
